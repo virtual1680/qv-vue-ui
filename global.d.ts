@@ -1,9 +1,9 @@
 // GlobalComponents for Volar
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    ElRate: typeof import('qv-vue')['ElRate']
+    ElRate: typeof import('qv-vue')['QvRate']
   }
- 
+
   // interface ComponentCustomProperties {
   //   $message: typeof import('qv-vue')['ElMessage']
   //   $notify: typeof import('qv-vue')['ElNotification']
