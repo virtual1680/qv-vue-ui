@@ -1,0 +1,6 @@
+{
+  "name": "@qv-vue/constants",
+  "private": true,
+  "license": "MIT",
+  "main": "index.ts"
+}

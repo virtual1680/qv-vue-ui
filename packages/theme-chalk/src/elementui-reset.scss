@@ -1,0 +1,22 @@
+.qv-vue-form {
+	.el-form-item__content > div {
+		width: 100%;
+	}
+	.qv-vue-input-number,
+	.qv-vue-select,
+	.qv-vue-cascader,
+	.qv-vue-input-tree {
+		width: 100%;
+	}
+}
+.el-dialog.is-fullscreen {
+	top: 0;
+}
+.el-upload--picture-card,
+.el-upload--picture-img {
+	.el-upload-dragger {
+		width: inherit;
+		height: inherit;
+		background-color: inherit;
+	}
+}

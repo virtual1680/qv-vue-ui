@@ -1,0 +1,4 @@
+{
+  "root": true,
+  "extends": ["@qv-vue/eslint-config"]
+}

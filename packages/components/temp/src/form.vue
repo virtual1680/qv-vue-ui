@@ -1,0 +1,90 @@
+<template>
+  <div>
+    <component
+      :is="getComponent(column?.type, column?.component)"
+      ref="temp"
+      v-model="text"
+      v-bind="getBind(column)"
+      :column="Object.assign(column!, params)"
+      :dic="dic || []"
+      :disabled="column?.disabled || disabled"
+      :readonly="column?.readonly || readonly || false"
+      :placeholder="column?.placeholder || getPlaceholder(column)"
+      :props="column?.props || props"
+      :propsHttp="column?.propsHttp || propsHttp"
+      :size="column?.size || size"
+      :table-data="tableData"
+      :type="type || column?.type || ''"
+    >
+      <template v-if="slots.default" #default="scope">
+        <slot v-bind="scope" />
+      </template>
+      <template v-else-if="params.html" #default>
+        <span v-html="params.html" />
+      </template>
+      <template v-for="item in (columnSlot as string[])" #[item]="scope">
+        <slot v-bind="scope" :name="item" />
+      </template>
+    </component>
+  </div>
+</template>
+<!-- @keyup.enter="enterChange" keyup事件 不能绑定下片段上 或者在子组件中注册-->
+<script lang="ts" setup name="form-temp">
+import { computed, nextTick, ref, useSlots, watch } from 'vue'
+import { getComponent, getPlaceholder } from '@qv-vue/hooks'
+import { validatenull } from '@qv-vue/utils'
+import TempFormProps from './form'
+
+const emit = defineEmits<{
+  (e: 'change', val: any): void
+  (e: 'update:modelValue', val: any): void
+  (e: 'enter'): void
+}>()
+
+const slots = useSlots()
+const props = defineProps(TempFormProps)
+const first = ref(false)
+const text = ref()
+
+const params = computed(() => {
+  return props.column?.params || {}
+})
+// const event = computed(() => {
+// 	return props.column.event || {};
+// });
+watch(
+  () => text.value,
+  (val) => {
+    if (first.value || !validatenull(val)) {
+      first.value = true
+      emit('update:modelValue', val)
+      emit('change', val)
+    } else {
+      first.value = true
+    }
+  },
+  {
+    immediate: true,
+  }
+)
+watch(
+  () => props.modelValue,
+  (val) => {
+    // 组件加载完成后才能绑定数据
+    nextTick(() => {
+      text.value = val
+    })
+  },
+  {
+    immediate: true,
+  }
+)
+
+const getBind = (column: any) => {
+  const params = { ...column }
+  ;['value', 'className'].forEach((ele) => {
+    delete params[ele]
+  })
+  return params
+}
+</script>

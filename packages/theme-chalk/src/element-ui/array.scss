@@ -1,0 +1,14 @@
+.qv-vue-array {
+	&__item {
+		margin-bottom: 5px;
+	}
+	&__input {
+		display: flex;
+		.el-input {
+			flex: auto;
+		}
+		.el-button {
+			margin-left: 5px;
+		}
+	}
+}

@@ -1,0 +1,27 @@
+.qv-vue-data-display {
+	.item {
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+		margin: 5px 0;
+		text-align: center;
+	}
+	.count {
+		display: block;
+		margin: 8px 0 15px 0;
+		font-weight: bold;
+		font-size: 32px;
+		color: #15a0ff;
+	}
+	.title {
+		line-height: 32px;
+		color: #999;
+	}
+	.splitLine {
+		display: block;
+		margin: 0 auto;
+		width: 24px;
+		height: 1px;
+		background: #9b9b9b;
+	}
+}
