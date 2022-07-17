@@ -29,7 +29,7 @@
   </div>
 </template>
 <!-- @keyup.enter="enterChange" keyup事件 不能绑定下片段上 或者在子组件中注册-->
-<script lang="ts" setup name="form-temp">
+<script lang="ts" setup name="qv-form-temp">
 import { computed, nextTick, ref, useSlots, watch } from 'vue'
 import { getComponent, getPlaceholder } from '@qv-vue/hooks'
 import { validatenull } from '@qv-vue/utils'

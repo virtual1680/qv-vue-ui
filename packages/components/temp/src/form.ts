@@ -1,6 +1,6 @@
 import type tempForm from './form.vue'
 import type { PropType } from 'vue'
-import type { DicProps, PropsHttp, QvVueColumn } from '@qv-vue/types/qvue-ui'
+import type { DicProps, PropsHttp, QvColumn } from '@qv-vue/types/qvue-ui'
 
 export interface TempFormProps {
   uploadBefore?: () => void
@@ -21,7 +21,7 @@ export interface TempFormProps {
   disabled?: boolean
   readonly?: boolean
   modelValue: unknown
-  column: Partial<QvVueColumn>
+  column: Partial<QvColumn>
 }
 
 export default {

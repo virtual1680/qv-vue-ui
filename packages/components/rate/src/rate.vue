@@ -7,7 +7,7 @@
 import { ref } from 'vue'
 import { rateProps } from './rate'
 defineOptions({
-  name: 'qv-vue-rate',
+  name: 'qv-rate',
 })
 
 defineEmits(['update:modelValue', 'blur', 'click', 'change', 'focus'])

@@ -448,8 +448,8 @@ export const findArray = (dic: any, value: any, valueKey: any, obj: any) => {
 /**
  * 根据位数获取*密码程度
  */
-export const getPasswordChar = (result = '', char: any) => {
-  let len = result.toString().length
+export const getPasswordChar = (result: number | string = '', char: any) => {
+  const len = result.toString().length
   result = ''
   for (let i = 0; i < len; i++) {
     result = result + char

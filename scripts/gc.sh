@@ -30,35 +30,45 @@ mkdir -p "$DIRNAME"
 mkdir -p "$DIRNAME/src"
 mkdir -p "$DIRNAME/__tests__"
 
-cat > $DIRNAME/src/index.vue <<EOF
+cat > $DIRNAME/src/$INPUT_NAME.ts <<EOF
+import type ${NAME} from './${INPUT_NAME}.vue'
+
+export interface ${NAME}Props {
+  modelValue: any;
+}
+
+export default {
+  modelValue: Object,
+}
+export type ${NAME}Instance = InstanceType<typeof ${NAME}>
+EOF
+
+cat > $DIRNAME/src/$INPUT_NAME.vue <<EOF
 <template>
   <div>
     <slot></slot>
   </div>
 </template>
-<script lang='ts'>
-import { defineComponent } from 'vue'
-export default defineComponent({
-  name: 'Qv${NAME}',
-  props: { },
-  setup(props) {
-    // init here
-  },
+<script lang="ts" setup>
+import ${INPUT_NAME}Props from './${INPUT_NAME}';
+defineOptions({
+  name: 'qv-${INPUT_NAME}',
 })
+defineProps(${INPUT_NAME}Props)
 </script>
 <style>
 </style>
 EOF
 
 cat <<EOF >"$DIRNAME/index.ts"
-import { App } from 'vue'
-import ${NAME} from './src/index.vue'
+import { withInstall } from '@qv-vue/utils'
 
-${NAME}.install = (app: App): void => {
-  app.component(${NAME}.name, ${NAME})
-}
+import ${NAME} from './src/${INPUT_NAME}.vue'
 
-export default ${NAME}
+export const Qv${NAME} = withInstall(${NAME})
+export default Qv${NAME}
+
+export * from './src/${INPUT_NAME}'
 EOF
 
 cat > $DIRNAME/__tests__/$INPUT_NAME.spec.ts <<EOF

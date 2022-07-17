@@ -43,6 +43,7 @@ export interface BaseColumn {
   searchTags: boolean
   searchFilterable: boolean
   searchRules: any[]
+  separator: string
   searchLabelPosition: 'right' | 'top' | 'left'
   searchFilterMethod: () => void
   addDisabled: boolean
@@ -65,7 +66,12 @@ export interface BaseColumn {
   filterMethod: (value: any, row: any, column: any) => void
   filtersMethod: (value: any, row: any, column: any) => void
   fixed: boolean
-  formatter: (row: any, value: any, label: string, column: any) => void
+  formatter: (
+    row: any,
+    value: any,
+    label: string | string[] | number | number[],
+    column: any
+  ) => any
   showColumn: boolean
   sortable: boolean
   slot: boolean
@@ -117,7 +123,7 @@ export interface BaseColumn {
   change: (e: Event) => void
   click: (e: Event) => void
 
-  typeformat: (e: Event) => void
+  typeformat: (item: DicData, labelKey: string, valueKey: string) => string
 
   icon: string
   flex: number
@@ -128,7 +134,7 @@ export interface BaseColumn {
   count: number
   parentProp: string
 }
-export interface QvVueGroup {
+export interface QvGroup {
   icon?: string
   label?: string
   collapse?: boolean
@@ -138,18 +144,18 @@ export interface QvVueGroup {
   flex?: boolean
   labelPosition?: 'right' | 'top' | 'left'
   display?: boolean
-  column: QvVueColumn[]
+  column: QvColumn[]
 }
-export interface QvVueOption {
+export interface QvOption {
   sortable: boolean
   rowSort: boolean
   columnSort: boolean
   expandAll: boolean
   expandLevel: number
   tree: boolean
-  column: QvVueColumn[]
-  footer: QvVueColumn[]
-  group: QvVueGroup[]
+  column: QvColumn[]
+  footer: QvColumn[]
+  group: QvGroup[]
   title: string
   titleSize: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
   tip: boolean
@@ -516,7 +522,7 @@ export interface TableColumn {
   ) => void
 }
 
-export interface QvVueColumn
+export interface QvColumn
   extends UpLoadColumn,
     CanvasOption,
     ColorColumn,
@@ -533,12 +539,13 @@ export interface QvVueColumn
     IconColumn,
     BaseColumn {}
 
+export type DicData = { label: string; value: string | number | boolean }
 export interface EventProps {
   modelValue?: object
   dic: DicData[]
-  column: Partial<QvVueColumn>
-  size: '' | 'default' | 'small' | 'large'
-  disabled?: boolean
+  column: Partial<QvColumn>
+  size: '' | 'default' | 'small' | 'large' | undefined
+  disabled: boolean
   tableData?: any
   readonly?: boolean
   placeholder?: string
@@ -546,5 +553,3 @@ export interface EventProps {
   propsHttp: PropsHttp
   type?: string
 }
-
-export type DicData = { label: string; value: string | number | boolean }
