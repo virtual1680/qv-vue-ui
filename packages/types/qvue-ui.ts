@@ -539,7 +539,11 @@ export interface QvColumn
     IconColumn,
     BaseColumn {}
 
-export type DicData = { label: string; value: string | number | boolean }
+export type DicData = {
+  label: string
+  value: string | number | boolean
+  [key: string]: any
+}
 export interface EventProps {
   modelValue?: object
   dic: DicData[]

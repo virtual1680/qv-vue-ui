@@ -31,14 +31,42 @@ mkdir -p "$DIRNAME/src"
 mkdir -p "$DIRNAME/__tests__"
 
 cat > $DIRNAME/src/$INPUT_NAME.ts <<EOF
+
+import type { EventProps } from '@qv-vue/types/qvue-ui'
+import type { PropType } from 'vue'
 import type ${NAME} from './${INPUT_NAME}.vue'
 
-export interface ${NAME}Props {
-  modelValue: any;
-}
-
-export default {
-  modelValue: Object,
+export const ${INPUT_NAME}Props = {
+  modelValue: Object as PropType<EventProps['modelValue']>,
+  dic: {
+    type: Array as PropType<EventProps['dic']>,
+    default: () => [],
+  },
+  column: {
+    type: Object as PropType<EventProps['column']>,
+    default: () => ({
+      all: false,
+    }),
+  },
+  size: {
+    type: String as PropType<EventProps['size']>,
+    default: 'small',
+  },
+  disabled: Boolean,
+  tableData: Object as PropType<EventProps['tableData']>,
+  readonly: Boolean,
+  placeholder: String,
+  props: {
+    type: Object as PropType<EventProps['props']>,
+    default: () => ({}),
+  },
+  propsHttp: {
+    type: Object as PropType<EventProps['propsHttp']>,
+    default: () => ({}),
+  },
+  type: {
+    type: String,
+  },
 }
 export type ${NAME}Instance = InstanceType<typeof ${NAME}>
 EOF
@@ -50,14 +78,23 @@ cat > $DIRNAME/src/$INPUT_NAME.vue <<EOF
   </div>
 </template>
 <script lang="ts" setup>
-import ${INPUT_NAME}Props from './${INPUT_NAME}';
+import { useBem, useEvent } from '@qv-vue/hooks'
+import { ${INPUT_NAME}Props } from './${INPUT_NAME}';
 defineOptions({
   name: 'qv-${INPUT_NAME}',
 })
-defineProps(${INPUT_NAME}Props)
+const { b } = useBem('qv-${INPUT_NAME}');
+const emit = defineEmits<{
+  (e: 'update:modelValue', value: any): void
+  (e: 'blur', value: any): void
+  (e: 'click', value: any): void
+  (e: 'change', value: any): void
+  (e: 'focus', value: any): void
+}>()
+const props = defineProps(${INPUT_NAME}Props)
+
 </script>
-<style>
-</style>
+<style></style>
 EOF
 
 cat <<EOF >"$DIRNAME/index.ts"

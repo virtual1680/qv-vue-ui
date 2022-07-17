@@ -53,6 +53,7 @@
     "@qv-vue/directives": "workspace:*",
     "@qv-vue/hooks": "workspace:*",
     "@qv-vue/locale": "workspace:*",
+    "@qv-vue/plugin": "workspace:^1.0.0",
     "@qv-vue/test-utils": "workspace:*",
     "@qv-vue/theme-chalk": "workspace:*",
     "@qv-vue/tokens": "workspace:*",

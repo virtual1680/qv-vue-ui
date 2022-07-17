@@ -2,7 +2,7 @@
   <div>
     <component
       :is="getComponent(column?.type, column?.component)"
-      ref="temp"
+      ref="tempRef"
       v-model="text"
       v-bind="getBind(column)"
       :column="Object.assign(column!, params)"
@@ -29,12 +29,12 @@
   </div>
 </template>
 <!-- @keyup.enter="enterChange" keyup事件 不能绑定下片段上 或者在子组件中注册-->
-<script lang="ts" setup name="qv-form-temp">
+<script lang="ts" setup name="qv-temp-form">
 import { computed, nextTick, ref, useSlots, watch } from 'vue'
 import { getComponent, getPlaceholder } from '@qv-vue/hooks'
 import { validatenull } from '@qv-vue/utils'
-import TempFormProps from './form'
-
+import { tempFormProps } from './temp-form'
+import type { Ref } from 'vue'
 const emit = defineEmits<{
   (e: 'change', val: any): void
   (e: 'update:modelValue', val: any): void
@@ -42,9 +42,10 @@ const emit = defineEmits<{
 }>()
 
 const slots = useSlots()
-const props = defineProps(TempFormProps)
+const props = defineProps(tempFormProps)
 const first = ref(false)
 const text = ref()
+const tempRef: Ref<any> = ref()
 
 const params = computed(() => {
   return props.column?.params || {}
@@ -87,4 +88,5 @@ const getBind = (column: any) => {
   })
   return params
 }
+defineExpose({ tempRef })
 </script>

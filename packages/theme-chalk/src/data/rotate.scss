@@ -1,46 +1,46 @@
-.qv-vue-data-rotate {
-	.item {
-		margin: 5px 10px;
-		box-sizing: border-box;
-		position: relative;
-		color: #fff;
-		border-radius: 3px;
-		&-box {
-			padding: 10px 20px;
-		}
-		&-count {
-			margin-bottom: 5px;
-			font-size: 38px;
-			white-space: nowrap;
-			font-weight: 300;
-			display: block;
-		}
-		&-title {
-			font-size: 15px;
-		}
-		&-icon {
-			transition: all 0.3s linear;
-			position: absolute;
-			top: 20px;
-			right: 20px;
-			font-size: 65px;
-			color: rgba(0, 0, 0, 0.15);
-			&:hover {
-				font-size: 70px;
-			}
-		}
-		&-more {
-			position: relative;
-			text-align: center;
-			padding: 3px 0;
-			color: #fff;
-			color: rgba(255, 255, 255, 0.8);
-			display: block;
-			z-index: 10;
-			font-size: 14px;
-			letter-spacing: 2px;
-			background: rgba(0, 0, 0, 0.1);
-			text-decoration: none;
-		}
-	}
+.qv-data-rotate {
+  .item {
+    margin: 5px 10px;
+    box-sizing: border-box;
+    position: relative;
+    color: #fff;
+    border-radius: 3px;
+    &-box {
+      padding: 10px 20px;
+    }
+    &-count {
+      margin-bottom: 5px;
+      font-size: 38px;
+      white-space: nowrap;
+      font-weight: 300;
+      display: block;
+    }
+    &-title {
+      font-size: 15px;
+    }
+    &-icon {
+      transition: all 0.3s linear;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 65px;
+      color: rgba(0, 0, 0, 0.15);
+      &:hover {
+        font-size: 70px;
+      }
+    }
+    &-more {
+      position: relative;
+      text-align: center;
+      padding: 3px 0;
+      color: #fff;
+      color: rgba(255, 255, 255, 0.8);
+      display: block;
+      z-index: 10;
+      font-size: 14px;
+      letter-spacing: 2px;
+      background: rgba(0, 0, 0, 0.1);
+      text-decoration: none;
+    }
+  }
 }

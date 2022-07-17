@@ -194,7 +194,7 @@ export const sendDic = (params: any) => {
   }
   const key = 'key'
   url = url || ''
-  let list = []
+  let list: string[] = []
   const data: Record<string, unknown> = {}
   list = url.match(/[^\{\}]+(?=\})/g) || []
   list.forEach((ele: string) => {

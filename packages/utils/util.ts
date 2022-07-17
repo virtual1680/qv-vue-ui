@@ -284,7 +284,10 @@ export const sortArrys = (list: any[], prop: string) => {
 /**
  * 设置px像素
  */
-export const setPx = (val: number | string, defval?: number): string => {
+export const setPx = (
+  val: number | string,
+  defval?: number | string
+): string => {
   if (validatenull(val)) val = defval || ''
   if (validatenull(val)) return ''
   let n = val?.toString()

@@ -1,4 +1,4 @@
-# element-theme-chalk
+# qv-theme-chalk
 
 > element component chalk theme.
 

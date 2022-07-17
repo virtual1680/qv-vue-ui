@@ -9,9 +9,9 @@
     "ui framework",
     "element-plus"
   ],
-  "homepage": "https://qv-vue.org/",
+  "homepage": "https://qv-vue-ui.org/",
   "bugs": {
-    "url": "https://github.com/qv-vue/qv-vue/issues"
+    "url": "https://github.com/virtual1680/qv-vue-ui/issues"
   },
   "license": "MIT",
   "main": "lib/index.js",
@@ -33,7 +33,7 @@
   "jsdelivr": "dist/index.full.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/qv-vue/qv-vue.git"
+    "url": "git+https://github.com/virtual1680/qv-vue-ui.git"
   },
   "publishConfig": {
     "access": "public"

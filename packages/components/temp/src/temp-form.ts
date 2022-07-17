@@ -1,4 +1,4 @@
-import type tempForm from './form.vue'
+import type tempForm from './temp-form.vue'
 import type { PropType } from 'vue'
 import type { DicProps, PropsHttp, QvColumn } from '@qv-vue/types/qvue-ui'
 
@@ -24,7 +24,7 @@ export interface TempFormProps {
   column: Partial<QvColumn>
 }
 
-export default {
+export const tempFormProps = {
   uploadBefore: Function as PropType<TempFormProps['uploadBefore']>,
   uploadDelete: Function as PropType<TempFormProps['uploadDelete']>,
   uploadAfter: Function as PropType<TempFormProps['uploadAfter']>,
@@ -46,4 +46,4 @@ export default {
   column: Object as PropType<TempFormProps['column']>,
 }
 
-export type TempForm = InstanceType<typeof tempForm>
+export type TempFormInstance = InstanceType<typeof tempForm>

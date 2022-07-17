@@ -20,7 +20,7 @@ export const details = (
   row: Record<string, unknown> = {},
   column: QvColumn,
   option: QvOption,
-  dic = []
+  dic: unknown[] = []
 ) => {
   let result = row[column.prop] as string | string[] | number | number[]
   const type = column.type

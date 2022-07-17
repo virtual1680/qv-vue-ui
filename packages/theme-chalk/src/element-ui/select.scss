@@ -1,23 +1,23 @@
-.qv-vue-select {
-	.sortable-ghost {
-		opacity: 0.8;
-		color: #fff !important;
-		background: #409eff !important;
-	}
-	.el-tag {
-		cursor: pointer;
-	}
-	&__desc {
-		float: right;
-		color: #8492a6;
-		font-size: 13px;
-	}
+.qv-select {
+  .sortable-ghost {
+    opacity: 0.8;
+    color: #fff !important;
+    background: #409eff !important;
+  }
+  .el-tag {
+    cursor: pointer;
+  }
+  &__desc {
+    float: right;
+    color: #8492a6;
+    font-size: 13px;
+  }
 }
 .el-select-dropdown {
-	.qv-vue-select__check {
-		box-sizing: border-box;
-		text-align: right;
-		width: 100%;
-		padding: 3px 20px 3px 0;
-	}
+  .qv-select__check {
+    box-sizing: border-box;
+    text-align: right;
+    width: 100%;
+    padding: 3px 20px 3px 0;
+  }
 }

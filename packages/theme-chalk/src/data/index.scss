@@ -11,13 +11,13 @@
 @import './pay.scss';
 @import './price.scss';
 @import './panel.scss';
-[class^='qv-vue-data-'] {
-	a {
-		text-decoration: none;
-	}
+[class^='qv-data-'] {
+  a {
+    text-decoration: none;
+  }
 }
 [class^='data-'] {
-	a {
-		text-decoration: none;
-	}
+  a {
+    text-decoration: none;
+  }
 }
