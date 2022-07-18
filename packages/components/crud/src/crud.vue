@@ -188,6 +188,7 @@ import { deepClone, setPx, validData, validatenull } from '@qv-vue/utils'
 import { formInitVal, getSlotList, useInit } from '@qv-vue/hooks'
 // import packages from '@qv-vue/core/packages'
 import { DIC_PROPS } from '@qv-vue/constants'
+import { ElTable } from 'element-plus'
 import configDe from './config'
 // import packages from 'core/packages';
 // import permission from 'common/directive/permission';
@@ -203,10 +204,11 @@ import HeaderMenu from './menu/header-menu.vue' //菜单头部
 // import dialogExcel from './dialog/dialog-excel';
 import crudProps from './crud'
 
-import type { TableV2Instance, FormInstance } from 'element-plus'
+import type { FormInstance } from 'element-plus'
 import type { TreeNode } from 'element-plus/lib/components/table/src/table/defaults'
 import type { TableColumnCtx } from 'element-plus/lib/components/table/src/table-column/defaults'
 import type { Ref } from 'vue'
+import type { FindData } from './crud'
 
 defineOptions({
   name: 'qv-crud',
@@ -294,23 +296,23 @@ const cellForm = ref({
   list: [] as any[],
 })
 const config = ref(configDe) //
-const listError = ref({})
-const tableForm = ref({})
+const listError: Ref<Record<string, any>> = ref({})
+const tableForm: Ref<Record<string, any>> = ref({})
 const tableHeight: Ref<string | number> = ref(0)
 const tableIndex = ref(-1)
 const tableSelect = ref([])
 const formIndexList: Ref<number[]> = ref([])
 // const sumsList = ref({});
-const cascaderDicList = ref({})
-const btnDisabledList = ref({})
+const cascaderDicList: Ref<Record<string, any>> = ref({})
+const btnDisabledList: Ref<Record<string, boolean>> = ref({})
 const btnDisabled = ref(false)
 
 // const	default = ref({});
 
 const reload = ref(Math.random())
 const list: Ref<any[]> = ref([])
-const formCascaderList = ref({})
-const tableRef: Ref<TableV2Instance | undefined> = ref()
+const formCascaderList: Ref<any[]> = ref([])
+const tableRef: Ref<InstanceType<typeof ElTable> | undefined> = ref()
 const tablePageRef: Ref<InstanceType<typeof TablePage> | undefined> = ref()
 const cellFormRef: Ref<FormInstance | undefined> = ref()
 const dialogFormRef: Ref<InstanceType<typeof DialogForm> | undefined> = ref()
@@ -465,7 +467,7 @@ const treeLoad = (
   })
 }
 const menuIcon = (value: string) => {
-  return validData(tableOption.value[`${value}Text`], t('crud.' + value))
+  return validData(tableOption.value[`${value}Text`], t(`crud.${value}`))
 }
 // * 获取按钮图标
 const getBtnIcon = (value: string) => {
@@ -668,37 +670,36 @@ const tableSummaryMethod = <T = any>(param: {
         const decimals = currItem.decimals || 2
         const label = currItem.label || ''
         let sumsIndex = 0
-        switch (currItem.type) {
-          case 'count':
-            sums[index] = label + data.length
-            break
-          case 'avg':
-            let avgValues = data.map((item: any) =>
-              Number(item[column.property])
-            )
-            let nowindex = 1
-            sumsIndex = avgValues.reduce((perv: number, curr: number) => {
-              const value = Number(curr)
-              if (!isNaN(value)) {
-                return (perv * (nowindex - 1) + curr) / nowindex++
-              } else {
-                return perv
-              }
-            }, 0)
-            sums[index] = label + sumsIndex.toFixed(decimals)
-            break
-          case 'sum':
-            let values = data.map((item: any) => Number(item[column.property]))
-            sumsIndex = values.reduce((perv: number, curr: number) => {
-              const value = Number(curr)
-              if (!Number.isNaN(value)) {
-                return perv + curr
-              } else {
-                return perv
-              }
-            }, 0)
-            sums[index] = label + sumsIndex.toFixed(decimals)
-            break
+
+        if (currItem.type === 'avg') {
+          sums[index] = label + data.length
+        } else if (currItem.type === 'count') {
+          const avgValues = data.map((item: Record<string, any>) => {
+            return item[column.property]
+          })
+          let nowindex = 1
+          sumsIndex = avgValues.reduce((perv: number, curr: number) => {
+            const value = Number(curr)
+            if (!Number.isNaN(value)) {
+              return (perv * (nowindex - 1) + curr) / nowindex++
+            } else {
+              return perv
+            }
+          }, 0)
+          sums[index] = label + sumsIndex.toFixed(decimals)
+        } else if (currItem.type === 'sum') {
+          const values = data.map((item: any) =>
+            Number(item[column.property] as number)
+          )
+          sumsIndex = values.reduce((perv: number, curr: number) => {
+            const value = Number(curr)
+            if (!Number.isNaN(value)) {
+              return perv + curr
+            } else {
+              return perv
+            }
+          }, 0)
+          sums[index] = label + sumsIndex.toFixed(decimals)
         }
       } else {
         sums[index] = ''
@@ -728,12 +729,7 @@ const tableDrop = (type: string, el: any, callback: (e: Event) => void) => {
   //   onEnd: (evt: any) => callback(evt),
   // })
 }
-interface FindData {
-  item: any
-  index: number
-  parentList: any[]
-  parent: any
-}
+
 const findData = (id: string) => {
   let result: FindData = {} as FindData
   const callback = (parentList: any[], parent?: any) => {

@@ -26,7 +26,7 @@
       <column-dynamic
         v-if="column.children && column.children.length > 0"
         :key="column.label"
-        :columnOption="column"
+        :column-option="column"
       >
         <template v-for="item in crud.mainSlot" #[item]="scope">
           <slot v-bind="scope" :name="item" />
@@ -51,9 +51,14 @@ import { inject } from 'vue'
 import { validData } from '@qv-vue/utils'
 import columnSlot from './column-slot.vue'
 import type { QvColumn } from '@qv-vue/types/qvue-ui'
+import type { PropType } from 'vue'
 
 const { crud, dynamic } = inject<any>('column')
-defineProps<{
-  columnOption: QvColumn
-}>()
+
+defineProps({
+  columnOption: {
+    type: Object as PropType<QvColumn>,
+    required: true,
+  },
+})
 </script>

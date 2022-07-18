@@ -133,6 +133,7 @@ export interface BaseColumn {
   className: string
   count: number
   parentProp: string
+  target: string
 }
 export interface QvGroup {
   icon?: string
@@ -235,6 +236,7 @@ export interface QvOption {
   viewBtnText: string
   searchBtnText: string
   emptyBtnText: string
+  emptyText: string
   cancelBtnText: string
   printBtnText: string
   excelBtnText: string

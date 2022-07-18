@@ -155,3 +155,10 @@ export const crudEmits = {
 export type CrudEmits = typeof crudEmits
 
 export type CrudInstance = InstanceType<typeof Crud>
+
+export interface FindData {
+  item: any
+  index: number
+  parentList: any[]
+  parent: any
+}

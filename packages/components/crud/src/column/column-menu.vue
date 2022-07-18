@@ -198,7 +198,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, getCurrentInstance, inject, ref } from 'vue'
+import { computed, inject, ref } from 'vue'
 import { validData } from '@qv-vue/utils'
 import { useBem } from '@qv-vue/hooks'
 import { t } from '@qv-vue/locale'
@@ -207,9 +207,9 @@ const crud = inject<any>('crud')
 const { b } = useBem('qvue-crud')
 
 const config = ref(configDe)
-const defaultMenuType = getCurrentInstance()?.proxy?.$qvue.menuType
+// const defaultMenuType = getCurrentInstance()?.proxy?.$qvue.menuType
 const menuType = computed(() => {
-  return crud.tableOption.menuType || defaultMenuType //this.$AVUE.menuType
+  return crud.tableOption.menuType || 'link' //defaultMenuType //this.$AVUE.menuType
 })
 const isIconMenu = computed(() => {
   return menuType.value === 'icon'

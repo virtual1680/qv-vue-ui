@@ -153,15 +153,22 @@ import iconTemp from '@qv-vue/components/temp/src/icon.vue'
 import { deepClone, findObject, validData, validatenull } from '@qv-vue/utils'
 import { getSlotName } from '@qv-vue/hooks'
 import type { QvColumn } from '@qv-vue/types/qvue-ui'
+import type { PropType } from 'vue'
 
 const { crud, dynamic } = inject<any>('column')
 
-defineProps<{
-  column: QvColumn
-  columnOption: QvColumn[]
-}>()
+defineProps({
+  column: {
+    type: Object as PropType<QvColumn>,
+    default: () => ({}),
+  },
+  columnOption: {
+    type: Array as PropType<QvColumn[]>,
+    default: () => [],
+  },
+})
 
-let count = {}
+const count = {}
 
 const allParams = (item: any) => {
   return {
@@ -174,7 +181,7 @@ const vaildLabel = (column: any, row: any, val: any) => {
   }
 }
 const handleShowLabel = (row: any, column: any, DIC: any) => {
-  let result = ''
+  let result: any = ''
   if (!validatenull(DIC)) {
     result = details(row, column, crud.tableOption, DIC)
     row[`$${column.prop}`] = result
@@ -227,7 +234,7 @@ const handleChange = (column: any, row: any) => {
       }
       sendDic({
         column: columnNext,
-        value: value,
+        value,
         form: row,
       }).then((res) => {
         //首次加载的放入队列记录
@@ -269,23 +276,23 @@ const corArray = (list: any, separator = DIC_SPLIT) => {
 }
 const handleDetail = (row: any, column: any) => {
   let result = row[column.prop]
-  let DIC = column.parentProp
+  const DIC = column.parentProp
     ? (crud.cascaderDIC[row.$index] || {})[column.prop]
     : crud.DIC[column.prop]
   result = details(row, column, crud.tableOption, DIC)
   if (!validatenull(DIC)) {
-    row['$' + column.prop] = result
+    row[`$${column.prop}`] = result
   }
   // console.log('handleDetail====', result, t, column.prop);
   return result
 }
 const getImgList = (row: any, column: any) => {
-  let url = (column.propsHttp || {}).home || ''
-  let value = (column.props || {}).value || DIC_PROPS.value
-  let result = handleDetail(row, column)
+  const url = (column.propsHttp || {}).home || ''
+  const value = (column.props || {}).value || DIC_PROPS.value
+  const result = handleDetail(row, column)
   if (validatenull(result)) return []
   if (column.listType == 'picture-img') return [url + result]
-  let list = corArray(deepClone(result), column.separator)
+  const list = corArray(deepClone(result), column.separator)
   list.forEach((ele: any, index: number) => {
     list[index] = url + (typeof ele === 'object' ? ele[value] : ele)
   })

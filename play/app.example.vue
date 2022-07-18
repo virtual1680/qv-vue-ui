@@ -8,11 +8,14 @@
     </el-icon>
     <el-button>test</el-button>
     <div v-loading="true" />
+    <qv-rate v-model="rate" />
   </div>
 </template>
 
 <script setup lang="ts">
 // code here
+import { ref } from 'vue'
+const rate = ref(2)
 </script>
 
 <style lang="scss">
