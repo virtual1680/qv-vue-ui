@@ -806,6 +806,8 @@ defineExpose({
   validateCellForm,
   getPropRef,
   submit,
+  clearValidate,
+  validate,
 })
 provide('formSafe', {
   tableOption,

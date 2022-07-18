@@ -11,7 +11,7 @@ export const useInit = (option: QvOption) => {
   const cascaderDIC = ref({})
   const tableOption: Ref<QvOption> = ref({} as QvOption)
   const isMobile = ref(false)
-  const objectOption: Ref<Record<string, unknown>> = ref({})
+  const objectOption: Ref<Record<string, QvColumn>> = ref({})
 
   const propOption = computed(() => {
     let result: QvColumn[] = []

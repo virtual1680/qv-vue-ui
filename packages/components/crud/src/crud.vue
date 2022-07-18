@@ -2,35 +2,35 @@
   <div :class="b({ card: !tableOption.card })">
     <component
       :is="tableOption.titleSize || 'h2'"
-      :style="tableOption.titleStyle"
       v-if="tableOption.title"
+      :style="tableOption.titleStyle"
       >{{ tableOption.title }}</component
     >
     <!-- 搜索组件 -->
     <header-search ref="headerSearchRef">
       <template #search="scope">
-        <slot name="search" v-bind="scope"></slot>
+        <slot name="search" v-bind="scope" />
       </template>
       <template #search-menu="scope">
-        <slot name="search-menu" v-bind="scope"></slot>
+        <slot name="search-menu" v-bind="scope" />
       </template>
       <template v-for="item in searchSlot" #[item]="scope">
-        <slot v-bind="scope" :name="item"></slot>
+        <slot v-bind="scope" :name="item" />
       </template>
     </header-search>
     <el-card :shadow="isCard">
       <!-- 表格功能列 -->
-      <header-menu ref="headerMenu" v-if="validData(tableOption.header, true)">
+      <header-menu v-if="validData(tableOption.header, true)" ref="headerMenu">
         <template #menu-left="scope">
-          <slot name="menu-left" v-bind="scope"></slot>
+          <slot name="menu-left" v-bind="scope" />
         </template>
         <template #menu-right="scope">
-          <slot name="menu-right" v-bind="scope"></slot>
+          <slot name="menu-right" v-bind="scope" />
         </template>
       </header-menu>
       <div
-        class="qvue-crud__tip"
         v-if="validData(tableOption.tip, config.tip) && tableOption.selection"
+        class="qvue-crud__tip"
       >
         <span class="qvue-crud__tip-name">
           {{ t('crud.tipStartTitle') }}
@@ -42,9 +42,9 @@
           @click="tableRef?.clearSelection()"
           >{{ t('crud.emptyBtn') }}</span
         >
-        <slot name="tip"></slot>
+        <slot name="tip" />
       </div>
-      <slot name="header"></slot>
+      <slot name="header" />
       <el-form
         :model="cellForm"
         :show-message="false"
@@ -110,19 +110,19 @@
         >
           <template #empty>
             <div :class="b('empty')">
-              <slot name="empty" v-if="slots.empty"></slot>
+              <slot name="empty" v-if="slots.empty" />
               <el-empty
                 :image-size="100"
                 v-else
                 :description="tableOption.emptyText || '暂无数据'"
-              ></el-empty>
+              />
             </div>
           </template>
           <table-column :columnList="columnOption">
             <template #header>
               <column-default ref="columnDefaultRef">
                 <template #expand="{ row, index }">
-                  <slot :row="row" :index="index" name="expand"></slot>
+                  <slot :row="row" :index="index" name="expand" />
                 </template>
               </column-default>
             </template>
@@ -131,36 +131,36 @@
               #[item]="scope"
               :key="index"
             >
-              <slot v-bind="scope" :name="item"></slot>
+              <slot v-bind="scope" :name="item" />
             </template>
             <template #footer>
               <column-menu>
                 <template #menu="scope">
-                  <slot name="menu" v-bind="scope"></slot>
+                  <slot name="menu" v-bind="scope" />
                 </template>
                 <template #menu-btn="scope">
-                  <slot name="menu-btn" v-bind="scope"></slot>
+                  <slot name="menu-btn" v-bind="scope" />
                 </template>
               </column-menu>
             </template>
           </table-column>
         </el-table>
       </el-form>
-      <slot name="footer"></slot>
+      <slot name="footer" />
     </el-card>
     <!-- 分页 -->
     <table-page ref="tablePageRef" :page="page">
       <template #page>
-        <slot name="page"></slot>
+        <slot name="page" />
       </template>
     </table-page>
     <!-- 表单 -->
     <dialog-form ref="dialogFormRef">
       <template v-for="item in formSlot" #[item]="scope">
-        <slot v-bind="scope" :name="item"></slot>
+        <slot v-bind="scope" :name="item" />
       </template>
       <template #menu-form="scope">
-        <slot name="menu-form" v-bind="scope"></slot>
+        <slot name="menu-form" v-bind="scope" />
       </template>
     </dialog-form>
     <!-- <dialog-excel ref="dialogExcel"></dialog-excel>
@@ -177,14 +177,17 @@ import {
   onMounted,
   ref,
   nextTick,
-  Ref,
   watch,
   computed,
   useSlots,
   getCurrentInstance,
 } from 'vue'
-import { useBem } from '@qvue/hooks/useBem'
-import { t } from '@qvue/locale'
+import { useBem } from '@qv-vue/hooks/useBem'
+import { t } from '@qv-vue/locale'
+import { deepClone, setPx, validData, validatenull } from '@qv-vue/utils'
+import { formInitVal, getSlotList, useInit } from '@qv-vue/hooks'
+// import packages from '@qv-vue/core/packages'
+import { DIC_PROPS } from '@qv-vue/constants'
 import configDe from './config'
 // import packages from 'core/packages';
 // import permission from 'common/directive/permission';
@@ -198,17 +201,12 @@ import HeaderMenu from './menu/header-menu.vue' //菜单头部
 // import dialogColumn from './dialog/dialog-column';
 // import dialogFilter from './dialog/dialog-filter';
 // import dialogExcel from './dialog/dialog-excel';
-import { formInitVal } from '@qvue/hooks/useDataformat'
-import { DIC_PROPS } from '@qvue/constants/variable'
-import { deepClone, validData, setPx } from '@qvue/utils'
-import { ElTable, FormInstance } from 'element-plus'
-import { validatenull } from '@qvue/utils'
-import { useInit } from '@qvue/hooks/useInit'
-import { getSlotList } from '@qvue/hooks/useSlot'
-import { TreeNode } from 'element-plus/lib/components/table/src/table/defaults'
-import { TableColumnCtx } from 'element-plus/lib/components/table/src/table-column/defaults'
-import packages from '@qvue/core/packages'
-import crudProps from './index'
+import crudProps from './crud'
+
+import type { TableV2Instance, FormInstance } from 'element-plus'
+import type { TreeNode } from 'element-plus/lib/components/table/src/table/defaults'
+import type { TableColumnCtx } from 'element-plus/lib/components/table/src/table-column/defaults'
+import type { Ref } from 'vue'
 
 defineOptions({
   name: 'qv-crud',
@@ -312,7 +310,7 @@ const btnDisabled = ref(false)
 const reload = ref(Math.random())
 const list: Ref<any[]> = ref([])
 const formCascaderList = ref({})
-const tableRef: Ref<InstanceType<typeof ElTable> | undefined> = ref()
+const tableRef: Ref<TableV2Instance | undefined> = ref()
 const tablePageRef: Ref<InstanceType<typeof TablePage> | undefined> = ref()
 const cellFormRef: Ref<FormInstance | undefined> = ref()
 const dialogFormRef: Ref<InstanceType<typeof DialogForm> | undefined> = ref()
@@ -467,11 +465,11 @@ const treeLoad = (
   })
 }
 const menuIcon = (value: string) => {
-  return validData(tableOption.value[value + 'Text'], t('crud.' + value))
+  return validData(tableOption.value[`${value}Text`], t('crud.' + value))
 }
 // * 获取按钮图标
 const getBtnIcon = (value: string) => {
-  const name = value + 'Icon'
+  const name = `${value}Icon`
   //如果没有自定义 则取默认图标
   return tableOption.value[name] || config.value[name]
 }
@@ -488,8 +486,8 @@ const selectClear = () => {
 }
 
 const headerSort = (oldIndex: number, newIndex: number) => {
-  let column = columnOption.value
-  let targetRow = column.splice(oldIndex, 1)[0]
+  const column = columnOption.value
+  const targetRow = column.splice(oldIndex, 1)[0]
   column.splice(newIndex, 0, targetRow)
   refreshTable()
 }
@@ -518,8 +516,8 @@ const rowCell = (row: any, index: number) => {
 }
 // * 单元格新增
 const rowCellAdd = (row = {}) => {
-  let len = list.value.length
-  let formDefault = formInitVal(propOption.value)
+  const len = list.value.length
+  const formDefault = formInitVal(propOption.value)
   row = deepClone(
     Object.assign(
       {
@@ -614,7 +612,7 @@ const rowCellUpdate = (row: any, index: number) => {
 // };
 // * 对象克隆
 const rowClone = (row: Record<string, any>) => {
-  let rowData = {}
+  const rowData: Record<string, unknown> = {}
   Object.keys(row).forEach((ele) => {
     if (!['_parent', 'children'].includes(ele)) {
       rowData[ele] = row[ele]
@@ -647,7 +645,7 @@ const rowView = (row: any, index: number) => {
 // * 删除
 const rowDel = (row: any, index: number) => {
   emit('row-del', row, index, () => {
-    let { parentList, index } = findData(row[rowKey.value])
+    const { parentList, index } = findData(row[rowKey.value])
     if (parentList) parentList.splice(index, 1)
   })
 }
@@ -660,15 +658,15 @@ const tableSummaryMethod = <T = any>(param: {
   if (typeof props.summaryMethod === 'function')
     return props.summaryMethod(param)
   const { columns, data } = param
-  let sums: string[] = []
+  const sums: string[] = []
   if (columns.length > 0) {
     columns.forEach((column: TableColumnCtx<T>, index: number) => {
-      let currItem = sumColumnList.value.find(
+      const currItem = sumColumnList.value.find(
         (item: any) => item.name === column.property
       )
       if (currItem) {
-        let decimals = currItem.decimals || 2
-        let label = currItem.label || ''
+        const decimals = currItem.decimals || 2
+        const label = currItem.label || ''
         let sumsIndex = 0
         switch (currItem.type) {
           case 'count':
@@ -680,7 +678,7 @@ const tableSummaryMethod = <T = any>(param: {
             )
             let nowindex = 1
             sumsIndex = avgValues.reduce((perv: number, curr: number) => {
-              let value = Number(curr)
+              const value = Number(curr)
               if (!isNaN(value)) {
                 return (perv * (nowindex - 1) + curr) / nowindex++
               } else {
@@ -692,8 +690,8 @@ const tableSummaryMethod = <T = any>(param: {
           case 'sum':
             let values = data.map((item: any) => Number(item[column.property]))
             sumsIndex = values.reduce((perv: number, curr: number) => {
-              let value = Number(curr)
-              if (!isNaN(value)) {
+              const value = Number(curr)
+              if (!Number.isNaN(value)) {
                 return perv + curr
               } else {
                 return perv
@@ -718,17 +716,17 @@ const tableDrop = (type: string, el: any, callback: (e: Event) => void) => {
       return
     }
   }
-  if (!window['Sortable']) {
-    packages.logs('Sortable')
-    return
-  }
-  window['Sortable'].create(el, {
-    ghostClass: config.value.ghostClass, //config.ghostClass
-    chosenClass: config.value.ghostClass, //config.ghostClass
-    animation: 500,
-    delay: 0,
-    onEnd: (evt: any) => callback(evt),
-  })
+  // if (!window['Sortable']) {
+  //   packages.logs('Sortable')
+  //   return
+  // }
+  // window['Sortable'].create(el, {
+  //   ghostClass: config.value.ghostClass, //config.ghostClass
+  //   chosenClass: config.value.ghostClass, //config.ghostClass
+  //   animation: 500,
+  //   delay: 0,
+  //   onEnd: (evt: any) => callback(evt),
+  // })
 }
 interface FindData {
   item: any
@@ -743,9 +741,9 @@ const findData = (id: string) => {
       if (ele[rowKey.value] == id) {
         result = {
           item: ele,
-          index: index,
-          parentList: parentList,
-          parent: parent,
+          index,
+          parentList,
+          parent,
         }
       }
       if (ele[childrenKey.value]) {
@@ -792,7 +790,7 @@ const searchSlot = computed(() => {
   return getSlotList(['-search'], slots, propOption.value)
 })
 const mainSlot = computed(() => {
-  let result: any[] = []
+  const result: any[] = []
   console.log('propOption-=-=-=', propOption.value)
   propOption.value.forEach((item: any) => {
     if (slots[item.prop]) result.push(item.prop)
@@ -878,7 +876,7 @@ onMounted(() => {
 provide('crud', {
   page: props.page,
   option: props.option,
-  tableOption: tableOption,
+  tableOption,
   formSlot: formSlot.value,
   mainSlot,
   controlSize,
@@ -899,7 +897,7 @@ provide('crud', {
   propOption, //有点问题
   slots,
   getPermission,
-  objectOption: objectOption,
+  objectOption,
   formIndexList,
   btnDisabled: btnDisabled.value,
   isMediumSize: isMediumSize.value,
