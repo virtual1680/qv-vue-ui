@@ -21,6 +21,9 @@ export const buildOutput = resolve(projRoot, 'dist')
 /** `/dist/qv-vue` */
 export const epOutput = resolve(buildOutput, 'qv-vue')
 
+export const esOutput = resolve(epOutput, 'es', 'qv-vue')
+export const libOutput = resolve(epOutput, 'lib', 'qv-vue')
+
 export const projPackage = resolve(projRoot, 'package.json')
 export const compPackage = resolve(compRoot, 'package.json')
 export const themePackage = resolve(themeRoot, 'package.json')

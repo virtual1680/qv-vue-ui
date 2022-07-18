@@ -7,13 +7,7 @@ import { nodeResolve } from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 import esbuild from 'rollup-plugin-esbuild'
 import glob from 'fast-glob'
-import {
-  buildOutput,
-  epOutput,
-  epRoot,
-  excludeFiles,
-  pkgRoot,
-} from '@qv-vue/build-utils'
+import { excludeFiles, pkgRoot } from '@qv-vue/build-utils'
 import { generateExternal, writeBundles } from '../utils'
 import { ElementPlusAlias } from '../plugins/element-plus-alias'
 import { buildConfigEntries, target } from '../build-info'

@@ -35,3 +35,8 @@ export const excludeFiles = (files: string[]) => {
     (path) => !excludes.some((exclude) => path.includes(exclude))
   )
 }
+
+export const getQvFile = (pkgPath: string) => {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  return require(pkgPath) as ProjectManifest
+}
