@@ -3,7 +3,7 @@ import type Input from './input.vue'
 import type { EventProps } from '@qv-vue/types/qvue-ui'
 
 export const inputProps = {
-  modelValue: Object as PropType<EventProps['modelValue']>,
+  modelValue: String as PropType<EventProps['modelValue']>,
   dic: {
     type: Array as PropType<EventProps['dic']>,
     default: () => [],

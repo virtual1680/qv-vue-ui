@@ -6,8 +6,8 @@
       :search="searchForm"
       :size="crud.controlSize"
     />
-    <qvue-form
-      ref="qvueFormRef"
+    <qv-form
+      ref="qvFormRef"
       v-model="searchForm"
       form-btn="search"
       :option="option"
@@ -47,7 +47,7 @@
       >
         <slot v-bind="scope" :name="item" />
       </template>
-    </qvue-form>
+    </qv-form>
   </el-card>
 </template>
 
@@ -62,12 +62,12 @@ import type { Ref } from 'vue'
 import type { QvColumn, QvOption } from '@qv-vue/types/qvue-ui'
 
 const crud = inject<any>('crud')
-const { b } = useBem('qvue-crud__search')
+const { b } = useBem('qv-crud__search')
 const show = ref(false)
 const searchShow = ref(true)
 let searchForm = reactive({})
 
-const qvueFormRef: Ref<FormInstance | undefined> = ref()
+const qvFormRef: Ref<FormInstance | undefined> = ref()
 watch(
   () => crud.propOption.value,
   () => {
@@ -235,7 +235,7 @@ const resetChange = () => {
 }
 // 搜索清空
 const searchReset = () => {
-  qvueFormRef.value?.resetForm()
+  qvFormRef.value?.resetForm()
 }
 const handleSearchShow = () => {
   searchShow.value = !searchShow.value

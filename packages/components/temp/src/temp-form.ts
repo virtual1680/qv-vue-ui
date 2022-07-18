@@ -42,7 +42,9 @@ export const tempFormProps = {
   size: String,
   disabled: Boolean,
   readonly: Boolean,
-  modelValue: Object as PropType<TempFormProps['modelValue']>,
+  modelValue: [String, Array, Number, Boolean] as PropType<
+    TempFormProps['modelValue']
+  >,
   column: Object as PropType<TempFormProps['column']>,
 }
 

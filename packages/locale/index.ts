@@ -1,6 +1,6 @@
-// import en from './lang/en'
-// import zh from './lang/zh'
-
+import en from './lang/en'
+import zh from './lang/zh'
+export const lang = { en, zh }
 export type TranslatePair = {
   [key: string]: string | string[] | TranslatePair
 }
@@ -11,7 +11,7 @@ export type Language = {
 }
 
 export const t = function (path: string) {
-  return path
+  return eval(`lang[window.lang || 'zh'].${path}`)
 }
 
 export default { t }

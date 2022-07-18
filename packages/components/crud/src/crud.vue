@@ -30,18 +30,16 @@
       </header-menu>
       <div
         v-if="validData(tableOption.tip, config.tip) && tableOption.selection"
-        class="qvue-crud__tip"
+        class="qv-crud__tip"
       >
-        <span class="qvue-crud__tip-name">
+        <span class="qv-crud__tip-name">
           {{ t('crud.tipStartTitle') }}
-          <span class="qvue-crud__tip-count">{{ selectLen }}</span>
+          <span class="qv-crud__tip-count">{{ selectLen }}</span>
           {{ t('crud.tipEndTitle') }}
         </span>
-        <span
-          class="qvue-crud__tip-button"
-          @click="tableRef?.clearSelection()"
-          >{{ t('crud.emptyBtn') }}</span
-        >
+        <span class="qv-crud__tip-button" @click="tableRef?.clearSelection()">{{
+          t('crud.emptyBtn')
+        }}</span>
         <slot name="tip" />
       </div>
       <slot name="header" />
@@ -59,7 +57,7 @@
           :data="cellForm.list"
           :row-key="handleGetRowKeys"
           :class="{
-            'qvue-crud--indeterminate': validData(
+            'qv-crud--indeterminate': validData(
               tableOption.indeterminate,
               false
             ),
@@ -320,7 +318,7 @@ const headerSearchRef: Ref<InstanceType<typeof HeaderSearch> | undefined> =
   ref()
 const columnDefaultRef: Ref<InstanceType<typeof ColumnDefault> | undefined> =
   ref()
-const $qvue = getCurrentInstance()?.proxy?.['$qvue']
+const $qv = getCurrentInstance()?.proxy?.['$qv']
 const dataInit = () => {
   list.value = props.data
   //初始化序列的参数
@@ -796,7 +794,7 @@ const mainSlot = computed(() => {
   )
 })
 const calcHeight = computed(() => {
-  return tableOption.value.calcHeight || $qvue.calcHeight
+  return tableOption.value.calcHeight || $qv.calcHeight
 })
 
 const isShowSummary = computed(() => {

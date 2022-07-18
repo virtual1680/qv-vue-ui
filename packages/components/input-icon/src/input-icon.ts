@@ -3,7 +3,7 @@ import type { PropType } from 'vue'
 import type InputIcon from './input-icon.vue'
 
 export const inputIconProps = {
-  modelValue: Object as PropType<EventProps['modelValue']>,
+  modelValue: String as PropType<EventProps['modelValue']>,
   dic: {
     type: Array as PropType<EventProps['dic']>,
     default: () => [],

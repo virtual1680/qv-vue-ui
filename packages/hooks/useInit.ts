@@ -7,7 +7,7 @@ import type { QvColumn, QvOption } from '@qv-vue/types/qvue-ui'
 import type { Ref } from 'vue'
 
 export const useInit = (option: QvOption) => {
-  const DIC: Ref<Record<string, unknown>> = ref({})
+  const DIC: Ref<Record<string, any[]>> = ref({})
   const cascaderDIC = ref({})
   const tableOption: Ref<QvOption> = ref({} as QvOption)
   const isMobile = ref(false)
@@ -85,7 +85,7 @@ export const useInit = (option: QvOption) => {
       sendDic({
         column,
       }).then((list) => {
-        DIC.value[prop] = list
+        DIC.value[prop] = list as any
       })
     } else {
       DIC.value[prop] = list

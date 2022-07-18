@@ -1,4 +1,5 @@
 export default {
+  come: '欢迎使用qv-vue,感谢您的支持！',
   common: {
     condition: 'condition',
     display: 'display',

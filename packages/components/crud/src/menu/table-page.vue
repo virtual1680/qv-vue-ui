@@ -34,7 +34,7 @@ import type { TablePage } from './table-page'
 
 const crud = inject<any>('crud')
 const config = configDe
-const { b } = useBem('qvue-crud')
+const { b } = useBem('qv-crud')
 
 const props = defineProps(pageProps)
 let defaultPage: TablePage = reactive({

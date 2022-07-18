@@ -59,7 +59,7 @@
               }"
               :name="getSlotName(column, 'F')"
             />
-            <form-temp
+            <qv-temp-form
               v-else
               v-model="row[column.prop]"
               :column="column"
@@ -88,7 +88,7 @@
               <template v-for="item in crud.mainSlot" #[item]="scope">
                 <slot v-bind="scope" :name="item" />
               </template>
-            </form-temp>
+            </qv-temp-form>
           </div>
         </el-tooltip>
       </el-form-item>
@@ -103,7 +103,7 @@
       />
       <template v-else>
         <span v-if="['img', 'upload'].includes(column.type)">
-          <div class="qvue-crud__img">
+          <div class="qv-crud__img">
             <img
               v-for="(item, index) in getImgList(row, column)"
               :key="index"
@@ -130,10 +130,10 @@
         />
         <i
           v-else-if="'color' === column.type"
-          class="qvue-crud__color"
+          class="qv-crud__color"
           :style="{ backgroundColor: row[column.prop] }"
         />
-        <icon-temp
+        <qv-temp-icon
           v-else-if="'icon' === column.type"
           :text="row[column.prop]"
         />
@@ -148,8 +148,8 @@
 import { inject, nextTick } from 'vue'
 import { details, sendDic } from '@qv-vue/core'
 import { DIC_PROPS, DIC_SPLIT, typeList } from '@qv-vue/constants'
-import formTemp from '@qv-vue/components/temp/src/temp-form.vue'
-import iconTemp from '@qv-vue/components/temp/src/icon.vue'
+import QvTempForm from '@qv-vue/components/temp/src/temp-form.vue'
+import QvTempIcon from '@qv-vue/components/temp/src/icon.vue'
 import { deepClone, findObject, validData, validatenull } from '@qv-vue/utils'
 import { getSlotName } from '@qv-vue/hooks'
 import type { QvColumn } from '@qv-vue/types/qvue-ui'

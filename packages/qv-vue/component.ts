@@ -13,6 +13,7 @@ import { QvSelect } from '@qv-vue/components/select'
 import { QvSwitch } from '@qv-vue/components/switch'
 import { QvTime } from '@qv-vue/components/time'
 import { QvUpload } from '@qv-vue/components/upload'
+import { QvCrud } from '@qv-vue/components/crud'
 
 import type { Plugin } from 'vue'
 
@@ -32,4 +33,5 @@ export default [
   QvSwitch,
   QvTime,
   QvUpload,
+  QvCrud,
 ] as Plugin[]

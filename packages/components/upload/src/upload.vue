@@ -253,7 +253,7 @@ const setSort = () => {
   //   return
   // }
   // const el =
-  //   getCurrentInstance()?.proxy?.$el.querySelectorAll('.qvue-upload > ul')[0]
+  //   getCurrentInstance()?.proxy?.$el.querySelectorAll('.qv-upload > ul')[0]
   // window['Sortable'].create(el, {
   //   animation: 100,
   //   onEnd: (evt: any) => {

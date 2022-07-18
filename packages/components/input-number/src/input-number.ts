@@ -3,7 +3,7 @@ import type { PropType } from 'vue'
 import type InputNumber from './input-number.vue'
 
 export const inputNumberProps = {
-  modelValue: Object as PropType<EventProps['modelValue']>,
+  modelValue: Number as PropType<EventProps['modelValue']>,
   dic: {
     type: Array as PropType<EventProps['dic']>,
     default: () => [],

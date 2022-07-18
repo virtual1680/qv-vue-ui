@@ -51,7 +51,9 @@ import { computed, inject } from 'vue'
 import { validData } from '@qv-vue/utils'
 import { t } from '@qv-vue/locale'
 import { useBem } from '@qv-vue/hooks'
-
+defineOptions({
+  name: 'form-menu',
+})
 const { b } = useBem('qv-form')
 const formSafe = inject<any>('formSafe')
 

@@ -10,6 +10,6 @@ import '@qv-vue/theme-chalk/src/index.scss'
   }
   const App = (await file()).default
   const app = createApp(App)
-
+  // app.use(QvUi)
   app.mount('#play')
 })()

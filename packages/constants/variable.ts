@@ -1,4 +1,4 @@
-export const KEY_COMPONENT_NAME = 'qv-vue-'
+export const KEY_COMPONENT_NAME = 'qv-'
 export const KEY_ECHART_NAME = 'echart-'
 
 export const DIC_PROPS = {

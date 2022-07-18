@@ -15,7 +15,9 @@ import {
   DIC_SPLIT,
   MULTIPLE_LIST,
 } from '@qv-vue/constants'
+import { isString } from 'lodash-es'
 import type { QvColumn, QvOption } from '@qv-vue/types/qvue-ui'
+
 export const details = (
   row: Record<string, unknown> = {},
   column: QvColumn,
@@ -38,8 +40,17 @@ export const details = (
         arrayFlag) &&
       !Array.isArray(result)
     ) {
-      result = (result as string).split(separator || DIC_SPLIT)
-      if (column.dataType === 'number') result = strCorNum(result)
+      if (column.dataType === 'number') {
+        result = strCorNum(result as any)
+      } else {
+        if (
+          isString(result) &&
+          (result.includes(separator) || result.includes(DIC_SPLIT))
+        ) {
+          result = result.split(separator || DIC_SPLIT)
+        }
+        result = [result as any]
+      }
     }
     if (ARRAY_LIST.includes(type)) {
       if (Array.isArray(result)) {

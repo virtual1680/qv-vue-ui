@@ -1,7 +1,7 @@
 <!-- eslint-disable vue/no-v-html -->
 <template>
   <span v-if="['img', 'upload'].includes(column.type)">
-    <div class="qvue-crud__img">
+    <div class="qv-crud__img">
       <img
         v-for="(item, index) in getImgList(row, column)"
         :key="index"

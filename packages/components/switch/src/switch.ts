@@ -5,7 +5,7 @@ import type Switch from './switch.vue'
 export type SwitchInstance = InstanceType<typeof Switch>
 
 export const switchProps = {
-  modelValue: Object as PropType<EventProps['modelValue']>,
+  modelValue: Number as PropType<EventProps['modelValue']>,
   dic: {
     type: Array as PropType<EventProps['dic']>,
     default: () => [],

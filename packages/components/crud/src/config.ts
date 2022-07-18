@@ -69,5 +69,5 @@ export default {
   searchSpan: 6,
   dropRowClass: '.el-table__body-wrapper > table > tbody',
   dropColClass: '.el-table__header-wrapper tr',
-  ghostClass: 'qvue-crud__ghost',
+  ghostClass: 'qv-crud__ghost',
 }

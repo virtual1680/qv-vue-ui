@@ -49,7 +49,7 @@ const emit = defineEmits<{
   (e: 'focus', value: any): void
 }>()
 const props = defineProps(checkboxProps)
-const { b } = useBem('qvue-checkbox')
+const { b } = useBem('qv-checkbox')
 const checkAll = ref(false)
 const isIndeterminate = ref(false)
 const {

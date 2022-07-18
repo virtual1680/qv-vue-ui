@@ -204,10 +204,10 @@ import { useBem } from '@qv-vue/hooks'
 import { t } from '@qv-vue/locale'
 import configDe from '../config'
 const crud = inject<any>('crud')
-const { b } = useBem('qvue-crud')
+const { b } = useBem('qv-crud')
 
 const config = ref(configDe)
-// const defaultMenuType = getCurrentInstance()?.proxy?.$qvue.menuType
+// const defaultMenuType = getCurrentInstance()?.proxy?.$qv.menuType
 const menuType = computed(() => {
   return crud.tableOption.menuType || 'link' //defaultMenuType //this.$AVUE.menuType
 })

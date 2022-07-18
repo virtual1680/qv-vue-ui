@@ -14,7 +14,7 @@
       @submit.prevent
     >
       <el-row :span="24" :class="tabsClass">
-        <qvue-group
+        <qv-group
           v-for="(item, index) in columnOption"
           :key="item.prop"
           :tabs="isTabs"
@@ -146,7 +146,7 @@
                       />
                       <!-- :props="tableOption.props" -->
                       <!-- :propsHttp="tableOption.propsHttp" -->
-                      <qv-form-temp
+                      <qv-temp-form
                         v-else
                         :ref="
                           (el) => {
@@ -179,7 +179,7 @@
                         <template v-for="item in columnSlot" #[item]="scope">
                           <slot v-bind="scope" :name="item" />
                         </template>
-                      </qv-form-temp>
+                      </qv-temp-form>
                     </div>
                   </component>
                 </el-form-item>
@@ -202,7 +202,7 @@
               </template>
             </form-menu>
           </div>
-        </qvue-group>
+        </qv-group>
         <form-menu v-if="isMenu.default">
           <template #menu-form="scope">
             <slot name="menu-form" v-bind="scope" />
@@ -243,10 +243,12 @@ import {
 } from '@qv-vue/utils'
 import { DIC_PROPS } from '@qv-vue/constants'
 import { details, sendDic } from '@qv-vue/core'
+import { QvTempForm } from '@qv-vue/components/temp'
+import FormMenu from './menu.vue'
 import { formProps } from './form'
-import type { QvTempForm } from '@qv-vue/components/temp'
 import type { Ref } from 'vue'
 import type { FormInstance } from 'element-plus'
+import type { TempFormInstance } from '@qv-vue/components/temp'
 import type { QvColumn, QvGroup } from '@qv-vue/types/qvue-ui'
 
 defineOptions({
@@ -266,11 +268,11 @@ const emit = defineEmits<{
 const props = defineProps(formProps)
 const slots = useSlots()
 
-// const qvueOption = ref(props.option);
+// const qvOption = ref(props.option);
 watch(
   () => props,
   () => {
-    console.log('-=-qvue-form=-=11-=', props.option)
+    console.log('-=-qv-form=-=11-=', props.option)
   },
   {
     deep: true,
@@ -279,7 +281,7 @@ watch(
 )
 const { DIC, isMobile, rowKey, objectOption, controlSize, tableOption } =
   useInit(props.option)
-// const { b } = useBem('qvue-form')
+// const { b } = useBem('qv-form')
 
 const activeName = ref('')
 const labelWidth = ref(90)
@@ -293,7 +295,7 @@ const formList: Ref<any[]> = ref([])
 const formBind: Ref<Record<string, any>> = ref({})
 // const formDefault = ref({});
 const formRef: Ref<FormInstance | undefined> = ref()
-const propRef: Ref<Record<string, InstanceType<typeof QvTempForm>>> = ref({})
+const propRef: Ref<Record<string, TempFormInstance>> = ref({})
 
 const columnOption = computed(() => {
   const tOption = tableOption.value
@@ -354,12 +356,7 @@ const forEachLabel = () => {
     let result
     const DIC_PROP = DIC.value[column.prop]
     if (!validatenull(DIC_PROP)) {
-      result = details(
-        form.value,
-        column,
-        tableOption.value,
-        DIC_PROP as unknown[]
-      )
+      result = details(form.value, column, tableOption.value, DIC_PROP as any)
       form.value[`$${column.prop}`] = result
     }
   })
@@ -399,7 +396,7 @@ watch(
   { deep: true, immediate: true }
 )
 watch(
-  () => allDisabled,
+  () => allDisabled.value,
   (val) => {
     emit('update:status', val)
   },
@@ -479,15 +476,15 @@ const isPrint = computed(() => {
   return validData(tableOption.value.printBtn, false)
 })
 const formClass = computed(() => {
-  return [b(), { 'qvue--detail': isDetail }]
+  return [b(), { 'qv--detail': isDetail.value }]
 })
 const tabsClass = computed(() => {
-  return { 'qvue-form__tabs': isTabs }
+  return { 'qv-form__tabs': isTabs.value }
 })
 const groupItemClass = (column: any) => {
   return [
     b('row'),
-    { 'qvue--detail qvue--detail__column': vaildDetail(column) },
+    { 'qv--detail qv--detail__column': vaildDetail(column) },
     column.className,
   ]
 }
@@ -506,7 +503,7 @@ const formItemBind = (scope: any, column: any) => {
 // });
 
 const bindRef = (refs: any, prop: string) => {
-  propRef.value[prop] = refs as InstanceType<typeof QvTempForm>
+  propRef.value[prop] = refs as TempFormInstance
 }
 
 const getDisabled = (column: any) => {

@@ -3,7 +3,7 @@ import type { PropType } from 'vue'
 import type Radio from './radio.vue'
 
 export const radioProps = {
-  modelValue: Object as PropType<EventProps['modelValue']>,
+  modelValue: [Number, String, Boolean] as PropType<EventProps['modelValue']>,
   dic: {
     type: Array as PropType<EventProps['dic']>,
     default: () => [],

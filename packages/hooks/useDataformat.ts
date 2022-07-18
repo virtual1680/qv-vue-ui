@@ -1,22 +1,23 @@
 import {
-  validatenull,
+  createObj,
   detailDataType,
   findObject,
-  createObj,
+  validatenull,
 } from '@qv-vue/utils'
 import {
-  KEY_COMPONENT_NAME,
-  DIC_SPLIT,
   ARRAY_LIST,
-  DATE_LIST,
-  INPUT_LIST,
   ARRAY_VALUE_LIST,
+  DATE_LIST,
+  DIC_SPLIT,
+  INPUT_LIST,
+  KEY_COMPONENT_NAME,
   MULTIPLE_LIST,
-  SELECT_LIST,
   RANGE_LIST,
-} from '@qv-vue/constants/variable'
+  SELECT_LIST,
+} from '@qv-vue/constants'
 
 import { t } from '@qv-vue/locale'
+import { isString } from 'lodash-es'
 /**
  * 计算级联属性
  */
@@ -76,7 +77,10 @@ export const initValue = (value: any, column: any) => {
       if (validatenull(list)) {
         list = []
       } else {
-        list = list.split(separator) || []
+        if (isString(list) && list.includes(separator)) {
+          list = list.split(separator) || []
+        }
+        list = [list]
       }
     }
     // 数据转化

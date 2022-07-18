@@ -6,7 +6,7 @@
     :draggable="validData(crud.tableOption.dialogDrag, config.dialogDrag)"
     :custom-class="
       [
-        'qvue-dialog',
+        'qv-dialog',
         ...b('dialog', { fullscreen: fullscreen, dialog: !isDrawer }),
         crud.tableOption.dialogCustomClass,
       ].join(' ')
@@ -32,7 +32,7 @@
         </div>
       </div>
     </template>
-    <qvue-form
+    <qv-form
       ref="tableFormRef"
       v-model="crud.tableForm"
       v-model:status="disabled"
@@ -48,10 +48,10 @@
       <template v-for="item in crud.formSlot" #[getSlotName(item)]="scope">
         <slot v-bind="scope" :name="item" />
       </template>
-    </qvue-form>
+    </qv-form>
     <span
-      class="qvue-dialog__footer"
-      :class="'qvue-dialog__footer--' + dialogMenuPosition"
+      class="qv-dialog__footer"
+      :class="'qv-dialog__footer--' + dialogMenuPosition"
     >
       <el-button
         v-if="validData(option.submitBtn, true) && !isView"
@@ -98,7 +98,7 @@ import type { FormInstance } from '@qv-vue/components/form'
 import type { Ref } from 'vue'
 const crud = inject<any>('crud')
 
-const { b } = useBem('qvue-crud')
+const { b } = useBem('qv-crud')
 
 const tableFormRef: Ref<FormInstance | undefined> = ref()
 const disabled = ref(false)

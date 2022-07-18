@@ -3,7 +3,7 @@ import type { PropType } from 'vue'
 import type InputColor from './input-color.vue'
 
 export const inputColorProps = {
-  modelValue: Object as PropType<EventProps['modelValue']>,
+  modelValue: String as PropType<EventProps['modelValue']>,
   dic: {
     type: Array as PropType<EventProps['dic']>,
     default: () => [],

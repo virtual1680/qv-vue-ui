@@ -91,7 +91,7 @@ import { useBem } from '@qv-vue/hooks'
 import { validData } from '@qv-vue/utils'
 import config from '../config'
 
-const { b } = useBem('qvue-crud')
+const { b } = useBem('qv-crud')
 const crud = inject<any>('crud')
 defineOptions({
   name: 'header-menu',

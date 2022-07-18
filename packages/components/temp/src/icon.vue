@@ -1,6 +1,6 @@
 <!-- eslint-disable prettier/prettier -->
 <template>
-  <span class="qvue-icon" :class="{ 'qvue-icon--small': small }">
+  <span class="qv-icon" :class="{ 'qv-icon--small': small }">
     <svg v-if="text.includes('#')" aria-hidden="true">
       <use :xlink:href="text" />
     </svg>
@@ -13,7 +13,7 @@
 <!-- eslint-disable prettier/prettier -->
 <script lang="ts" setup>
 defineOptions({
-  name: 'qv-icon-temp',
+  name: 'qv-temp-icon',
 })
 defineProps({
   small: Boolean,

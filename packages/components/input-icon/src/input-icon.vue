@@ -18,7 +18,7 @@
     </el-input>
     <el-dialog
       v-model="box"
-      custom-class="qvue-dialog qvue-dialog--none"
+      custom-class="qv-dialog qv-dialog--none"
       :title="placeholder"
       append-to-body
       :width="column?.dialogWidth"
