@@ -1,6 +1,5 @@
 import { rollup } from 'rollup'
 import vue from '@vitejs/plugin-vue'
-import consola from 'consola'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import DefineOptions from 'unplugin-vue-define-options/rollup'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
@@ -14,10 +13,9 @@ import { buildConfigEntries, target } from '../build-info'
 
 import type { OutputOptions } from 'rollup'
 
-export const buildModules = async (params: number) => {
-  consola.log('-=-=-=-=-=--=-=', params)
+export const buildModules = async () => {
   const input = excludeFiles(
-    await glob('**/*.{js,ts,vue}', {
+    await glob(['**/*.{js,ts,vue}', '!qv-vue/**/*'], {
       cwd: pkgRoot,
       absolute: true,
       onlyFiles: true,

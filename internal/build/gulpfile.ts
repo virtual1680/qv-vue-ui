@@ -71,6 +71,7 @@ export default series(
   withTaskName('createOutput', () => mkdir(epOutput, { recursive: true })),
 
   parallel(
+    runTask('buildModulesQv'),
     runTask('buildModules'),
     // runTask('buildModules(2)'),
     runTask('buildFullBundle'),
