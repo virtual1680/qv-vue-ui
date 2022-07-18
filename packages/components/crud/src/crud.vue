@@ -46,14 +46,16 @@
       </div>
       <slot name="header" />
       <el-form
+        ref="cellFormRef"
         :model="cellForm"
         :show-message="false"
         @validate="handleValidate"
-        ref="cellFormRef"
       >
         <!-- {{ option.showHeader + '-=-=-=-' }} -->
         <el-table
+          ref="tableRef"
           :key="reload"
+          v-loading="tableLoading"
           :data="cellForm.list"
           :row-key="handleGetRowKeys"
           :class="{
@@ -75,15 +77,24 @@
           :expand-row-keys="tableOption.expandRowKeys"
           :default-expand-all="tableOption.defaultExpandAll"
           :highlight-current-row="tableOption.highlightCurrentRow"
-          @current-change="currentRowChange"
-          @expand-change="expandChange"
-          @header-dragend="headerDragend"
           :show-summary="tableOption.showSummary"
           :summary-method="tableSummaryMethod"
           :span-method="spanMethod"
           :stripe="tableOption.stripe"
           :show-header="option.showHeader"
           :default-sort="tableOption.defaultSort"
+          :fit="tableOption.fit"
+          :max-height="isAutoHeight ? tableHeight : tableOption.maxHeight"
+          :height="tableHeight"
+          :width="setPx(tableOption.width, config.width)"
+          :border="tableOption.border"
+          :row-style="rowStyle"
+          :cell-style="cellStyle"
+          @filter-change="filterChange"
+          @selection-change="selectionChange"
+          @select="select"
+          @select-all="selectAll"
+          @sort-change="sortChange"
           @row-click="rowClick"
           @row-dblclick="rowDblclick"
           @cell-mouse-enter="cellMouseEnter"
@@ -93,32 +104,21 @@
           @row-contextmenu="rowContextmenu"
           @header-contextmenu="headerContextmenu"
           @cell-dblclick="cellDblclick"
-          :fit="tableOption.fit"
-          :max-height="isAutoHeight ? tableHeight : tableOption.maxHeight"
-          :height="tableHeight"
-          ref="tableRef"
-          :width="setPx(tableOption.width, config.width)"
-          :border="tableOption.border"
-          v-loading="tableLoading"
-          @filter-change="filterChange"
-          @selection-change="selectionChange"
-          @select="select"
-          @select-all="selectAll"
-          :row-style="rowStyle"
-          :cell-style="cellStyle"
-          @sort-change="sortChange"
+          @current-change="currentRowChange"
+          @expand-change="expandChange"
+          @header-dragend="headerDragend"
         >
           <template #empty>
             <div :class="b('empty')">
-              <slot name="empty" v-if="slots.empty" />
+              <slot v-if="slots.empty" name="empty" />
               <el-empty
-                :image-size="100"
                 v-else
+                :image-size="100"
                 :description="tableOption.emptyText || '暂无数据'"
               />
             </div>
           </template>
-          <table-column :columnList="columnOption">
+          <table-column :column-list="columnOption">
             <template #header>
               <column-default ref="columnDefaultRef">
                 <template #expand="{ row, index }">
