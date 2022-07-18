@@ -5,7 +5,6 @@ export * from '@qv-vue/directives'
 export * from '@qv-vue/hooks'
 export * from '@qv-vue/tokens'
 export * from '@qv-vue/core'
-export * from '@qv-vue/plugin'
 export * from './make-installer'
 
 export const install = installer.install
