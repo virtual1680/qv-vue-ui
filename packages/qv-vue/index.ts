@@ -14,6 +14,7 @@ import QvUpload from '@qv-vue/components/upload/src/upload.vue'
 import QvRate from '@qv-vue/components/rate/src/rate.vue'
 import QvCard from '@qv-vue/components/crud/src/crud.vue'
 import QvCrud from '@qv-vue/components/card/src/card.vue'
+import QvImg from '@qv-vue/components/img/src/img.vue'
 import { usePermission } from '@qv-vue/directives'
 import { version } from './version'
 import type { App } from 'vue'
@@ -37,6 +38,7 @@ export default {
     app.component(QvCard.name, QvCard)
     app.component(QvInputIcon.name, QvInputIcon)
     app.component(QvInputColor.name, QvInputColor)
+    app.component(QvImg.name, QvImg)
 
     app.directive('permission', usePermission())
     console.log(option)

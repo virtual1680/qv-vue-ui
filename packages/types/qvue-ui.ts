@@ -331,7 +331,7 @@ export interface SelectColumn {
 export interface ImgColumn {
   target: string
   alone: boolean
-  limit: string | number
+  limit: number
   imgWidth: number | string
   imgHeight: number | string
   fullscreen: boolean
@@ -539,6 +539,7 @@ export interface QvColumn
     InputColumn,
     CheckboxColumn,
     IconColumn,
+    ImgColumn,
     BaseColumn {}
 
 export type DicData = {

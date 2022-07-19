@@ -14,7 +14,8 @@ export * from './input-icon'
 export * from './input-number'
 export * from './upload'
 export * from './form'
-// export * from './crud'
+export * from './crud'
+export * from './img'
 
 // plugins
 // export * from './infinite-scroll'
