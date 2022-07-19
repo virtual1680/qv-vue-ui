@@ -16,6 +16,10 @@ export * from './upload'
 export * from './form'
 export * from './crud'
 export * from './img'
+export * from './array'
+export * from './carousel'
+export * from './cascader'
+export * from './tabs'
 
 // plugins
 // export * from './infinite-scroll'

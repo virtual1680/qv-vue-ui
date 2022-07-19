@@ -1,9 +1,9 @@
-import type { EventProps } from '@qv-vue/types/qvue-ui'
+import { EventProps } from '@qv-vue/types/qvue-ui'
 import type { PropType } from 'vue'
-import type Img from './img.vue'
+import type Cascader from './cascader.vue'
 
-export const imgProps = {
-	modelValue: [String, Number, Object] as PropType<EventProps['modelValue']>,
+export const cascaderProps = {
+	modelValue: [Array, String] as PropType<EventProps['modelValue']>,
 	dic: {
 		type: Array as PropType<EventProps['dic']>,
 		default: () => []
@@ -11,7 +11,13 @@ export const imgProps = {
 	column: {
 		type: Object as PropType<EventProps['column']>,
 		default: () => ({
-			all: false
+			checkStrictly: false,
+			emitPath: true,
+			tags: false,
+			showAllLevels: true,
+			lazy: false,
+			filterable: false,
+			expandTrigger: 'click'
 		})
 	},
 	size: {
@@ -34,4 +40,4 @@ export const imgProps = {
 		type: String
 	}
 }
-export type ImgInstance = InstanceType<typeof Img>
+export type CascaderInstance = InstanceType<typeof Cascader>
