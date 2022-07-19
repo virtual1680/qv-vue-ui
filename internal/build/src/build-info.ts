@@ -13,12 +13,12 @@ export interface BuildInfo {
   output: {
     /** e.g: `es` */
     name: string
-    /** e.g: `dist/qv-vue/es` */
+    /** e.g: `qv-vue/es` */
     path: string
   }
 
   bundle: {
-    /** e.g: `element-plus/es` */
+    /** e.g: `qv-vue/es` */
     path: string
   }
 }

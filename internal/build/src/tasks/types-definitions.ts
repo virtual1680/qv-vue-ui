@@ -66,7 +66,7 @@ export const generateTypesDefinitions = async () => {
       await mkdir(path.dirname(filepath), {
         recursive: true,
       })
-
+      // consola.log('-=-=-=-=-', filepath)
       await writeFile(
         filepath,
         pathRewriter('esm')(outputFile.getText()),
