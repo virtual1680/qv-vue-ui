@@ -1,8 +1,8 @@
 import { createApp } from 'vue'
 import ElementPlus from 'element-plus'
 import 'element-plus/theme-chalk/index.css'
-// import QvVue from '../dist/qv-vue'
-import QvVue from '../packages/qv-vue/index'
+import QvVue from '../dist/qv-vue'
+// import QvVue from '../packages/qv-vue/index'
 import '../packages/theme-chalk/src/index.scss'
 ;(async () => {
 	const apps = import.meta.glob('./src/*.vue')
