@@ -20,7 +20,7 @@
 </template>
 <script lang="ts" setup>
 import { computed, inject, ref, watch } from 'vue'
-import config from '../config.js'
+import config from '../config'
 import { t } from '@qv-vue/locale'
 import { useBem } from '@qv-vue/hooks'
 import type { QvColumn } from '@qv-vue/types/qvue-ui'

@@ -14,9 +14,9 @@ type CellStyle<T> = CSSProperties | ((data: { row: T; rowIndex: number; column: 
 type Permission<T> = Record<string, boolean> | ((key: string, row: T, index: number) => Record<string, boolean>)
 
 interface CrudProps<T> {
-	sortBy: string | ((row: T, index: number) => string) | string[]
-	sortOrders: ('ascending' | 'descending' | null)[]
-	sortMethod: (a: T, b: T) => number
+	sortBy?: string | ((row: T, index: number) => string) | string[]
+	sortOrders?: ('ascending' | 'descending' | null)[]
+	sortMethod?: (a: T, b: T) => number
 	spanMethod?: (data: { row: T; rowIndex: number; column: TableColumnCtx<T>; columnIndex: number }) =>
 		| number[]
 		| {
@@ -35,9 +35,9 @@ interface CrudProps<T> {
 	search?: Record<string, unknown>
 	tableLoading?: boolean
 	disabled?: boolean
-	page: TablePage
+	page: Partial<TablePage>
 	permission?: Permission<T>
-	option: QvOption
+	option: Partial<QvOption>
 	data: T[]
 }
 export type { CellCls, CellStyle, Permission, CrudProps }
@@ -49,7 +49,7 @@ export default {
 			return ['ascending', 'descending', null]
 		},
 		validator: (val: CrudProps<unknown>['sortOrders']) => {
-			return val.every((order: 'ascending' | 'descending' | null) => ['ascending', 'descending', null].includes(order))
+			return val?.every((order: 'ascending' | 'descending' | null) => ['ascending', 'descending', null].includes(order))
 		}
 	},
 	sortMethod: Function as PropType<CrudProps<DefaultRow>['sortMethod']>,
