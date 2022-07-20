@@ -787,7 +787,7 @@ provide('crud', {
 	controlSize,
 	isMobile: isMobile.value,
 	DIC,
-	tableForm: tableForm.value,
+	tableForm,
 	childrenKey: childrenKey.value,
 	hasChildrenKey,
 	tableIndex,
@@ -822,7 +822,8 @@ provide('crud', {
 	isHeader,
 	isTree,
 	isShowSummary,
-	headerSort
+	headerSort,
+	findData
 })
 
 const rowSave = () => {

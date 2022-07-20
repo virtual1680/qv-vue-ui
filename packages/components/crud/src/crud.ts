@@ -27,7 +27,7 @@ interface CrudProps<T> {
 	rowStyle: ColumnStyle<T>
 	cellStyle: CellStyle<T>
 	beforeClose?: (done: () => void, type?: string) => void
-	beforeOpen?: (form: any, type: string) => void
+	beforeOpen?: (done: () => void, type?: string) => void
 	rowClassName?: ColumnCls<T>
 	cellClassName?: CellCls<T>
 	headerRowClassName?: ColumnCls<T>

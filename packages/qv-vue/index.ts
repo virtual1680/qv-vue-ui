@@ -6,7 +6,7 @@ import { INSTALLED_KEY } from '@qv-vue/constants'
 import * as Icon from '@element-plus/icons-vue'
 export default {
 	version,
-	install(app: App, option?: any) {
+	install(app: App, option?: { lang?: string; axios?: any }) {
 		if (app[INSTALLED_KEY]) return
 		// console.log('开始注册-----')
 		app[INSTALLED_KEY] = true
@@ -18,8 +18,8 @@ export default {
 		app.directive('permission', usePermission())
 		// console.log(option)
 		// window['lang'] = option.lang || 'zh'
-		app.config.globalProperties.$lang = option.lang || 'zh'
-		app.config.globalProperties.$axios = option.axios
+		app.config.globalProperties.$lang = option?.lang || 'zh'
+		app.config.globalProperties.$axios = option?.axios
 		Object.keys(Icon).forEach(item => {
 			app.component(item, Icon[item as keyof typeof Icon])
 		})

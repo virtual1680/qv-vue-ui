@@ -27,7 +27,7 @@
 		</template>
 		<qv-form
 			ref="tableFormRef"
-			v-model="crud.tableForm"
+			v-model="crudTableForm"
 			v-model:status="disabled"
 			form-btn="dialog"
 			:option="option"
@@ -82,12 +82,8 @@ const config = ref(configDe)
 const boxType = ref('')
 const fullscreen = ref(false)
 const boxVisible = ref(false)
-// watch(
-// 	() => boxVisible.value,
-// 	() => {
-// 		console.log('crud.tableIndex---', crud.tableIndex);
-// 	}
-// );
+const crudTableForm = ref({})
+
 const isView = computed(() => {
 	return boxType.value === 'view'
 })
@@ -127,7 +123,6 @@ const option = computed(() => {
 	const tOption = deepClone(crud.tableOption.value)
 	tOption.boxType = boxType.value
 	tOption.column = deepClone(crud.propOption.value)
-	// console.log('-=-=-=-=-tOption.column', tOption.column)
 
 	tOption.menuBtn = false
 	if (isAdd.value) {
@@ -184,8 +179,8 @@ const getSlotName = (item: string) => {
 	}
 }
 const handleChange = () => {
-	crud.emit('update:modelValue', crud.tableForm)
-	crud.emit('change', crud.tableForm)
+	crud.emit('update:modelValue', crudTableForm.value)
+	crud.emit('change', crudTableForm.value)
 }
 const handleTabClick = (tab: any, event?: Event) => {
 	crud.emit('tab-click', tab, event)
@@ -214,12 +209,12 @@ const initFun = () => {
 }
 // 保存
 const rowSave = (hide: () => void) => {
-	crud.emit('row-save', filterParams(crud.tableForm), closeDialog, hide)
+	crud.emit('row-save', filterParams(crudTableForm.value), closeDialog, hide)
 }
 // 更新
 const rowUpdate = (hide: () => void) => {
 	// console.log(crud.tableIndex, 'crud.tableForm');
-	crud.emit('row-update', filterParams(crud.tableForm), crud.tableIndex.value, closeDialog, hide)
+	crud.emit('row-update', filterParams(crudTableForm.value), crud.tableIndex.value, closeDialog, hide)
 }
 const closeDialog = (row?: any) => {
 	row = deepClone(row)
@@ -250,7 +245,7 @@ const closeDialog = (row?: any) => {
 const hide = (done?: () => void) => {
 	const callback = () => {
 		done && done()
-		Object.keys(crud.tableForm).forEach(ele => delete crud.tableForm[ele])
+		Object.keys(crudTableForm.value).forEach(ele => delete crudTableForm.value[ele])
 		crud.tableIndex = -1
 		boxVisible.value = false
 	}
@@ -272,6 +267,9 @@ const show = (type: string) => {
 	} else {
 		callback()
 	}
+	// console.log(crud.tableForm.value)
+	crudTableForm.value = crud.tableForm.value
 }
+
 defineExpose({ show, tableFormRef, closeDialog })
 </script>
