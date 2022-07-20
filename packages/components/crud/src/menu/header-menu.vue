@@ -1,88 +1,77 @@
 <template>
-  <div :class="b('menu')">
-    <div :class="b('left')">
-      <el-button
-        v-if="validData(crud.tableOption.value.addBtn, config.addBtn)"
-        v-permission="crud.getPermission('addBtn')"
-        type="primary"
-        :icon="crud.getBtnIcon('addBtn')"
-        :size="crud.isMediumSize"
-        @click="crud.rowAdd"
-      >
-        <template v-if="!crud.isIconMenu">
-          {{ crud.menuIcon('addBtn') }}
-        </template>
-      </el-button>
-      <el-button
-        v-if="validData(crud.tableOption.value.addRowBtn, config.addRowBtn)"
-        v-permission="crud.getPermission('addRowBtn')"
-        type="primary"
-        :icon="crud.getBtnIcon('addBtn')"
-        :size="crud.isMediumSize"
-        @click="crud.rowCellAdd"
-      >
-        <template v-if="!crud.isIconMenu">
-          {{ crud.menuIcon('addBtn') }}
-        </template>
-      </el-button>
-      <slot name="menu-left" :size="crud.isMediumSize" />
-    </div>
-    <div :class="b('right')">
-      <qv-date
-        v-if="validData(crud.tableOption.value.dateBtn, config.dateBtn)"
-        type="datetimerange"
-        value-format="YYYY-MM-DD HH:mm:ss"
-        format="YYYY-MM-DD HH:mm:ss"
-        style="display: inline-block; margin-right: 20px"
-        :column="state.pickerOptions"
-        :size="crud.isMediumSize"
-        @change="dateChange"
-      />
-      <slot name="menu-right" :size="crud.isMediumSize" />
-      <el-button
-        v-if="validData(crud.tableOption.value.excelBtn, config.excelBtn)"
-        v-permission="crud.getPermission('excelBtn')"
-        :icon="crud.getBtnIcon('excelBtn')"
-        circle
-        :size="crud.isMediumSize"
-        @click="rowExcel"
-      />
-      <el-button
-        v-if="validData(crud.tableOption.value.refreshBtn, config.refreshBtn)"
-        v-permission="crud.getPermission('refreshBtn')"
-        :icon="crud.getBtnIcon('refreshBtn')"
-        circle
-        :size="crud.isMediumSize"
-        @click="crud.refreshChange"
-      />
-      <el-button
-        v-if="validData(crud.tableOption.value.columnBtn, config.columnBtn)"
-        v-permission="crud.getPermission('columnBtn')"
-        :icon="crud.getBtnIcon('columnBtn')"
-        circle
-        :size="crud.isMediumSize"
-        @click="crud.dialogColumnRef.columnBox = true"
-      />
-      <el-button
-        v-if="
-          (crud.headerSearchRef.value || {}).searchFlag &&
-          validData(crud.tableOption.value.searchShowBtn, true)
-        "
-        :icon="crud.getBtnIcon('searchBtn')"
-        circle
-        :size="crud.isMediumSize"
-        @click="crud.headerSearchRef.value.handleSearchShow()"
-      />
-      <el-button
-        v-if="validData(crud.tableOption.value.filterBtn, config.filterBtn)"
-        v-permission="crud.getPermission('filterBtn')"
-        :icon="crud.getBtnIcon('filterBtn')"
-        circle
-        :size="crud.isMediumSize"
-        @click="crud.dialogFilterRef.box = true"
-      />
-    </div>
-  </div>
+	<div :class="b('menu')">
+		<div :class="b('left')">
+			<el-button
+				v-if="validData(crud.tableOption.value.addBtn, config.addBtn)"
+				v-permission="crud.getPermission('addBtn')"
+				type="primary"
+				:icon="crud.getBtnIcon('addBtn')"
+				:size="crud.isMediumSize"
+				@click="crud.rowAdd">
+				<template v-if="!crud.isIconMenu">
+					{{ crud.menuIcon('addBtn') }}
+				</template>
+			</el-button>
+			<el-button
+				v-if="validData(crud.tableOption.value.addRowBtn, config.addRowBtn)"
+				v-permission="crud.getPermission('addRowBtn')"
+				type="primary"
+				:icon="crud.getBtnIcon('addBtn')"
+				:size="crud.isMediumSize"
+				@click="crud.rowCellAdd">
+				<template v-if="!crud.isIconMenu">
+					{{ crud.menuIcon('addBtn') }}
+				</template>
+			</el-button>
+			<slot name="menu-left" :size="crud.isMediumSize" />
+		</div>
+		<div :class="b('right')">
+			<qv-date
+				v-if="validData(crud.tableOption.value.dateBtn, config.dateBtn)"
+				type="datetimerange"
+				value-format="YYYY-MM-DD HH:mm:ss"
+				format="YYYY-MM-DD HH:mm:ss"
+				style="display: inline-block; margin-right: 20px"
+				:column="state.pickerOptions"
+				:size="crud.isMediumSize"
+				@change="dateChange" />
+			<slot name="menu-right" :size="crud.isMediumSize" />
+			<el-button
+				v-if="validData(crud.tableOption.value.excelBtn, config.excelBtn)"
+				v-permission="crud.getPermission('excelBtn')"
+				:icon="crud.getBtnIcon('excelBtn')"
+				circle
+				:size="crud.isMediumSize"
+				@click="rowExcel" />
+			<el-button
+				v-if="validData(crud.tableOption.value.refreshBtn, config.refreshBtn)"
+				v-permission="crud.getPermission('refreshBtn')"
+				:icon="crud.getBtnIcon('refreshBtn')"
+				circle
+				:size="crud.isMediumSize"
+				@click="crud.refreshChange" />
+			<el-button
+				v-if="validData(crud.tableOption.value.columnBtn, config.columnBtn)"
+				v-permission="crud.getPermission('columnBtn')"
+				:icon="crud.getBtnIcon('columnBtn')"
+				circle
+				:size="crud.isMediumSize"
+				@click="crud.dialogColumnRef.value.columnBox = true" />
+			<el-button
+				v-if="(crud.headerSearchRef.value || {}).searchFlag && validData(crud.tableOption.value.searchShowBtn, true)"
+				:icon="crud.getBtnIcon('searchBtn')"
+				circle
+				:size="crud.isMediumSize"
+				@click="crud.headerSearchRef.value.handleSearchShow()" />
+			<el-button
+				v-if="validData(crud.tableOption.value.filterBtn, config.filterBtn)"
+				v-permission="crud.getPermission('filterBtn')"
+				:icon="crud.getBtnIcon('filterBtn')"
+				circle
+				:size="crud.isMediumSize"
+				@click="crud.dialogFilterRef.box = true" />
+		</div>
+	</div>
 </template>
 
 <script setup lang="ts">
@@ -94,60 +83,60 @@ import config from '../config'
 const { b } = useBem('qv-crud')
 const crud = inject<any>('crud')
 defineOptions({
-  name: 'header-menu',
+	name: 'header-menu'
 })
 const state = reactive({
-  dateCreate: false,
-  pickerOptions: {
-    shortcuts: [
-      {
-        text: '今日',
-        onClick(picker: any) {
-          const end = new Date()
-          const start = new Date()
-          start.setTime(start.getTime())
-          picker.emit('pick', [start, end])
-        },
-      },
-      {
-        text: '昨日',
-        onClick(picker: any) {
-          const end = new Date()
-          const start = new Date()
-          start.setTime(start.getTime() - 3600 * 1000 * 24 * 1)
-          picker.emit('pick', [start, end])
-        },
-      },
-      {
-        text: '最近一周',
-        onClick(picker: any) {
-          const end = new Date()
-          const start = new Date()
-          start.setTime(start.getTime() - 3600 * 1000 * 24 * 7)
-          picker.emit('pick', [start, end])
-        },
-      },
-      {
-        text: '最近一个月',
-        onClick(picker: any) {
-          const end = new Date()
-          const start = new Date()
-          start.setTime(start.getTime() - 3600 * 1000 * 24 * 30)
-          picker.emit('pick', [start, end])
-        },
-      },
-      {
-        text: '最近三个月',
-        onClick(picker: any) {
-          const end = new Date()
-          const start = new Date()
-          start.setTime(start.getTime() - 3600 * 1000 * 24 * 90)
-          picker.emit('pick', [start, end])
-        },
-      },
-    ],
-  },
-  config,
+	dateCreate: false,
+	pickerOptions: {
+		shortcuts: [
+			{
+				text: '今日',
+				onClick(picker: any) {
+					const end = new Date()
+					const start = new Date()
+					start.setTime(start.getTime())
+					picker.emit('pick', [start, end])
+				}
+			},
+			{
+				text: '昨日',
+				onClick(picker: any) {
+					const end = new Date()
+					const start = new Date()
+					start.setTime(start.getTime() - 3600 * 1000 * 24 * 1)
+					picker.emit('pick', [start, end])
+				}
+			},
+			{
+				text: '最近一周',
+				onClick(picker: any) {
+					const end = new Date()
+					const start = new Date()
+					start.setTime(start.getTime() - 3600 * 1000 * 24 * 7)
+					picker.emit('pick', [start, end])
+				}
+			},
+			{
+				text: '最近一个月',
+				onClick(picker: any) {
+					const end = new Date()
+					const start = new Date()
+					start.setTime(start.getTime() - 3600 * 1000 * 24 * 30)
+					picker.emit('pick', [start, end])
+				}
+			},
+			{
+				text: '最近三个月',
+				onClick(picker: any) {
+					const end = new Date()
+					const start = new Date()
+					start.setTime(start.getTime() - 3600 * 1000 * 24 * 90)
+					picker.emit('pick', [start, end])
+				}
+			}
+		]
+	},
+	config
 })
 // const data = computed(() => {
 // 	if (crud.tableOption.value.selection) {
@@ -158,17 +147,17 @@ const state = reactive({
 // });
 //日期组件回调
 const dateChange = (data: string | string[]) => {
-  if (state.dateCreate) {
-    crud.emit('date-change', data)
-  } else {
-    state.dateCreate = true
-  }
+	if (state.dateCreate) {
+		crud.emit('date-change', data)
+	} else {
+		state.dateCreate = true
+	}
 }
 const initFun = () => {
-  crud.rowExcel = rowExcel
+	crud.rowExcel = rowExcel
 }
 const rowExcel = () => {
-  crud.dialogExcelRef.value.handleShow()
+	crud.dialogExcelRef.value.handleShow()
 }
 
 initFun()

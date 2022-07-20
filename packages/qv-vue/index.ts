@@ -7,7 +7,7 @@ export default {
 	version,
 	install(app: App, option?: any) {
 		if (app[INSTALLED_KEY]) return
-		console.log('开始注册-----')
+		// console.log('开始注册-----')
 		app[INSTALLED_KEY] = true
 
 		Components.forEach(c => {
@@ -15,7 +15,7 @@ export default {
 		})
 
 		app.directive('permission', usePermission())
-		console.log(option)
+		// console.log(option)
 		// window['lang'] = option.lang || 'zh'
 	}
 }

@@ -37,7 +37,7 @@ module.exports = {
 		'no-var': 'error', // 要求使用 let 或 const 而不是 var
 		'no-multiple-empty-lines': ['error', { max: 1 }], // 不允许多个空行
 		// 'no-use-before-define': 'off', // 禁止在 函数/类/变量 定义之前使用它们
-		// 'prefer-const': 'off', // 此规则旨在标记使用 let 关键字声明但在初始分配后从未重新分配的变量，要求使用 const
+		'prefer-const': 'warn', // 此规则旨在标记使用 let 关键字声明但在初始分配后从未重新分配的变量，要求使用 const
 		'no-irregular-whitespace': 'off', // 禁止不规则的空白
 
 		// typeScript (https://typescript-eslint.io/rules)
@@ -50,7 +50,7 @@ module.exports = {
 		// '@typescript-eslint/explicit-function-return-type': 'off', // 不允许对初始化为数字、字符串或布尔值的变量或参数进行显式类型声明
 		// '@typescript-eslint/no-var-requires': 'off', // 不允许在 import 语句中使用 require 语句
 		// '@typescript-eslint/no-empty-function': 'off', // 禁止空函数
-		// '@typescript-eslint/no-use-before-define': 'off', // 禁止在变量定义之前使用它们
+		'@typescript-eslint/no-use-before-define': 'error', // 禁止在变量定义之前使用它们
 		// '@typescript-eslint/ban-ts-comment': 'off', // 禁止 @ts-<directive> 使用注释或要求在指令后进行描述
 		// '@typescript-eslint/no-non-null-assertion': 'off', // 不允许使用后缀运算符的非空断言(!)
 		// '@typescript-eslint/explicit-module-boundary-types': 'off', // 要求导出函数和类的公共类方法的显式返回和参数类型

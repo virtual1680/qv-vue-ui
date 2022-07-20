@@ -30,7 +30,7 @@ const props = defineProps<{ columnList: QvColumn[] }>()
 const list = computed(() => {
 	let result = [...props.columnList]
 	result = arraySort(result, 'index', (a: any, b: any) => crud.objectOption.value[a.prop]?.index - crud.objectOption.value[b.prop]?.index)
-	console.log('table-column-result-', result)
+	// console.log('table-column-result-', result)
 
 	return result
 })

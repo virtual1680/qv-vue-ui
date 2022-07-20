@@ -164,6 +164,7 @@ export interface QvOption {
 	delBtn: boolean
 	defaultSort: any //TODO
 	defaultExpandAll: boolean
+	treeProps: DicProps
 	expandRowKeys: any[]
 	editBtn: boolean
 	editTitle: string

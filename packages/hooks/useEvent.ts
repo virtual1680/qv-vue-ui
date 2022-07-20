@@ -90,7 +90,7 @@ export const useEvent = (props: EventProps, emit: any, params?: EventParams) => 
 	watch(
 		() => text.value,
 		val => {
-			console.log('text value: %s', val)
+			// console.log('text value: %s', val)
 			handleChange(val)
 			params?.handleTextValue && params.handleTextValue(val)
 		}
