@@ -14,18 +14,18 @@ type CellStyle<T> = CSSProperties | ((data: { row: T; rowIndex: number; column: 
 type Permission<T> = Record<string, boolean> | ((key: string, row: T, index: number) => Record<string, boolean>)
 
 interface CrudProps<T> {
-	sortBy?: string | ((row: T, index: number) => string) | string[]
-	sortOrders?: ('ascending' | 'descending' | null)[]
-	sortMethod?: (a: T, b: T) => number
-	spanMethod?: (data: { row: T; rowIndex: number; column: TableColumnCtx<T>; columnIndex: number }) =>
+	sortBy: string | ((row: T, index: number) => string) | string[]
+	sortOrders: ('ascending' | 'descending' | null)[]
+	sortMethod: (a: T, b: T) => number
+	spanMethod: (data: { row: T; rowIndex: number; column: TableColumnCtx<T>; columnIndex: number }) =>
 		| number[]
 		| {
 				rowspan: number
 				colspan: number
 		  }
-	summaryMethod?: SummaryMethod<T>
-	rowStyle?: ColumnStyle<T>
-	cellStyle?: CellStyle<T>
+	summaryMethod: SummaryMethod<T>
+	rowStyle: ColumnStyle<T>
+	cellStyle: CellStyle<T>
 	beforeClose?: (done: () => void, type?: string) => void
 	beforeOpen?: (form: any, type: string) => void
 	rowClassName?: ColumnCls<T>

@@ -10,7 +10,7 @@ export interface TablePage {
 	background: boolean // 背景颜色
 }
 export interface PageProps {
-	page: TablePage
+	page: Partial<TablePage>
 }
 
 export default {

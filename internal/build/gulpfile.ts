@@ -1,32 +1,11 @@
 import path from 'path'
 import { copyFile, mkdir } from 'fs/promises'
 import { copy } from 'fs-extra'
-import consola from 'consola'
 import { parallel, series } from 'gulp'
-import glob from 'fast-glob'
-import { buildOutput, esOutput, epOutput, epPackage, projRoot, excludeFiles } from '@qv-vue/build-utils'
+import { buildOutput, epOutput, epPackage, projRoot } from '@qv-vue/build-utils'
 import { buildConfig, run, runTask, withTaskName } from './src'
 import type { TaskFunction } from 'gulp'
 import type { Module } from './src'
-
-export const qvFile = async () => {
-	// const mjsList = path.resolve(esOutput, '*.mjs')
-	// Promise.all([
-
-	// ])
-	const input = excludeFiles(
-		await glob('*.mjs', {
-			cwd: esOutput,
-			absolute: true,
-			onlyFiles: true
-		})
-	)
-	consola.log(input)
-	// await copyFile(
-	//   path.resolve(epOutput, 'theme-chalk/index.css'),
-	//   path.resolve(epOutput, 'dist/index.css')
-	// )
-}
 
 export const copyFiles = () =>
 	Promise.all([
@@ -63,7 +42,7 @@ export default series(
 		)
 	),
 
-	parallel(qvFile, copyTypesDefinitions, copyFiles)
+	parallel(copyTypesDefinitions, copyFiles)
 )
 
 export * from './src'

@@ -188,25 +188,7 @@ const emit = defineEmits<{
 const props = defineProps(formProps)
 const slots = useSlots()
 
-// const qvOption = ref(props.option);
-// const optionRef: Ref<QvOption> = ref({} as QvOption)
-// watch(
-// 	() => props,
-// 	() => {
-// 		console.log('-=-qv-form=-=11-=', props.option)
-// 	},
-// 	{
-// 		deep: true,
-// 		immediate: true
-// 	}
-// )
-// if (isRef(props.option)) {
-// 	console.log('-=-=-isRef=-=-=-=-=-', isRef(props.option))
-// } else {
-// 	optionRef.value = props.option
-// }
 const { DIC, isMobile, rowKey, objectOption, controlSize, tableOption } = useInitCrud(props)
-// const { b } = useBem('qv-form')
 
 const activeName = ref('')
 const labelWidth = ref(90)

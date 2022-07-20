@@ -3,6 +3,7 @@ import Components from './component'
 import { version } from './version'
 import type { App } from 'vue'
 import { INSTALLED_KEY } from '@qv-vue/constants'
+import * as Icon from '@element-plus/icons-vue'
 export default {
 	version,
 	install(app: App, option?: any) {
@@ -17,6 +18,11 @@ export default {
 		app.directive('permission', usePermission())
 		// console.log(option)
 		// window['lang'] = option.lang || 'zh'
+		app.config.globalProperties.$lang = option.lang || 'zh'
+		app.config.globalProperties.$axios = option.axios
+		Object.keys(Icon).forEach(item => {
+			app.component(item, Icon[item as keyof typeof Icon])
+		})
 	}
 }
 export * from '@qv-vue/components'
@@ -25,5 +31,3 @@ export * from '@qv-vue/directives'
 export * from '@qv-vue/hooks'
 export * from '@qv-vue/tokens'
 export * from '@qv-vue/core'
-// export * from './make-installer'
-export { default as dayjs } from 'dayjs'

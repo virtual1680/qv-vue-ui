@@ -1,5 +1,5 @@
 <template>
-	<div :class="b({ card: !tableOption.card })">
+	<div :class="b({ card: !tableOption?.card })">
 		<component :is="tableOption.titleSize || 'h2'" v-if="tableOption.title" :style="tableOption.titleStyle">{{ tableOption.title }}</component>
 		<!-- 搜索组件 -->
 		<header-search ref="headerSearchRef">
@@ -177,21 +177,7 @@ defineOptions({
 })
 
 const props = defineProps(crudProps)
-// const optionRef: Ref<QvOption> = ref({} as QvOption)
-// if (isRef(props.option)) {
-// 	console.log('-=-=-isRef=-=-=-=-=-', isRef(props.option))
-// } else {
-// 	optionRef.value = props.option
-// }
-// watch(
-// 	() => props.option,
-// 	() => {
-// 		console.log('-=-=-=-option=-=-=', props.option)
-// 	},
-// 	{
-// 		deep: true
-// 	}
-// )
+
 const { tableOption, rowKey, cascaderDIC, controlSize, DIC, isMobile, propOption, objectOption, isMediumSize } = useInitCrud(props)
 const { b } = useBem('qv-crud')
 const slots = useSlots()
