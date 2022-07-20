@@ -1,3 +1,5 @@
+/// <reference types="qv-vue/types">
+
 import type { vShow } from 'vue'
 import type { INSTALLED_KEY } from '@qv-vue/constants'
 
