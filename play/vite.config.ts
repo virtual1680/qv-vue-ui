@@ -9,72 +9,67 @@ import mkcert from 'vite-plugin-mkcert'
 import glob from 'fast-glob'
 import DefineOptions from 'unplugin-vue-define-options/vite'
 import esbuild from 'rollup-plugin-esbuild'
-import {
-  epPackage,
-  epRoot,
-  getPackageDependencies,
-  pkgRoot,
-  projRoot,
-} from '@qv-vue/build-utils'
+import { epPackage, epRoot, getPackageDependencies, pkgRoot, projRoot } from '@qv-vue/build-utils'
 import './vite.init'
 
 const esbuildPlugin = () => ({
-  ...esbuild({
-    target: 'chrome64',
-    include: /\.vue$/,
-    loaders: {
-      '.vue': 'js',
-    },
-  }),
-  enforce: 'post',
+	...esbuild({
+		target: 'chrome64',
+		include: /\.vue$/,
+		loaders: {
+			'.vue': 'js'
+		}
+	}),
+	enforce: 'post'
 })
 
 export default defineConfig(async ({ mode }) => {
-  const env = loadEnv(mode, process.cwd(), '')
-  let { dependencies } = getPackageDependencies(epPackage)
-  dependencies = dependencies.filter((dep) => !dep.startsWith('@types/')) // exclude dts deps
-  const optimizeDeps = (
-    await glob(['dayjs/(locale|plugin)/*.js'], {
-      cwd: path.resolve(projRoot, 'node_modules'),
-    })
-  ).map((dep) => dep.replace(/\.js$/, ''))
+	const env = loadEnv(mode, process.cwd(), '')
+	let { dependencies } = getPackageDependencies(epPackage)
+	dependencies = dependencies.filter(dep => !dep.startsWith('@types/')) // exclude dts deps
+	const optimizeDeps = (
+		await glob(['dayjs/(locale|plugin)/*.js'], {
+			cwd: path.resolve(projRoot, 'node_modules')
+		})
+	).map(dep => dep.replace(/\.js$/, ''))
 
-  return {
-    resolve: {
-      alias: [
-        {
-          find: /^qv-vue(\/(es|lib))?$/,
-          replacement: path.resolve(epRoot, 'index.ts'),
-        },
-        {
-          find: /^qv-vue\/(es|lib)\/(.*)$/,
-          replacement: `${pkgRoot}/$2`,
-        },
-      ],
-    },
-    server: {
-      host: true,
-      https: !!env.HTTPS,
-    },
-    plugins: [
-      vue(),
-      esbuildPlugin(),
-      vueJsx(),
-      DefineOptions(),
-      Components({
-        include: `${__dirname}/**`,
-        resolvers: ElementPlusResolver({ importStyle: 'sass' }),
-        dts: false,
-      }),
-      mkcert(),
-      Inspect(),
-    ],
+	return {
+		resolve: {
+			alias: [
+				{
+					find: /^qv-vue(\/(es|lib))?$/,
+					replacement: path.resolve(epRoot, 'index.ts')
+				},
+				{
+					find: /^qv-vue\/(es|lib)\/(.*)$/,
+					replacement: `${pkgRoot}/$2`
+				}
+			]
+		},
+		server: {
+			host: true,
+			open: 7099,
+			https: !!env.HTTPS
+		},
+		plugins: [
+			vue(),
+			esbuildPlugin(),
+			vueJsx(),
+			DefineOptions(),
+			Components({
+				include: `${__dirname}/**`,
+				resolvers: ElementPlusResolver({ importStyle: 'sass' }),
+				dts: false
+			}),
+			mkcert(),
+			Inspect()
+		],
 
-    optimizeDeps: {
-      include: ['vue', '@vue/shared', ...dependencies, ...optimizeDeps],
-    },
-    esbuild: {
-      target: 'chrome64',
-    },
-  }
+		optimizeDeps: {
+			include: ['vue', '@vue/shared', ...dependencies, ...optimizeDeps]
+		},
+		esbuild: {
+			target: 'chrome64'
+		}
+	}
 })
