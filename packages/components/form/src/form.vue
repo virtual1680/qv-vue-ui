@@ -593,7 +593,7 @@ const vaildDisplay = (column: any) => {
 	return true
 }
 const clearValidate = (list?: any) => {
-	formRef.value?.clearValidate(list)
+	formRef.value?.clearValidate(list || {})
 }
 const validateCellForm = () => {
 	return new Promise(resolve => {

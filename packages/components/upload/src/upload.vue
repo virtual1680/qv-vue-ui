@@ -1,17 +1,18 @@
 <template>
-	<div v-loading.lock="loading" :class="b()">
+	<div v-loading.lock="loading" :class="{ 'qv-upload': column.listType === 'picture-img', upload: column.listType === 'picture-card' }">
+		<!-- listType 警告问题 -->
 		<el-upload
 			:key="reload"
-			:class="b({ list: column?.listType == 'picture-img', upload: disabled })"
-			:action="column?.action"
+			:class="{ list: column.listType === 'picture-img', upload: disabled }"
+			:action="column.action"
 			:on-remove="handleRemove"
 			:accept="acceptList"
 			:before-remove="beforeRemove"
-			:multiple="column?.multiple"
+			:multiple="column.multiple"
 			:on-preview="handlePreview"
-			:limit="column?.limit"
+			:limit="column.limit"
 			:http-request="httpUpload"
-			:drag="column?.dragFile"
+			:drag="column.dragFile"
 			:readonly="readonly"
 			:show-file-list="isPictureImg ? false : column?.showFileList"
 			:list-type="column?.listType"
@@ -20,7 +21,7 @@
 			:disabled="disabled"
 			:file-list="fileList"
 			@click="handleClick">
-			<template v-if="column?.listType == 'picture-card'">
+			<template v-if="column.listType == 'picture-card'">
 				<el-icon>
 					<Plus />
 				</el-icon>
@@ -142,6 +143,7 @@ function getFileUrl(home: string, uri = '') {
 }
 const props = defineProps(uploadProps)
 const { text, labelKey, valueKey, urlKey, resKey, nameKey, handleClick, isArray, isString, stringMode, handleChange } = useEvent(props, emit)
+console.log(props)
 
 const menu = ref(false)
 const reload = ref(Math.random())

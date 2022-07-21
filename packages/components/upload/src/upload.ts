@@ -3,7 +3,7 @@ import type { PropType } from 'vue'
 import type Upload from './upload.vue'
 
 export const uploadProps = {
-	modelValue: Object as PropType<EventProps['modelValue']>,
+	modelValue: [String, Object] as PropType<EventProps['modelValue']>,
 	dic: {
 		type: Array as PropType<EventProps['dic']>,
 		default: () => []

@@ -452,7 +452,7 @@ export interface UpLoadColumn {
 	data: Record<string, string | Blob>
 	headers: Record<string, string>
 	limit: number
-	listType: 'text' | 'picture' | 'picture-card' | 'picture-img'
+	listType: 'picture' | 'picture-card' | 'picture-img'
 	showFileList: boolean
 	multiple: boolean
 	canvasOption: CanvasOption

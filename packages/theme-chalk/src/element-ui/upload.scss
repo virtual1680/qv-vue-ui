@@ -1,66 +1,79 @@
 .qv-upload {
-  &--upload {
-    .el-upload,
-    .el-upload__tip {
-      display: none;
-    }
-    .el-upload--picture-img {
-      display: inline-block;
-    }
-    .el-upload-list {
-      margin-top: -6px;
-    }
-  }
-  &--list {
-    .el-upload {
-      border: 1px dashed #d9d9d9;
-      border-radius: 6px;
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
-    }
-    .el-upload:hover {
-      border-color: #409eff;
-    }
-  }
-  &__dialog {
-    .el-dialog__header {
-      display: none;
-    }
-    .el-dialog__body {
-      padding: 10px;
-      display: flex;
-      justify-content: center;
-    }
-  }
-  &__menu {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1024;
-    i {
-      color: #fff;
-      margin: 0 8px;
-      font-size: 20px;
-    }
-  }
-  &__icon {
-    font-size: 28px;
-    color: #8c939d;
-    width: 178px;
-    height: 178px;
-    line-height: 178px;
-    text-align: center;
-  }
-  &__avatar {
-    width: 178px;
-    height: 178px;
-    display: block;
-  }
+	&--upload {
+		.el-upload,
+		.el-upload__tip {
+			display: none;
+		}
+		.el-upload--picture-img {
+			display: inline-block;
+		}
+		.el-upload-list {
+			margin-top: -6px;
+		}
+	}
+	&--list {
+		.el-upload {
+			border: 1px dashed #d9d9d9;
+			border-radius: 6px;
+			cursor: pointer;
+			position: relative;
+			overflow: hidden;
+		}
+		.el-upload:hover {
+			border-color: #409eff;
+		}
+	}
+	&__dialog {
+		.el-dialog__header {
+			display: none;
+		}
+		.el-dialog__body {
+			padding: 10px;
+			display: flex;
+			justify-content: center;
+		}
+	}
+	&__menu {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.5);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		z-index: 1024;
+		i {
+			color: #fff;
+			margin: 0 8px;
+			font-size: 20px;
+		}
+	}
+	&__icon {
+		font-size: 28px;
+		color: #8c939d;
+		width: 178px;
+		height: 178px;
+		line-height: 178px;
+		text-align: center;
+	}
+	&__avatar {
+		width: 178px;
+		height: 178px;
+		display: block;
+	}
+	.el-icon {
+		font-size: 28px;
+		color: #8c939d;
+		width: 178px;
+		height: 178px;
+		line-height: 178px;
+		text-align: center;
+		background-color: var(--el-fill-color-lighter);
+		border: 1px dashed var(--el-border-color-darker);
+		border-radius: 6px;
+		box-sizing: border-box;
+		cursor: pointer;
+	}
 }
