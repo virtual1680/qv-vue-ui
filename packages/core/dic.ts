@@ -199,12 +199,12 @@ export const sendDic = (params: any) => {
 
 	if (props) resKey = (props || {}).res || resKey
 	return new Promise(resolve => {
-		const callback = (res: { data: any }) => {
+		const callback = (res: any[]) => {
 			let list = []
 			if (typeof formatter === 'function') {
-				list = formatter(res.data)
+				list = formatter(res)
 			} else {
-				list = getObjValue(res.data, resKey)
+				list = getObjValue(res, resKey)
 			}
 			resolve(list)
 		}
@@ -214,7 +214,7 @@ export const sendDic = (params: any) => {
 		if (method === 'post') {
 			composeInstance?.appContext.config.globalProperties.$axios
 				.post(url, data)
-				.then(function (res: any) {
+				.then(function (res: any[]) {
 					callback(res)
 				})
 				.catch(() => [resolve([])])
@@ -223,7 +223,7 @@ export const sendDic = (params: any) => {
 				.get(url, {
 					params: query
 				})
-				.then(function (res: any) {
+				.then(function (res: any[]) {
 					callback(res)
 				})
 				.catch(() => [resolve([])])
