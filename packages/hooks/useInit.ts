@@ -1,6 +1,6 @@
 import { computed, getCurrentInstance, onMounted, ref, watch } from 'vue'
 import { deepClone, findObject, validatenull } from '@qv-vue/utils'
-import { loadDic, loadLocalDic, sendDic, loadCascaderDic } from '@qv-vue/core/dic' //
+import { loadDic, loadLocalDic, sendDic } from '@qv-vue/core/dic' //loadCascaderDic
 import { DIC_PROPS } from '@qv-vue/constants/variable'
 import { calcCascader } from './useDataformat'
 import type { QvColumn, QvOption } from '@qv-vue/types/qvue-ui'
