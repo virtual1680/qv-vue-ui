@@ -165,7 +165,7 @@ export function dataURLtoFile(dataurl: string, filename: string) {
 	})
 }
 
-export function findObject(list: any, value: any, key = 'prop'): any {
+export const findObject = (list: any, value: any, key = 'prop'): any => {
 	let result: any
 	let type = (() => {
 		let result
