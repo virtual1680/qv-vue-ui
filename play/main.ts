@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 import ElementPlus from 'element-plus'
 import 'element-plus/theme-chalk/index.css'
+import axios from 'axios'
 // import QvVue from '../dist/qv-vue'
 import QvVue from '../packages/qv-vue/index'
 import '../packages/theme-chalk/src/index.scss'
@@ -15,6 +16,6 @@ import '../packages/theme-chalk/src/index.scss'
 	const App = (await file()).default
 	const app = createApp(App)
 	app.use(ElementPlus)
-	app.use(QvVue)
+	app.use(QvVue, { axios })
 	app.mount('#play')
 })()

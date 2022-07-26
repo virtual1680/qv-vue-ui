@@ -1,6 +1,6 @@
 <template>
 	<div :class="[b(), 'qv-img--' + column?.align]">
-		<img v-if="status" :src="text" :width="setPx(column?.imgWidth || '', '100%')" :height="setPx(column?.imgHeight || '')" />
+		<img v-if="status" :src="text" :width="setPx(column?.imgWidth, '100%')" :height="setPx(column?.imgHeight)" />
 		<el-button v-else :size="size" :type="type" @click="handleViews"> 查 看 </el-button>
 		<el-dialog
 			v-model="box"
@@ -8,7 +8,7 @@
 			:custom-class="{ 'qvue-img--fullscreen': column?.fullscreen }"
 			:fullscreen="column?.fullscreen"
 			append-to-body>
-			<qv-carousel :option="option" />
+			<qv-carousel v-if="option.data" :option="option" />
 		</el-dialog>
 	</div>
 </template>
@@ -52,7 +52,8 @@ const option = computed(() => {
 		type: props.column?.imgType,
 		fullscreen: props.column?.fullscreen,
 		interval: 3000,
-		data: list
+		data: list,
+		height: 40
 	}
 })
 

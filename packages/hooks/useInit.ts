@@ -1,6 +1,6 @@
-import { computed, onMounted, ref, watch } from 'vue'
+import { computed, getCurrentInstance, onMounted, ref, watch } from 'vue'
 import { deepClone, findObject, validatenull } from '@qv-vue/utils'
-import { loadDic, loadLocalDic, sendDic } from '@qv-vue/core/dic' // loadCascaderDic
+import { loadDic, loadLocalDic, sendDic, loadCascaderDic } from '@qv-vue/core/dic' //
 import { DIC_PROPS } from '@qv-vue/constants/variable'
 import { calcCascader } from './useDataformat'
 import type { QvColumn, QvOption } from '@qv-vue/types/qvue-ui'
@@ -64,7 +64,7 @@ export const useInitCrud = (props: any) => {
 	}
 	// 网络字典加载
 	const handleLoadDic = () => {
-		loadDic(resultOption).then(res => handleSetDic(DIC.value, res as any))
+		loadDic(resultOption.value).then(res => handleSetDic(DIC.value, res as any))
 	}
 	const dicInit = (type: string) => {
 		if (type === 'cascader') {
@@ -75,20 +75,19 @@ export const useInitCrud = (props: any) => {
 	}
 	//级联字典加载
 	const handleLoadCascaderDic = () => {
-		// loadCascaderDic(params.propOption.value, data).then((res: any) => handleSetDic(cascaderDIC.value, res));
+		// loadCascaderDic(propOption.value, data).then((res: any) => handleSetDic(cascaderDIC.value, res))
 	}
-	const updateDic = (prop: string, list: any) => {
+	const instance = getCurrentInstance()
+	const updateDic = <T = any>(prop: string, list?: T[]) => {
 		const column = findObject(propOption.value, prop)
 		if (validatenull(list) && validatenull(prop)) {
 			handleLoadDic()
 		} else if (validatenull(list) && !validatenull(column.dicUrl)) {
-			sendDic({
-				column
-			}).then(list => {
-				DIC.value[prop] = list as any
+			sendDic({ column, instance }).then(list => {
+				DIC.value[prop] = list as T[]
 			})
 		} else {
-			DIC.value[prop] = list
+			DIC.value[prop] = list || []
 		}
 	}
 	const init = (type?: boolean) => {

@@ -78,7 +78,7 @@
 				:label="handleShowLabel(row, column, crud.DIC[column.prop])"
 				:name="column.prop" />
 			<template v-else>
-				<span v-if="['img', 'upload'].includes(column.type)">
+				<span v-if="['img', 'upload'].includes(column.type || '')">
 					<div class="qv-crud__img">
 						<img
 							v-for="(item, index) in getImgList(row, column)"

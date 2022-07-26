@@ -8,7 +8,7 @@ export interface FormProps {
 	uploadPreview?: () => void
 	uploadError?: () => void
 	uploadExceed?: () => void
-	option: Partial<QvOption>
+	option: QvOption
 	status?: boolean
 	isCrud?: boolean
 	modelValue?: any

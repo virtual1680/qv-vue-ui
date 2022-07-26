@@ -1,0 +1,32 @@
+export interface QvBtnOption {
+	addBtn?: boolean
+	addRowBtn?: boolean
+	cellBtn?: boolean
+	dateBtn?: boolean
+	delBtn?: boolean
+	editBtn?: boolean
+	excelBtn?: boolean
+	filterBtn?: boolean
+	printBtn?: boolean
+	copyBtn?: boolean
+	refreshBtn?: boolean
+	saveBtn?: boolean
+	updateBtn?: boolean
+	cancelBtn?: boolean
+	columnBtn?: boolean
+	updateBtnTitle?: string
+	viewBtn?: boolean
+	addBtnText?: string
+	editBtnText?: string
+	delBtnText?: string
+	viewBtnText?: string
+	emptyBtnText?: string
+	cancelBtnText?: string
+	printBtnText?: string
+	excelBtnText?: string
+	updateBtnText?: string
+	saveBtnText?: string
+	submitBtn?: boolean
+	emptyBtn?: boolean
+	selectClearBtn?: boolean
+}

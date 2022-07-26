@@ -8,7 +8,7 @@
 		:props="allProps"
 		:size="size"
 		:clearable="clearableVal"
-		:show-all-levels="column.showAllLevels"
+		:show-all-levels="column.showAllLevels || true"
 		:filterable="column.filterable"
 		:popper-class="column.popperClass"
 		:separator="column.separator"
@@ -16,7 +16,7 @@
 		:collapse-tags="column.tags"
 		@focus="handleFocus"
 		@blur="handleBlur">
-		<template #="{ data, node }">
+		<template #default="{ data, node }">
 			<slot v-if="$slots.default" :data="data" :node="node"></slot>
 			<span v-else>{{ data[labelKey] }}</span>
 		</template>
@@ -46,7 +46,7 @@ const allProps = computed(() => {
 		children: childrenKey.value,
 		checkStrictly: props.column.checkStrictly,
 		multiple: props.column.multiple,
-		emitPath: props.column.emitPath,
+		emitPath: props.column.emitPath || true,
 		lazy: props.column.lazy,
 		lazyLoad: (node: any, resolve: any) => {
 			let callback = (list?: any) => {
@@ -59,12 +59,12 @@ const allProps = computed(() => {
 						}
 					})
 				}
-				findDic(props.dic, node[valueKey.value], list)
+				findDic(props.dic || [], node[valueKey.value], list)
 				resolve(list)
 			}
 			props.column.lazyLoad && props.column.lazyLoad(node, callback)
 		},
-		expandTrigger: props.column.expandTrigger
+		expandTrigger: props.column.expandTrigger || 'click'
 	}
 })
 </script>

@@ -15,7 +15,7 @@
 			:drag="column.dragFile"
 			:readonly="readonly"
 			:show-file-list="isPictureImg ? false : column?.showFileList"
-			:list-type="column?.listType"
+			:list-type="column?.listType === 'picture-img' ? undefined : column?.listType"
 			:on-change="handleFileChange"
 			:on-exceed="handleExceed"
 			:disabled="disabled"

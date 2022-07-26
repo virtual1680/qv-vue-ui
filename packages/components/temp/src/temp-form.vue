@@ -55,6 +55,7 @@ const params = computed(() => {
 // const event = computed(() => {
 // 	return props.column.event || {};
 // });
+
 watch(
 	() => text.value,
 	val => {

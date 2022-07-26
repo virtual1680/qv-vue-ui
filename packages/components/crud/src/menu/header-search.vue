@@ -161,7 +161,7 @@ const option = computed<QvOption>(() => {
 				if (show.value || !isSearchIcon.value) {
 					return option.searchMenuSpan
 				} else {
-					return option.searchMenuSpan < 6 ? option.searchMenuSpan : 6
+					return (option.searchMenuSpan || 0) < 6 ? option.searchMenuSpan : 6
 				}
 			})(),
 			menuPosition: option.searchMenuPosition || 'center',

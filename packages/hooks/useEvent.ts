@@ -90,7 +90,7 @@ export const useEvent = (props: EventProps, emit: any, params?: EventParams) => 
 	watch(
 		() => text.value,
 		val => {
-			// console.log('text value: %s', val)
+			console.log('text value: %s', val)
 			handleChange(val)
 			params?.handleTextValue && params.handleTextValue(val)
 		}
@@ -116,13 +116,13 @@ export const useEvent = (props: EventProps, emit: any, params?: EventParams) => 
 	}
 
 	const handleFocus = (event: Event) => {
-		bindEvent('focus', { value: props.modelValue, event })
+		bindEvent('focus', { value: text.value, event })
 	}
 	const handleBlur = (event: Event) => {
-		bindEvent('blur', { value: props.modelValue, event })
+		bindEvent('blur', { value: text.value, event })
 	}
 	const handleClick = (event: Event) => {
-		bindEvent('click', { value: props.modelValue, event })
+		bindEvent('click', { value: text.value, event })
 	}
 	const handleChange = (value: any) => {
 		let result = value

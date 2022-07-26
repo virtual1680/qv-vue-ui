@@ -37,7 +37,7 @@ interface CrudProps<T> {
 	disabled?: boolean
 	page: Partial<TablePage>
 	permission?: Permission<T>
-	option: Partial<QvOption>
+	option: QvOption
 	data: T[]
 }
 export type { CellCls, CellStyle, Permission, CrudProps }

@@ -32,11 +32,11 @@ const emit = defineEmits<{
 const props = defineProps(switchProps)
 const { handleClick, labelKey, valueKey, text } = useEvent(props, emit)
 const active = computed(() => {
-	const ff = props.dic?.[1]
+	const ff = props.dic?.[1] || {}
 	return [ff[labelKey.value], ff[valueKey.value]]
 })
 const inactive = computed(() => {
-	const ff = props.dic?.[0]
+	const ff = props.dic?.[0] || {}
 	return [ff[labelKey.value], ff[valueKey.value]]
 })
 </script>

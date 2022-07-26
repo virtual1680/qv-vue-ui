@@ -158,7 +158,7 @@
 	</div>
 </template>
 <script lang="ts" setup>
-import { computed, nextTick, onMounted, provide, ref, unref, useSlots, watch } from 'vue'
+import { computed, getCurrentInstance, nextTick, onMounted, provide, ref, unref, useSlots, watch } from 'vue'
 import { calcCascader, calcCount, formInitVal, getPlaceholder, getSlotName, useBem, useInitCrud } from '@qv-vue/hooks'
 import { clearVal, filterParams, findObject, setAsVal, setPx, validData, validatenull } from '@qv-vue/utils'
 import { DIC_PROPS } from '@qv-vue/constants'
@@ -169,7 +169,7 @@ import { formProps } from './form'
 import type { Ref } from 'vue'
 import type { FormInstance } from 'element-plus'
 import type { TempFormInstance } from '@qv-vue/components/temp'
-import type { QvColumn, QvGroup } from '@qv-vue/types/qvue-ui'
+import type { QvColumn, QvGroupI } from '@qv-vue/types/qvue-ui'
 
 defineOptions({
 	name: 'qv-form'
@@ -188,7 +188,7 @@ const emit = defineEmits<{
 const props = defineProps(formProps)
 const slots = useSlots()
 
-const { DIC, isMobile, rowKey, objectOption, controlSize, tableOption } = useInitCrud(props)
+const { DIC, isMobile, rowKey, objectOption, controlSize, tableOption, updateDic } = useInitCrud(props)
 
 const activeName = ref('')
 const labelWidth = ref(90)
@@ -222,7 +222,7 @@ const columnOption = computed(() => {
 			column: footer
 		})
 	}
-	group.forEach((ele: QvGroup) => {
+	group.forEach((ele: QvGroupI) => {
 		ele.column = ele.column || []
 		// 循环列的全部属性
 		ele.column.forEach((column: QvColumn, cindex: number) => {
@@ -387,7 +387,7 @@ const tabsClass = computed(() => {
 const groupItemClass = (column: any) => {
 	return [b('row'), { 'qv--detail qv--detail__column': vaildDetail(column) }, column.className]
 }
-const formItemBind = (scope: any, column: any) => {
+const formItemBind = (scope: any, column: QvColumn) => {
 	return Object.assign(scope, {
 		column,
 		value: form.value[column.prop],
@@ -489,12 +489,14 @@ const setControl = () => {
 		}
 	})
 }
+const instance = getCurrentInstance()
+const handleChange = (list: QvColumn[], column: QvColumn) => {
+	console.log(instance)
 
-const handleChange = (list: any, column: any) => {
 	nextTick(() => {
-		const cascader = column.cascader
+		const cascader = column.cascader || []
 		const str: string = cascader.join(',')
-		cascader.forEach((item: any) => {
+		cascader.forEach((item: string) => {
 			const columnNextProp = item
 			const value = form.value[column.prop]
 			// 下一个节点
@@ -519,7 +521,8 @@ const handleChange = (list: any, column: any) => {
 			sendDic({
 				column: columnNext,
 				value,
-				form: form.value
+				form: form.value,
+				instance
 			}).then((res: any) => {
 				//首次加载的放入队列记录
 				if (!formList.value.includes(str)) formList.value.push(str)
@@ -544,7 +547,7 @@ const propChange = (option: QvColumn[], column: QvColumn) => {
 	}
 }
 
-const vaildDetail = (column: any) => {
+const vaildDetail = (column: QvColumn) => {
 	let key
 	if (detail.value) return false
 	if (!validatenull(column.detail)) {
@@ -560,7 +563,7 @@ const vaildDetail = (column: any) => {
 	return false
 }
 // 验证表单是否禁止
-const vaildDisabled = (column: any) => {
+const vaildDisabled = (column: QvColumn) => {
 	let key
 	if (disabled.value) return true
 	if (!validatenull(column.disabled)) {
@@ -676,7 +679,8 @@ defineExpose({
 	getPropRef,
 	submit,
 	clearValidate,
-	validate
+	validate,
+	updateDic
 })
 provide('formSafe', {
 	tableOption,

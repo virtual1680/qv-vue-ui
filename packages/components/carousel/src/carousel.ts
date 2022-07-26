@@ -1,8 +1,8 @@
 import type { PropType } from 'vue'
 import type Carousel from './carousel.vue'
 export interface CarouselProps {
-	fullscreen: string
-	type: string
+	fullscreen?: string
+	type?: string
 	height: string | number
 	autoplay: number
 	interval: number

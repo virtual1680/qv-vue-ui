@@ -357,7 +357,7 @@ const getTableHeight = () => {
 			tableHeight.value = document.documentElement.clientHeight - tableStyle.offsetTop - pageStyle - calcHeight.value
 		})
 	} else {
-		tableHeight.value = tableOption.value.height
+		tableHeight.value = tableOption.value.height || 0
 	}
 	refreshTable()
 }
