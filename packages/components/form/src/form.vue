@@ -236,7 +236,7 @@ const columnOption = computed(() => {
 		//根据order排序
 		ele.column = ele.column.sort((a: any, b: any) => (b.order || 0) - (a.order || 0))
 	})
-	console.log('columnOption-end', group)
+	// console.log('columnOption-end', group)
 	return group
 })
 
@@ -275,7 +275,6 @@ const setForm = (value: any) => {
 	if (tableOption.value.filterNull === true) {
 		form.value = filterParams(form.value, [''], false)
 	}
-	// console.log('-=-=-=-form', form.value)
 }
 watch(
 	() => tabsActive.value,
@@ -607,7 +606,7 @@ const validateCellForm = () => {
 }
 const validate = async (callback: (validate: boolean, hide: () => void, result?: any) => void) => {
 	await formRef.value?.validate((valid, msg) => {
-		console.log('form---load', valid)
+		// console.log('form---load', valid)
 		const dynamicList: any[] = []
 		const dynamicName: any[] = []
 		const dynamicError: Record<string, any> = {}

@@ -101,6 +101,7 @@ export interface BaseColumn extends QvSearchColumn {
 	focus?: (params: { value: QvValue; column: unknown }) => void
 	change?: (params: { value: QvValue; column: unknown }) => void
 	click?: (params: { value: QvValue; column: unknown }) => void
+	enter?: (params: { value: QvValue; column: unknown }) => void
 	typeformat?: (item: DicData, labelKey: string, valueKey: string) => string
 	control?: (value: unknown) => void
 	icon?: string
@@ -114,6 +115,7 @@ export interface BaseColumn extends QvSearchColumn {
 	target?: string
 	limit?: number
 	multiple?: boolean
+	event?: Record<string, (...args: any[]) => void>
 }
 export interface QvGroupI {
 	icon?: string

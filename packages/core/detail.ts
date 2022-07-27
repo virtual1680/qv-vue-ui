@@ -2,7 +2,6 @@
 import { findByValue, getAsVal, getPasswordChar, strCorNum, validatenull } from '@qv-vue/utils'
 import dayjs from 'dayjs'
 import { ARRAY_LIST, ARRAY_VALUE_LIST, DATE_LIST, DIC_SHOW_SPLIT, DIC_SPLIT, MULTIPLE_LIST } from '@qv-vue/constants'
-import { isString } from 'lodash-es'
 import type { QvColumn, QvOption } from '@qv-vue/types/qvue-ui'
 
 export const details = (row: Record<string, unknown> = {}, column: QvColumn, option: QvOption, dic: unknown[] = []) => {
@@ -17,14 +16,8 @@ export const details = (row: Record<string, unknown> = {}, column: QvColumn, opt
 		const selectFlag = MULTIPLE_LIST.includes(column.type || '') && column.multiple
 		const arrayFlag = ARRAY_VALUE_LIST.includes(column.type || '')
 		if ((['string', 'number'].includes(column.dataType || '') || selectFlag || arrayFlag) && !Array.isArray(result)) {
-			if (column.dataType === 'number') {
-				result = strCorNum(result as any)
-			} else {
-				if (isString(result) && (result.includes(separator || '') || result.includes(DIC_SPLIT))) {
-					result = result.split(separator || DIC_SPLIT)
-				}
-				result = [result as any]
-			}
+			result = (result + '').split(separator || DIC_SPLIT)
+			if (column.dataType === 'number') result = strCorNum(result)
 		}
 		if (ARRAY_LIST.includes(type || '')) {
 			if (Array.isArray(result)) {

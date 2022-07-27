@@ -340,6 +340,7 @@ export const findByValue = (dic: any, value: any, props: any) => {
 	return result.join()
 }
 /**
+ * 只过滤空字段
  * 过滤字典翻译字段和空字段
  */
 export const filterParams = (form: any, list = ['', '$'], deep = true) => {

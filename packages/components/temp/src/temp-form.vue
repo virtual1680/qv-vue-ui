@@ -5,6 +5,7 @@
 			ref="tempRef"
 			v-model="text"
 			v-bind="getBind(column)"
+			v-on="event"
 			:column="Object.assign(column!, params)"
 			:dic="dic || []"
 			:disabled="column?.disabled || disabled"
@@ -52,9 +53,9 @@ const tempRef: Ref<any> = ref()
 const params = computed(() => {
 	return props.column?.params || {}
 })
-// const event = computed(() => {
-// 	return props.column.event || {};
-// });
+const event = computed(() => {
+	return props.column?.event || {}
+})
 
 watch(
 	() => text.value,
@@ -91,5 +92,13 @@ const getBind = (column: any) => {
 	})
 	return params
 }
+// const enterChange = () => {
+// 	let enter = props.column?.enter
+// 	if (!validatenull(enter)) {
+// 		if (typeof enter === 'function') props.column?.enter?.({ value: text.value, column: props.column })
+// 	} else if (enter) {
+// 		emit('enter')
+// 	}
+// }
 defineExpose({ tempRef })
 </script>

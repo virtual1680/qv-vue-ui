@@ -1,11 +1,11 @@
 <!-- eslint-disable vue/no-v-html -->
 <template>
-	<span v-if="['img', 'upload'].includes(column.type)">
+	<span v-if="['img', 'upload'].includes(column.type || '')">
 		<div class="qv-crud__img">
 			<img v-for="(item, index) in getImgList(row, column)" :key="index" :src="item" @click="openImg(getImgList(row, column), index)" />
 		</div>
 	</span>
-	<span v-else-if="['url'].includes(column.type)">
+	<span v-else-if="['url'].includes(column.type || '')">
 		<el-link
 			v-for="(item, index) in corArray(row[column.prop], column.separator)"
 			:key="index"
@@ -15,7 +15,7 @@
 			{{ item }}
 		</el-link>
 	</span>
-	<span v-else-if="['rate'].includes(column.type)">
+	<span v-else-if="['rate'].includes(column.type || '')">
 		<qv-rate v-model="row[column.prop]" disabled />
 	</span>
 	<span v-else v-html="handleDetail(row, column)" />
