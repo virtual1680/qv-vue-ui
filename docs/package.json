@@ -12,6 +12,8 @@
 		"@vueuse/core": "^8.0.1",
 		"axios": "^0.26.1",
 		"clipboard-copy": "^4.0.1",
+		"element-plus": "^2.2.9",
+		"lodash-es": "^4.17.21",
 		"normalize.css": "^8.0.1",
 		"nprogress": "^0.2.0",
 		"prism-theme-vars": "^0.2.2",
@@ -30,7 +32,7 @@
 		"vite": "^2.8.6",
 		"vite-plugin-inspect": "^0.4.3",
 		"vite-plugin-windicss": "^1.8.3",
-		"vitepress-theme-demoblock": "^1.4.2",
-		"vitepress": "^0.22.3"
+		"vitepress": "^0.22.3",
+		"vitepress-theme-demoblock": "^1.4.2"
 	}
 }

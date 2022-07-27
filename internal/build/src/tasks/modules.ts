@@ -43,7 +43,7 @@ export const buildModules = async () => {
 				}
 			})
 		],
-		external: await generateExternal({ full: false }),
+		external: await generateExternal({ full: true }),
 		treeshake: false
 	})
 	await writeBundles(

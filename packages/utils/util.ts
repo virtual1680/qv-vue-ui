@@ -1,4 +1,4 @@
-import { cloneDeep } from 'lodash-es'
+import { cloneDeep } from 'lodash'
 import { DIC_PROPS, DIC_SHOW_SPLIT } from '@qv-vue/constants'
 import { validatenull } from './validate'
 

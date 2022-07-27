@@ -1,6 +1,6 @@
 {
 	"name": "qv-vue",
-	"version": "0.0.3",
+	"version": "0.0.4",
 	"description": "A Component Library for Vue 3",
 	"keywords": [
 		"qv-vue",
@@ -55,13 +55,11 @@
 		"@floating-ui/dom": "^0.5.4",
 		"@popperjs/core": "npm:@sxzz/popperjs-es@^2.11.7",
 		"@types/lodash": "^4.14.182",
-		"@types/lodash-es": "^4.17.6",
 		"@vueuse/core": "^8.7.5",
 		"async-validator": "^4.2.5",
 		"dayjs": "^1.11.3",
 		"escape-html": "^1.0.3",
 		"lodash": "^4.17.21",
-		"lodash-es": "^4.17.21",
 		"lodash-unified": "^1.0.2",
 		"memoize-one": "^6.0.0",
 		"element-plus": "^2.2.9",

@@ -45,20 +45,3 @@ app.mount('#app')
 // 目前还有点问题 建议不使用
 import { QvCrud, QvForm } from 'qi-ui-plus'
 ```
-
-## 类型提示
-
-我们提供了所有组件的类型定义，你可以参考下面的代码进行导入类型声明。(Ts 三斜线)
-
-```js
-// env.d.ts
-/// <reference types="vite/client" />
-/// <reference types="qv-vue/types" />
-
-declare module '*.vue' {
-  import { DefineComponent } from 'vue'
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/ban-types
-  const component: DefineComponent<{}, {}, any>
-  export default component
-}
-```

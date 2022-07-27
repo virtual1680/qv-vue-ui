@@ -12,7 +12,7 @@ import {
 } from '@qv-vue/constants'
 
 import { t } from '@qv-vue/locale'
-import { isString } from 'lodash-es'
+import { isString } from 'lodash'
 /**
  * 计算级联属性
  */

@@ -1,7 +1,7 @@
 // docs/.vitepress/config.js
 module.exports = {
 	title: 'QvVue', // 站点名称
-	description: 'Just playing around.',
+	description: 'A Component Library for Vue 3',
 	base: '/', // 部署的基础路径
 	head: [
 		// 生成html的head配置：站点favicon...
@@ -23,6 +23,10 @@ module.exports = {
 			{
 				text: 'Gitee',
 				link: 'https://gitee.com/virtual1680/qv-vue-ui'
+			},
+			{
+				text: 'Github',
+				link: 'https://github.com/virtual1680/qv-vue-ui'
 			} // 外部链接有特定标识
 		],
 		sidebar: {
@@ -32,9 +36,8 @@ module.exports = {
 				{ text: '快速开始', link: '/guide/quickstart/' }
 			],
 			'/components/': [
-				{ text: '表单form', link: '/components/forms/' },
-				{ text: '图标icon', link: '/components/icon/' },
-				{ text: '时间', link: '/components/date/' }
+				{ text: '表单(form)', link: '/components/forms/' },
+				{ text: '表单(crud)', link: '/components/crud/' }
 				// -- append sidebar --
 			]
 		}

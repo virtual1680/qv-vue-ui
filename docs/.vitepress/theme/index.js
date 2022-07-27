@@ -17,7 +17,7 @@ export default {
 	...DefaultTheme,
 	...Theme,
 	enhanceApp({ app }) {
-		app.use(ElementPlus).use(QvVue)
+		app.use(ElementPlus).use(QvVue, { lang: 'zh' })
 		registerComponents(app)
 	}
 }
