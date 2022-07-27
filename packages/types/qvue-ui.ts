@@ -2,6 +2,7 @@ import { QvSearchColumn, QvSearchOption } from './search-type'
 import { QvDialogOption } from './dialog-type'
 import { QvMenuOption } from './menu-type'
 import { QvBtnOption } from './btn-type'
+import { FormRules } from 'element-plus'
 
 type Placement =
 	| 'top-start'
@@ -32,90 +33,271 @@ export interface DicProps {
 }
 
 export interface BaseColumn extends QvSearchColumn {
+	/**
+	 * 字符数据分离切割 默认 ','
+	 */
 	separator?: string
 	align?: 'left' | 'center' | 'right'
+	/**
+	 * 暂不可用
+	 * 是否开启加载html
+	 * dicData:[label:'<div>我是html</div>',value:1]
+	 */
 	html?: boolean
 	cell?: boolean
+	/**
+	 * 编辑窗口是否禁用
+	 */
 	editDisabled?: boolean
+	/**
+	 * 编辑窗口是否显示
+	 */
 	editDisplay?: boolean
+	/**
+	 * 编辑窗口中是否让该字段以详情的方式展示
+	 */
 	editDetail?: boolean
+	/**
+	 * 新增窗口是否禁用
+	 */
 	addDisabled?: boolean
+	/**
+	 * 新增窗口是否显示
+	 */
 	addDisplay?: boolean
+	/**
+	 * 新增窗口中是否让该字段以详情的方式展示
+	 */
 	addDetail?: boolean
+	/**
+	 * 详情窗口是否显示
+	 */
 	viewDisplay?: boolean
-	// 是否让该字段展示详情
+	/**
+	 * 否让该字段以详情的方式展示
+	 */
 	detail?: boolean
+	/**
+	 * 字段排序 数组越小越靠前
+	 */
 	order?: number
 	filter?: boolean
 	filterMultiple?: boolean
 	filters?: boolean | any[] | { text: string; value: string | number | boolean }[]
 	filterMethod?: (value: any, row: any, column: any) => void
 	filtersMethod?: (value: any, row: any, column: any) => void
+	/**
+	 * crud
+	 * 是否固定
+	 */
 	fixed?: boolean
 	formatter?: (row: any, value: any, label: string | string[] | number | number[], column: any) => any
 	showColumn?: boolean
 	sortable?: boolean
-	slot?: boolean
-	formslot?: boolean
-	labelslot?: boolean
-	errorslot?: boolean
-	headerslot?: boolean
-	typeslot?: boolean
+	// slot?: boolean
+	// formslot?: boolean
+	// labelslot?: boolean
+	// errorslot?: boolean
+	// headerslot?: boolean
+	// typeslot?: boolean
 	headerAlign?: 'right' | 'center' | 'left'
-	type?: string //''
+	/**
+	 * 组件类型  默认 input
+	 * select checkbox upload ....
+	 */
+	type?: string
+	/**
+	 * crud
+	 * 表格列的宽度
+	 */
 	width?: number
+	/**
+	 * crud
+	 * 表格列的最小宽度
+	 */
 	minWidth?: number
+	/**
+	 * form
+	 * 分组展示时是否禁用展开
+	 */
 	arrow?: boolean
+	/**
+	 * form
+	 * 分组展示时是否展开
+	 */
 	collapse?: boolean
+	/**
+	 * form
+	 * 组件在表单是否独占一行
+	 */
 	row?: boolean
-	clearable?: boolean //true
-	disabled?: boolean //false
-	hide?: boolean
-	overHidden?: boolean
-	label?: string //''
-	labelWidth?: number
-	labelPosition?: 'right' | 'left' | 'top'
-	tip?: string //'
-	tipPlacement?: Placement
-	labelTip?: string
-	labelTipPlacement?: Placement
-	placeholder?: string //''
-	prop: string //''
-	bind?: string
-	readonly?: boolean
-	rules?: any //FormRules
-	size?: '' | 'default' | 'small' | 'large'
+	/**
+	 * form
+	 * 组件在表单中栅格占位 默认 6
+	 */
 	span?: number
+	/**
+	 * form
+	 * 组件是否开启清除按钮 默认 true
+	 */
+	clearable?: boolean
+	/**
+	 * form
+	 * 组件是否禁用 默认 false
+	 */
+	disabled?: boolean
+	/**
+	 * crud
+	 * 该列在表格中是否隐藏 默认 false
+	 */
+	hide?: boolean
+	/**
+	 * crud
+	 * 是否让该列在表格中内容超出则显示... 默认 false
+	 */
+	overHidden?: boolean
+	/**
+	 * form
+	 * 表单item组件 label文字
+	 */
+	label?: string
+	/**
+	 * form
+	 * 表单item组件 label 宽度
+	 */
+	labelWidth?: number
+	/**
+	 * form
+	 * 表单item组件 label 的显示位置
+	 */
+	labelPosition?: 'right' | 'left' | 'top'
+	/**
+	 * form
+	 * 表单组件显示的tip文案
+	 */
+	tip?: string
+	/**
+	 * form
+	 * 表单组件显示的tip文案的显示位置
+	 */
+	tipPlacement?: Placement
+	/**
+	 * form
+	 * 表单item组件 label 的tip文案
+	 */
+	labelTip?: string
+	/**
+	 * form
+	 * 表单item组件 label 的tip文案的显示位置
+	 */
+	labelTipPlacement?: Placement
+	/**
+	 * form
+	 * 表单item组件占位提示
+	 */
+	placeholder?: string
+	/**
+	 * 该组件绑定的key
+	 */
+	prop: string
+	bind?: string
+	/**
+	 * form
+	 * 该组件是否只读
+	 */
+	readonly?: boolean
+	/**
+	 * form
+	 * 表单item组件数据的校验规则
+	 */
+	rules?: FormRules
+	/**
+	 * form
+	 * 表单item组件的大小
+	 */
+	size?: '' | 'default' | 'small' | 'large'
+	/**
+	 * form
+	 * 表单item组件的列间距
+	 */
 	gutter?: number
+	/**
+	 * form
+	 * 表单item组件是否展示
+	 */
 	display?: boolean
+	/**
+	 * form
+	 * 表单item组件自定义key
+	 */
 	props?: DicProps
 	dataType?: string
+	/**
+	 * form
+	 * 默认值
+	 */
 	value?: QvValue
+	/**
+	 * form
+	 * 组件的数据字典
+	 */
 	dicData?: { label: string; value: string | number | boolean }[]
-	dicUrl?: string //''
+	/**
+	 * form
+	 * 组件动态请求数据字典的url
+	 */
+	dicUrl?: string
 	dicFlag?: boolean
 	dicMethod?: 'get' | 'post'
-	dicQuery?: Record<string, string>
-	dicFormatter?: (res: any) => void
+	/**
+	 * form
+	 * 请求数据字典的请求参数
+	 */
+	dicQuery?: Record<string, string | number>
+	/**
+	 * form
+	 * 数据字典格式化
+	 */
+	dicFormatter?: (res: any) => any[]
 	blur?: (params: { value: QvValue; column: unknown }) => void
 	focus?: (params: { value: QvValue; column: unknown }) => void
 	change?: (params: { value: QvValue; column: unknown }) => void
 	click?: (params: { value: QvValue; column: unknown }) => void
 	enter?: (params: { value: QvValue; column: unknown }) => void
 	typeformat?: (item: DicData, labelKey: string, valueKey: string) => string
-	control?: (value: unknown) => void
+	/**
+	 * form
+	 * 控制其他字段
+	 */
+	control?: <T = any>(value: unknown, form: T) => Record<string, QvColumn>
 	icon?: string
 	flex?: number
 	children?: any
+	/**
+	 * form
+	 * 第三方组件
+	 */
 	component?: string
+	/**
+	 * form
+	 * 第三方组件事件
+	 */
+	event?: Record<string, (...args: any[]) => void>
+	/**
+	 * form
+	 * 第三方组件属性
+	 */
+	params?: Record<string, unknown>
 	offset?: number
 	className?: string
 	count?: number
 	parentProp?: string
 	target?: string
 	limit?: number
+	/**
+	 * 是否多选
+	 */
 	multiple?: boolean
-	event?: Record<string, (...args: any[]) => void>
 }
 export interface QvGroupI {
 	icon?: string
@@ -300,9 +482,7 @@ export interface RadioColumn {
 	border?: boolean
 	button?: boolean
 }
-export interface MapColumn {
-	params?: Record<string, unknown>
-}
+
 export interface NumberColumn {
 	precision?: number
 	min?: number
@@ -419,7 +599,6 @@ export interface QvColumn
 		RateColumn,
 		SwitchColumn,
 		NumberColumn,
-		MapColumn,
 		RadioColumn,
 		DateColumn,
 		SelectColumn,

@@ -453,35 +453,55 @@ const setVal = () => {
 	emit('change', form.value)
 }
 const setControl = () => {
-	propOption.value.forEach((column: any) => {
+	propOption.value.forEach((column: QvColumn) => {
 		const prop = column.prop
 		const bind = column.bind
 		const control = column.control
-		// let value = form.value;
 		if (!formBind.value[prop]) {
 			if (bind) {
-				watch(form.value[prop], (n, o) => {
-					if (n != o) setAsVal(form.value, bind, n)
-				})
-				watch(form.value[bind], (n, o) => {
-					if (n != o) form.value[prop] = n
-				})
+				watch(
+					() => form.value[prop],
+					(n, o) => {
+						if (n != o) setAsVal(form.value, bind, n)
+					}
+				)
+				watch(
+					() => form.value[bind],
+					(n, o) => {
+						if (n != o) form.value[prop] = n
+					}
+				)
 				form.value[prop] = eval(`value.${bind}`)
 			}
 			if (control) {
+				// console.log('column.prop-=-=-=-', column.prop)
 				const callback = () => {
 					const controlList = control(form.value[column.prop], form.value) || {}
+
 					Object.keys(controlList).forEach(item => {
 						objectOption.value[item] = {
 							...(objectOption.value[item] as object),
 							...controlList[item]
 						}
-						if (controlList[item].dicData) DIC.value[item] = controlList[item].dicData
+						//将objectOption更新到 columnOption
+						columnOption.value.forEach((ele: any, index: number) => {
+							for (const [columnIndex, columnItem] of ele.column.entries()) {
+								// console.log(index, columnItem['prop'], item)
+								if (columnItem['prop'] === item) {
+									// console.log(columnIndex, item)
+									columnOption.value[index].column[columnIndex] = objectOption.value[item]
+								}
+							}
+						})
+						if (controlList[item].dicData) DIC.value[item] = controlList[item].dicData || []
 					})
 				}
-				watch(form.value[prop], () => {
-					callback()
-				})
+				watch(
+					() => form.value[prop],
+					() => {
+						callback()
+					}
+				)
 				callback()
 			}
 			formBind.value[prop] = true
