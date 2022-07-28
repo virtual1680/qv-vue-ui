@@ -3,8 +3,8 @@
 	"private": true,
 	"scripts": {
 		"dev": "vitepress dev . --open --port 4000",
-		"build": "cross-env NODE_ENV=production && vitepress build .",
-		"serve": "cross-env NODE_ENV=production vitepress serve --open . --port 5000"
+		"build": "vitepress build .",
+		"serve": "vitepress serve --open . --port 5000"
 	},
 	"dependencies": {
 		"@docsearch/js": "^3.0.0",

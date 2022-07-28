@@ -11,10 +11,10 @@
 		"noImplicitAny": false,
 		"skipLibCheck": true,
 		"paths": {
-			"qv-vue": ["../packages/qv-vue"]
+			"@qv-vue": ["../dist/qv-vue"]
 		},
-		"types": ["../types/index"]
+		"types": ["../dist/types/packages/index"]
 	},
-	"include": ["./*", ".vitepress/**/*"],
+	"include": ["**/*", ".vitepress/**/*"],
 	"exclude": ["node_modules"]
 }
