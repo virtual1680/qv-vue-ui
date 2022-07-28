@@ -1,6 +1,6 @@
 {
 	"name": "qv-vue",
-	"version": "0.0.4",
+	"version": "0.0.5",
 	"description": "A Component Library for Vue 3",
 	"keywords": [
 		"qv-vue",
@@ -9,7 +9,7 @@
 		"ui framework",
 		"element-plus"
 	],
-	"homepage": "https://qv-vue-ui.org/",
+	"homepage": "https://virtual1680.github.io/",
 	"bugs": {
 		"url": "https://github.com/virtual1680/qv-vue-ui/issues"
 	},
