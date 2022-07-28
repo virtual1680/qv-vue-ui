@@ -43,5 +43,5 @@ app.mount('#app')
 
 ```js
 // 目前还有点问题 建议不使用
-import { QvCrud, QvForm } from 'qi-ui-plus'
+import { QvCrud, QvForm } from 'qv-vue'
 ```

@@ -1,13 +1,19 @@
 ## crud 文档
 
-> 此组件主要是测试在组件库中引入第三方库(moment)后 会不会把第三方库 moment 一起打包
+::: tip
+更新中
+:::
 
-:::demo
+::: warning
+在案例中以下写法可以忽略,按照正常写法即可,以下代码仅仅是为了在文档中引入第三方组件
 
-```vue
-<template>
-	<qv-crud />
-</template>
+```
+const ElementPlus = ref()
+onMounted(() => {
+	import('element-plus').then(module => {
+		ElementPlus.value = module
+	})
+})
 ```
 
 :::

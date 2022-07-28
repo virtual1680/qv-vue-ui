@@ -18,7 +18,26 @@ module.exports = {
 		nav: [
 			// 头部导航
 			{ text: '指南', link: '/guide/intro/' },
-			{ text: '组件', link: '/components/form/' },
+			{
+				text: '文档',
+				link: '/components/',
+				collapsible: false,
+				collapsed: false,
+				items: [
+					{
+						text: 'Form组件',
+						link: '/components/form/'
+					},
+					{
+						text: 'Crud组件',
+						link: '/components/crud/'
+					},
+					{
+						text: 'Crud/Form属性',
+						link: '/components/params/'
+					}
+				]
+			},
 			{ text: 'NPM', link: 'https://www.npmjs.com/package/qv-vue' }, // 外部链接有特定标识
 			{
 				text: 'Gitee',
@@ -35,10 +54,41 @@ module.exports = {
 				{ text: '介绍', link: '/guide/intro/' },
 				{ text: '快速开始', link: '/guide/quickstart/' }
 			],
-			'/components/': [
+			'/components/form/': [
 				{
-					text: '表单(form)',
+					text: 'Form组件',
 					link: '/components/form/',
+					collapsable: false,
+					children: [
+						{ text: '基础用法', link: '/components/form/basics' },
+						{ text: '分页', link: '/components/form/function' },
+						{ text: '搜索', link: '/components/form/title-width' },
+						{ text: '表头配置', link: '/components/form/display' },
+						{ text: '表格行配置项', link: '/components/form/custom-slot' },
+						{ text: '表格列配置项', link: '/components/form/data-default' },
+						{ text: '操作栏配置', link: '/components/form/data-validate' },
+						{ text: '增删改查方法', link: '/components/form/data-dic' },
+						{ text: '按钮文案|图标', link: '/components/form/data-type' },
+						{ text: '按钮自定义', link: '/components/form/data-filter' },
+						{ text: '弹窗表单配置', link: '/components/form/submit' },
+						{ text: '数据字典', link: '/components/form/order' },
+						{ text: '统计合计', link: '/components/form/component' },
+						{ text: '表格树', link: '/components/form/component-event' },
+						{ text: '父子表', link: '/components/form/group' },
+						{ text: '行编辑', link: '/components/form/tabs' },
+						{ text: '权限控制', link: '/components/form/control' },
+						{ text: '动态行列合并', link: '/components/form/tip' },
+						{ text: '空状态', link: '/components/form/tip' },
+						{ text: '字段排序', link: '/components/form/tip' },
+						{ text: 'CRUD模块封装', link: '/components/form/tip' }
+					]
+				}
+			],
+			'/components/crud/': [
+				{
+					text: 'Crud组件',
+					link: '/components/crud/',
+					collapsable: false,
 					children: [
 						{ text: '基础用法', link: '/components/form/basics' },
 						{ text: '函数用法', link: '/components/form/function' },
@@ -59,10 +109,12 @@ module.exports = {
 						{ text: '控制其它字段', link: '/components/form/control' },
 						{ text: '辅助提示语', link: '/components/form/tip' }
 					]
-				},
-				{ text: '表单(crud)', link: '/components/crud/' }
-				// -- append sidebar --
+				}
 			]
+			// // { link: '/components/params/'}
+			// '/components/params/': { link: '/components/params/' }
+
+			// // -- append sidebar --
 		}
 	},
 	markdown: {

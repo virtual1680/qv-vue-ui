@@ -10,7 +10,9 @@
 				</template>
 				<template v-else-if="(label || icon) && header" #title>
 					<div :class="b('header')">
-						<i v-if="icon" :class="[icon, b('icon')]" />
+						<el-icon v-if="icon" :class="[icon, b('icon')]">
+							<component :is="icon" />
+						</el-icon>
 						<h1 v-if="label" :class="b('title')">{{ label }}</h1>
 					</div>
 				</template>
