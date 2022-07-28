@@ -2,7 +2,7 @@ import { QvSearchColumn, QvSearchOption } from './search-type'
 import { QvDialogOption } from './dialog-type'
 import { QvMenuOption } from './menu-type'
 import { QvBtnOption } from './btn-type'
-import { FormRules } from 'element-plus'
+import { FormItemRule } from 'element-plus'
 
 type Placement =
 	| 'top-start'
@@ -210,7 +210,7 @@ export interface BaseColumn extends QvSearchColumn {
 	 * form
 	 * 表单item组件数据的校验规则
 	 */
-	rules?: FormRules
+	rules?: FormItemRule[]
 	/**
 	 * form
 	 * 表单item组件的大小
