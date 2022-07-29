@@ -54,10 +54,10 @@ module.exports = {
 				{ text: '介绍', link: '/guide/intro/' },
 				{ text: '快速开始', link: '/guide/quickstart/' }
 			],
-			'/components/form/': [
+			'/components/crud/': [
 				{
-					text: 'Form组件',
-					link: '/components/form/',
+					text: 'Crud组件',
+					link: '/components/crud/',
 					collapsable: false,
 					children: [
 						{ text: '基础用法', link: '/components/form/basics' },
@@ -84,10 +84,10 @@ module.exports = {
 					]
 				}
 			],
-			'/components/crud/': [
+			'/components/form/': [
 				{
-					text: 'Crud组件',
-					link: '/components/crud/',
+					text: 'Form组件',
+					link: '/components/form/',
 					collapsable: false,
 					children: [
 						{ text: '基础用法', link: '/components/form/basics' },
@@ -111,10 +111,6 @@ module.exports = {
 					]
 				}
 			]
-			// // { link: '/components/params/'}
-			// '/components/params/': { link: '/components/params/' }
-
-			// // -- append sidebar --
 		}
 	},
 	markdown: {

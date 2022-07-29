@@ -929,13 +929,13 @@ export const paramsList = [
 		label: 'page',
 		type: 'Object',
 		tag: 2,
-		note: '表格的分页数据(需要sync修饰符)',
+		note: '表格的分页数据 通过 v-model:page="xxx" 来绑定分页',
 		href: '/crud/crud-page',
 		children: [
 			{ label: 'total', type: 'Number', tag: 2, note: '总条数,如果为0的话不显示分页', default: 0 },
 			{ label: 'currentPage', tag: 2, type: 'Number', note: '当前页数', default: 1 },
 			{ label: 'background', tag: 2, type: 'Boolean', note: '是否为分页按钮添加背景色', default: !0 },
-			{ label: 'pageSize', tag: 2, type: 'Number', note: '每页显示条目个数，支持.sync修饰符', default: 20 },
+			{ label: 'pageSize', tag: 2, type: 'Number', note: '每页显示条目个数', default: 20 },
 			{ label: 'pageSizes', tag: 2, type: 'Number', note: '分页的数组分段', default: '[10,20,30,50,100]' },
 			{ label: 'pagerCount', tag: 2, type: 'Number', note: '页码按钮的数量，当总页数超过该值时会折叠', default: 5 }
 		]
@@ -947,7 +947,7 @@ export const paramsList = [
 		note: '表格多个按钮权限控制，采用函数方式可以精确到行控制',
 		href: '/crud/crud-permission'
 	},
-	{ label: 'search', tag: 2, type: 'Object', note: '表格搜索的表单的变量(需要sync修饰符)' },
+	{ label: 'search', tag: 2, type: 'Object', note: '表格搜索的表单的变量 通过 v-model:search="xxx" 来绑定搜索参数' },
 	{
 		label: 'header-cell-class-name',
 		tag: 2,
