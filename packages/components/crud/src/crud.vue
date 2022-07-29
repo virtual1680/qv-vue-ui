@@ -357,7 +357,7 @@ const getTableHeight = () => {
 			tableHeight.value = document.documentElement.clientHeight - tableStyle.offsetTop - pageStyle - calcHeight.value
 		})
 	} else {
-		tableHeight.value = tableOption.value.height || 0
+		tableHeight.value = tableOption.value.height || 300
 	}
 	refreshTable()
 }
@@ -589,7 +589,7 @@ const tableSummaryMethod = <T = any>(param: { columns: TableColumnCtx<T>[]; data
 				if (currItem.type === 'avg') {
 					sums[index] = label + data.length
 				} else if (currItem.type === 'count') {
-					const avgValues = data.map((item: Record<string, any>) => {
+					const avgValues = data.map((item: T) => {
 						return item[column.property]
 					})
 					let nowindex = 1

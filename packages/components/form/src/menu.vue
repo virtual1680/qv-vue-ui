@@ -20,7 +20,7 @@
 			v-if="validData(formSafe.tableOption.value.submitBtn, true)"
 			type="primary"
 			:size="formSafe.controlSize.value"
-			:icon="formSafe.tableOption.submitIcon || 'Check'"
+			:icon="formSafe.tableOption.value.submitIcon || 'Check'"
 			:loading="formSafe.allDisabled.value"
 			@click="formSafe.submit">
 			{{ validData(formSafe.tableOption.value.submitText, t('form.submitBtn')) }}
@@ -48,7 +48,7 @@ const { b } = useBem('qv-form')
 const formSafe = inject<any>('formSafe')
 
 const menuSpan = computed(() => {
-	return formSafe.isMenu.value.search ? 6 : formSafe.tableOption.value.menuSpan || 24
+	return formSafe.tableOption.value.menuSpan || 24
 })
 const styleName = computed(() => {
 	if (menuSpan.value !== 24) {

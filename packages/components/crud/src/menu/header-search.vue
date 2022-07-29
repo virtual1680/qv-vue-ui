@@ -81,10 +81,12 @@ watch(
 // 	return !validatenull(crud.tableOption.group);
 // });
 const isSearchIcon = computed(() => {
+	console.log(columnLen.value > searchIndex.value)
+
 	return validData(crud.option.searchIcon, true) === true && columnLen.value > searchIndex.value
 })
 const searchIndex = computed(() => {
-	return crud.option.searchIndex || 10 // 默认只显示10搜索表单item
+	return crud.option.searchIndex || 3 // 默认只显示10搜索表单item
 })
 const columnLen = computed(() => {
 	let count = 0

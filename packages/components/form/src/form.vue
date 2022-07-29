@@ -397,8 +397,8 @@ const formItemBind = (scope: any, column: QvColumn) => {
 	})
 }
 // const menuSpan = computed(() => {
-// 	return tableOption.value.menuSpan || 24;
-// });
+// 	return tableOption.value.menuSpan || 24
+// })
 
 const bindRef = (refs: any, prop: string) => {
 	propRef.value[prop] = refs as TempFormInstance

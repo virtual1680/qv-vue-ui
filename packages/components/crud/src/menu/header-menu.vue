@@ -29,8 +29,6 @@
 			<qv-date
 				v-if="validData(crud.tableOption.value.dateBtn, config.dateBtn)"
 				type="datetimerange"
-				value-format="YYYY-MM-DD HH:mm:ss"
-				format="YYYY-MM-DD HH:mm:ss"
 				style="display: inline-block; margin-right: 20px"
 				:column="state.pickerOptions"
 				:size="crud.isMediumSize"
@@ -88,50 +86,43 @@ defineOptions({
 const state = reactive({
 	dateCreate: false,
 	pickerOptions: {
+		valueFormat: 'YYYY-MM-DD HH:mm:ss',
+		format: 'YYYY-MM-DD HH:mm:ss',
 		shortcuts: [
 			{
-				text: '今日',
-				onClick(picker: any) {
-					const end = new Date()
-					const start = new Date()
-					start.setTime(start.getTime())
-					picker.emit('pick', [start, end])
-				}
-			},
-			{
 				text: '昨日',
-				onClick(picker: any) {
+				value: () => {
 					const end = new Date()
 					const start = new Date()
 					start.setTime(start.getTime() - 3600 * 1000 * 24 * 1)
-					picker.emit('pick', [start, end])
+					return [start, end]
 				}
 			},
 			{
 				text: '最近一周',
-				onClick(picker: any) {
+				value: () => {
 					const end = new Date()
 					const start = new Date()
 					start.setTime(start.getTime() - 3600 * 1000 * 24 * 7)
-					picker.emit('pick', [start, end])
+					return [start, end]
 				}
 			},
 			{
 				text: '最近一个月',
-				onClick(picker: any) {
+				value: () => {
 					const end = new Date()
 					const start = new Date()
 					start.setTime(start.getTime() - 3600 * 1000 * 24 * 30)
-					picker.emit('pick', [start, end])
+					return [start, end]
 				}
 			},
 			{
 				text: '最近三个月',
-				onClick(picker: any) {
+				value: () => {
 					const end = new Date()
 					const start = new Date()
 					start.setTime(start.getTime() - 3600 * 1000 * 24 * 90)
-					picker.emit('pick', [start, end])
+					return [start, end]
 				}
 			}
 		]
@@ -146,12 +137,13 @@ const state = reactive({
 // 	}
 // });
 //日期组件回调
-const dateChange = (data: string | string[]) => {
-	if (state.dateCreate) {
-		crud.emit('date-change', data)
-	} else {
-		state.dateCreate = true
-	}
+const dateChange = (data: any) => {
+	crud.emit('date-change', data.value)
+	// if (state.dateCreate) {
+	// 	crud.emit('date-change', data)
+	// } else {
+	// 	state.dateCreate = true
+	// }
 }
 const initFun = () => {
 	crud.rowExcel = rowExcel
