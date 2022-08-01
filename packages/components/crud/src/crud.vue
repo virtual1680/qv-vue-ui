@@ -362,6 +362,8 @@ const getTableHeight = () => {
 	refreshTable()
 }
 const handleValidate = (prop: string, valid: boolean, msg: string) => {
+	console.log(prop, valid, msg)
+
 	if (!listError.value[prop]) listError.value[prop] = { valid: false, msg: '' }
 	listError.value[prop].valid = !valid
 	listError.value[prop].msg = msg
@@ -504,7 +506,8 @@ const validateCellField = (index: any) => {
 	}
 	return result
 }
-const rowCellUpdate = (row: any, index: number) => {
+const rowCellUpdate = async (row: any, index: number) => {
+	if (!cellFormRef.value) return
 	row = deepClone(row)
 	const done = () => {
 		btnDisabledList.value[index] = false
@@ -517,7 +520,9 @@ const rowCellUpdate = (row: any, index: number) => {
 		btnDisabledList.value[index] = false
 		btnDisabled.value = false
 	}
-	cellFormRef.value?.validate(valid => {
+	await cellFormRef.value?.validate((valid: boolean) => {
+		console.log('-=-=-=-=-=-=-', valid)
+
 		if (valid) {
 			btnDisabledList.value[index] = true
 			btnDisabled.value = true
@@ -823,7 +828,11 @@ provide('crud', {
 	isTree,
 	isShowSummary,
 	headerSort,
-	findData
+	findData,
+	listError,
+	cascaderDIC,
+	tableRef,
+	tableDrop
 })
 
 const rowSave = () => {

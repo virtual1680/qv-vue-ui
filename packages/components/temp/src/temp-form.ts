@@ -31,7 +31,7 @@ export const tempFormProps = {
 	uploadPreview: Function as PropType<TempFormProps['uploadPreview']>,
 	uploadError: Function as PropType<TempFormProps['uploadError']>,
 	uploadExceed: Function as PropType<TempFormProps['uploadExceed']>,
-	columnSlot: Array as PropType<TempFormProps['columnSlot']>,
+	columnSlot: [Array, Object] as PropType<TempFormProps['columnSlot']>,
 	tableData: Object as PropType<TempFormProps['tableData']>,
 	clearable: Boolean,
 	enter: Boolean,

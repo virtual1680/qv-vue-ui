@@ -13,7 +13,7 @@
 		:show-overflow-tooltip="column.overHidden"
 		:min-width="column.minWidth"
 		:sortable="dynamic.getColumnProp(column, 'sortable')"
-		:align="column.align || crud.tableOption.align"
+		:align="column.align || crud.tableOption.value.align"
 		:header-align="column.headerAlign || crud.tableOption.value.headerAlign"
 		:width="dynamic.getColumnProp(column, 'width')"
 		:fixed="dynamic.getColumnProp(column, 'fixed')">
@@ -24,13 +24,13 @@
 		<template #default="{ row, $index }">
 			<el-form-item
 				v-if="row.$cellEdit && column.cell"
-				:prop="crud.isTree ? '' : `list.${$index}.${column.prop}`"
+				:prop="crud.value ? '' : `list.${$index}.${column.prop}`"
 				:label="vaildLabel(column, row, ' ')"
 				:label-width="vaildLabel(column, row, '1px')"
 				:rules="column.rules">
 				<el-tooltip
-					:content="(crud.listError[`list.${$index}.${column.prop}`] || {}).msg"
-					:disabled="!(crud.listError[`list.${$index}.${column.prop}`] || {}).valid"
+					:content="(crud.listError.value[`list.${$index}.${column.prop}`] || {}).msg"
+					:disabled="!(crud.listError.value[`list.${$index}.${column.prop}`] || {}).valid"
 					placement="top">
 					<div>
 						<slot
@@ -41,7 +41,7 @@
 								size: crud.isMediumSize,
 								index: $index,
 								disabled: crud.btnDisabledList[$index],
-								label: handleShowLabel(row, column, crud.DIC[column.prop]),
+								label: handleShowLabel(row, column, crud.DIC.value[column.prop]),
 								$cell: row.$cellEdit
 							}"
 							:name="getSlotName(column, 'F')" />
@@ -55,10 +55,10 @@
 								row: row,
 								label: handleDetail(row, column)
 							}"
-							:dic="(crud.cascaderDIC[$index] || {})[column.prop] || crud.DIC[column.prop]"
-							:props="column.props || crud.tableOption.props"
+							:dic="(crud.cascaderDIC.value[$index] || {})[column.prop] || crud.DIC.value[column.prop]"
+							:props="column.props || crud.tableOption.value.props"
 							:readonly="column.readonly"
-							:disabled="crud.disabled || crud.tableOption.disabled || column.disabled || crud.btnDisabledList[$index]"
+							:disabled="crud.disabled || crud.tableOption.value.disabled || column.disabled || crud.btnDisabledList[$index]"
 							:clearable="validData(column.clearable, false)"
 							:column-slot="crud.mainSlot"
 							@change="columnChange(row, column, $index)">
@@ -73,9 +73,9 @@
 				v-else-if="crud.slots[column.prop]"
 				:row="row"
 				:index="$index"
-				:dic="crud.DIC[column.prop]"
+				:dic="crud.DIC.value[column.prop]"
 				:size="crud.isMediumSize"
-				:label="handleShowLabel(row, column, crud.DIC[column.prop])"
+				:label="handleShowLabel(row, column, crud.DIC.value[column.prop])"
 				:name="column.prop" />
 			<template v-else>
 				<span v-if="['img', 'upload'].includes(column.type || '')">
@@ -148,7 +148,7 @@ const vaildLabel = (column: any, row: any, val: any) => {
 const handleShowLabel = (row: any, column: any, DIC: any) => {
 	let result: any = ''
 	if (!validatenull(DIC)) {
-		result = details(row, column, crud.tableOption, DIC)
+		result = details(row, column, crud.tableOption.value, DIC)
 		row[`$${column.prop}`] = result
 	}
 	return result
@@ -229,8 +229,8 @@ const corArray = (list: any, separator = DIC_SPLIT) => {
 }
 const handleDetail = (row: any, column: any) => {
 	let result = row[column.prop]
-	const DIC = column.parentProp ? (crud.cascaderDIC[row.$index] || {})[column.prop] : crud.DIC[column.prop]
-	result = details(row, column, crud.tableOption, DIC)
+	const DIC = column.parentProp ? (crud.cascaderDIC.value[row.$index] || {})[column.prop] : crud.DIC.value[column.prop]
+	result = details(row, column, crud.tableOption.value, DIC)
 	if (!validatenull(DIC)) {
 		row[`$${column.prop}`] = result
 	}

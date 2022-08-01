@@ -49,7 +49,7 @@ const setSort = () => {
 	columnDrop()
 }
 const rowDrop = () => {
-	const el = crud.tableRef.$el.querySelectorAll(config.dropRowClass)[0]
+	const el = crud.tableRef.value.$el.querySelectorAll(config.dropRowClass)[0]
 	crud.tableDrop('row', el, (evt: any) => {
 		const oldIndex = evt.oldIndex
 		const newIndex = evt.newIndex
