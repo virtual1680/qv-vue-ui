@@ -69,7 +69,7 @@ const init = () => {
 		defaultColumn.value.forEach((ele: { label: string; prop: string }) => {
 			if (['hide', 'filters'].includes(ele.prop)) {
 				watch(
-					() => `crud.objectOption.${column.prop}.${ele.prop}`,
+					() => `crud.objectOption.value.${column.prop}.${ele.prop}`,
 					() => {
 						crud.refreshTable()
 					}
