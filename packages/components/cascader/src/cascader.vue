@@ -1,3 +1,9 @@
+<!--
+ * @Author: qinhongyang virtual1680@gmail.com
+ * @Date: 2022-08-18 08:51:31
+ * @LastEditTime: 2022-08-18 15:18:01
+ * @Description: 暂无
+-->
 <template>
 	<el-cascader
 		:options="dic"
@@ -17,15 +23,16 @@
 		@focus="handleFocus"
 		@blur="handleBlur">
 		<template #default="{ data, node }">
-			<slot v-if="$slots.default" :data="data" :node="node"></slot>
+			<slot v-if="slots.default" :data="data" :node="node"></slot>
 			<span v-else>{{ data[labelKey] }}</span>
 		</template>
 	</el-cascader>
 </template>
 <script lang="ts" setup>
-import { computed } from 'vue'
+import { computed, useSlots } from 'vue'
 import { useBem, useEvent } from '@qv-vue/hooks'
 import { cascaderProps } from './cascader'
+import { ElCascader } from 'element-plus'
 defineOptions({
 	name: 'qv-cascader'
 })
@@ -39,6 +46,7 @@ const emit = defineEmits<{
 }>()
 const props = defineProps(cascaderProps)
 const { text, labelKey, valueKey, childrenKey, handleClick, clearableVal, handleFocus, handleBlur } = useEvent(props, emit)
+const slots = useSlots()
 const allProps = computed(() => {
 	return {
 		label: labelKey.value,

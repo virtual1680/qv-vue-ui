@@ -1,3 +1,9 @@
+<!--
+ * @Author: qinhongyang virtual1680@gmail.com
+ * @Date: 2022-08-18 08:51:31
+ * @LastEditTime: 2022-08-18 15:16:51
+ * @Description: 暂无
+-->
 <template>
 	<div :class="[b(), { 'qv-carousel--fullscreen': option?.fullscreen }]">
 		<el-carousel
@@ -21,6 +27,7 @@
 import { computed } from 'vue'
 import { useBem } from '@qv-vue/hooks'
 import { carouselProps } from './carousel'
+import { ElCarousel, ElCarouselItem } from 'element-plus'
 defineOptions({
 	name: 'qv-carousel'
 })

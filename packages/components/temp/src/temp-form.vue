@@ -35,10 +35,42 @@ import { getComponent, getPlaceholder } from '@qv-vue/hooks'
 import { validatenull } from '@qv-vue/utils'
 import { tempFormProps } from './temp-form'
 import { QvInput } from '@qv-vue/components/input'
+import { QvRate } from '@qv-vue/components/rate'
+import { QvCheckbox } from '@qv-vue/components/checkbox'
+import { QvDate } from '@qv-vue/components/date'
+import { QvInputColor } from '@qv-vue/components/input-color'
+import { QvInputIcon } from '@qv-vue/components/input-icon'
+import { QvInputNumber } from '@qv-vue/components/input-number'
+import { QvRadio } from '@qv-vue/components/radio'
+import { QvSelect } from '@qv-vue/components/select'
+import { QvSwitch } from '@qv-vue/components/switch'
+import { QvTime } from '@qv-vue/components/time'
+import { QvUpload } from '@qv-vue/components/upload'
+import { QvArray } from '@qv-vue/components/array'
+import { QvCarousel } from '@qv-vue/components/carousel'
+import { QvCascader } from '@qv-vue/components/cascader'
+import { QvImg } from '@qv-vue/components/img'
 import type { Ref } from 'vue'
 defineOptions({
 	name: 'qv-temp-form',
-	components: { QvInput }
+	components: {
+		QvInput,
+		QvRate,
+		QvCheckbox,
+		QvDate,
+		QvInputColor,
+		QvInputIcon,
+		QvInputNumber,
+		QvRadio,
+		QvSelect,
+		QvSwitch,
+		QvTime,
+		QvUpload,
+		QvCarousel,
+		QvCascader,
+		QvImg,
+		QvArray
+	}
 })
 
 const emit = defineEmits<{

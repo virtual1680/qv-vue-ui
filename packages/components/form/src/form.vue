@@ -1,7 +1,7 @@
 <template>
 	<div :class="formClass" :style="{ width: setPx(tableOption.formWidth, '100%') }">
 		<el-form
-			ref="formRef"
+			ref="qvFormRef"
 			:status-icon="tableOption.statusIcon"
 			:model="form"
 			:label-suffix="labelSuffix"
@@ -161,11 +161,12 @@
 import { computed, getCurrentInstance, nextTick, onMounted, provide, ref, unref, useSlots, watch } from 'vue'
 import { calcCascader, calcCount, formInitVal, getPlaceholder, getSlotName, useBem, useInitCrud } from '@qv-vue/hooks'
 import { clearVal, filterParams, findObject, setAsVal, setPx, validData, validatenull } from '@qv-vue/utils'
-import { ElTabPane, ElTabs, ElFormItem, ElCol, ElRow, ElForm } from 'element-plus'
-import { QvGroup } from '@qv-vue/components/group'
+import { ElTabPane, ElTabs, ElFormItem, ElCol, ElRow, ElForm, ElTooltip, ElIcon } from 'element-plus'
+import { InfoFilled } from '@element-plus/icons-vue'
 import { DIC_PROPS } from '@qv-vue/constants'
 import { details, sendDic } from '@qv-vue/core'
 import { QvTempForm } from '@qv-vue/components/temp'
+import { QvGroup } from '@qv-vue/components/group'
 import FormMenu from './menu.vue'
 import { formProps } from './form'
 import type { Ref } from 'vue'
@@ -174,7 +175,8 @@ import type { TempFormInstance } from '@qv-vue/components/temp'
 import type { QvColumn, QvGroupI } from '@qv-vue/types/qvue-ui'
 
 defineOptions({
-	name: 'qv-form'
+	name: 'qv-form',
+	components: { ElTooltip, ElIcon, InfoFilled }
 })
 const { b } = useBem('qv-form')
 const emit = defineEmits<{
@@ -203,7 +205,7 @@ const form: Ref<Record<string, any>> = ref({})
 const formList: Ref<any[]> = ref([])
 const formBind: Ref<Record<string, any>> = ref({})
 // const formDefault = ref({});
-const formRef: Ref<FormInstance | undefined> = ref()
+const qvFormRef: Ref<FormInstance | undefined> = ref()
 const propRef: Ref<Record<string, TempFormInstance>> = ref({})
 
 const columnOption = computed(() => {
@@ -439,7 +441,7 @@ const getLabelWidth = (column: any, item: any) => {
 }
 //对部分表单字段进行校验的方法
 const validateField = (val: any) => {
-	return formRef.value?.validateField(val)
+	return qvFormRef.value?.validateField(val)
 }
 const validTip = (column: any) => {
 	return !column.tip || column.type === 'upload'
@@ -617,17 +619,17 @@ const vaildDisplay = (column: any) => {
 	return true
 }
 const clearValidate = (list?: any) => {
-	formRef.value?.clearValidate(list || {})
+	qvFormRef.value?.clearValidate(list || {})
 }
 const validateCellForm = () => {
 	return new Promise(resolve => {
-		formRef.value?.validate((valid: any, msg: any) => {
+		qvFormRef.value?.validate((valid: any, msg: any) => {
 			resolve(msg)
 		})
 	})
 }
 const validate = async (callback: (validate: boolean, hide: () => void, result?: any) => void) => {
-	await formRef.value?.validate((valid, msg) => {
+	await qvFormRef.value?.validate((valid, msg) => {
 		// console.log('form---load', valid)
 		const dynamicList: any[] = []
 		const dynamicName: any[] = []
@@ -670,7 +672,7 @@ const resetForm = () => {
 	})
 }
 const resetFields = () => {
-	formRef.value?.resetFields()
+	qvFormRef.value?.resetFields()
 }
 const show = () => {
 	allDisabled.value = true

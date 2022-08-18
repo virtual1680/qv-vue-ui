@@ -1,3 +1,9 @@
+<!--
+ * @Author: qinhongyang virtual1680@gmail.com
+ * @Date: 2022-08-18 08:51:31
+ * @LastEditTime: 2022-08-18 17:10:44
+ * @Description: 暂无
+-->
 <template>
 	<div :class="b()">
 		<el-checkbox
@@ -35,8 +41,11 @@
 import { ref, watch } from 'vue'
 import { useBem, useEvent } from '@qv-vue/hooks'
 import { checkboxProps } from './checkbox'
+import { ElCheckbox, ElCheckboxGroup } from 'element-plus'
+import type { CheckboxValueType } from 'element-plus'
 defineOptions({
-	name: 'qv-checkbox'
+	name: 'qv-checkbox',
+	components: { ElCheckbox }
 })
 const emit = defineEmits<{
 	(e: 'update:modelValue', value: any): void
@@ -51,7 +60,7 @@ const checkAll = ref(false)
 const isIndeterminate = ref(false)
 const { text, name, labelKey, valueKey, disabledKey, handleClick, componentName } = useEvent(props, emit)
 name.value = 'checkbox'
-const handleCheckChange = (value = []) => {
+const handleCheckChange = (value: CheckboxValueType[] = []) => {
 	if (!props.column?.all) return
 	const checkedCount = value.length
 	const dicLen = props.dic?.length || 0
@@ -74,7 +83,7 @@ watch(
 	}
 )
 
-const handleCheckAll = (val: boolean) => {
+const handleCheckAll = (val: CheckboxValueType) => {
 	if (!props.column?.all) return
 	text.value = val ? props.dic?.map(ele => ele[valueKey.value]) : []
 	isIndeterminate.value = false

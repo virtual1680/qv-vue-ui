@@ -62,11 +62,10 @@
 import { onMounted, ref, useSlots, watch } from 'vue'
 import { useBem, useEvent } from '@qv-vue/hooks'
 import { validatenull } from '@qv-vue/utils'
-import { ElSelect } from 'element-plus'
+import { ElSelect, ElCheckbox, ElOption, ElOptionGroup } from 'element-plus'
 import { sendDic } from '@qv-vue/core'
 import { DIC_SPLIT } from '@qv-vue/constants'
 import { selectProps } from './select'
-
 import type { Ref } from 'vue'
 
 defineOptions({

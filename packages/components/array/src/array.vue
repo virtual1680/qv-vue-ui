@@ -1,3 +1,9 @@
+<!--
+ * @Author: qinhongyang virtual1680@gmail.com
+ * @Date: 2022-08-18 08:51:31
+ * @LastEditTime: 2022-08-18 15:38:30
+ * @Description: 暂无
+-->
 <template>
 	<div :class="b()">
 		<el-button type="primary" icon="Plus" circle :size="size" v-if="validatenull(text)" :disabled="disabled" @click="add()"></el-button>
@@ -23,6 +29,7 @@ import { computed, ref } from 'vue'
 import { useBem } from '@qv-vue/hooks'
 import { validatenull } from '@qv-vue/utils'
 import { arrayProps } from './array'
+import { ElButton, ElTooltip, ElImage, ElLink } from 'element-plus'
 import type { Ref } from 'vue'
 defineOptions({
 	name: 'qv-array'

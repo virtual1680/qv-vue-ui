@@ -1,3 +1,9 @@
+<!--
+ * @Author: qinhongyang virtual1680@gmail.com
+ * @Date: 2022-08-18 08:51:31
+ * @LastEditTime: 2022-08-18 15:23:47
+ * @Description: 暂无
+-->
 <template>
 	<div :class="[b(), 'qv-img--' + column?.align]">
 		<img v-if="status" :src="text" :width="setPx(column?.imgWidth, '100%')" :height="setPx(column?.imgHeight)" />
@@ -17,6 +23,7 @@ import { computed, ref } from 'vue'
 import { setPx } from '@qv-vue/utils'
 import { useBem, useEvent } from '@qv-vue/hooks'
 import { imgProps } from './img'
+import { ElDialog, ElButton } from 'element-plus'
 defineOptions({
 	name: 'qv-img'
 })

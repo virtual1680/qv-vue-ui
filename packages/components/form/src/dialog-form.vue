@@ -1,11 +1,11 @@
 <!--
  * @Author: qinhongyang virtual1680@gmail.com
  * @Date: 2022-08-18 08:51:31
- * @LastEditTime: 2022-08-18 10:30:23
+ * @LastEditTime: 2022-08-18 16:26:28
  * @Description: dialog form
 -->
 <template>
-	<el-dialog v-model="visible" destroy-on-close class="qv-dialog" :beforeClose="beforeClose" v-bind="dialog">
+	<el-dialog v-model="visible" :title="props.option.addTitle" destroy-on-close class="qv-dialog" :beforeClose="beforeClose" v-bind="dialog">
 		<qv-form
 			ref="qvFormRef"
 			:option="{ ...Object.assign(option, props.option), ...{ menuBtn: false } }"
@@ -31,10 +31,10 @@ import { FormInstance } from '@qv-vue/qv-vue'
 import type { Ref } from 'vue'
 import { dialogFormProps } from './dialog-form.type'
 import { isFunction } from 'lodash'
-import QvForm from './form.vue'
+import { QvForm } from '@qv-vue/components/form'
 import { ElButton, ElDialog } from 'element-plus'
 
-defineOptions({ name: 'dialog-form' })
+defineOptions({ name: 'dialog-form', components: { QvForm } })
 
 const props = defineProps(dialogFormProps)
 console.log(props)
