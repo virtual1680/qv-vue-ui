@@ -1,13 +1,19 @@
+/*
+ * @Author: qinhongyang virtual1680@gmail.com
+ * @Date: 2022-08-18 08:51:31
+ * @LastEditTime: 2022-08-18 10:14:56
+ * @Description: 暂无
+ */
 import { render, h } from 'vue'
 import { isClient } from '@vueuse/core'
-import DialogFormConstructor from '../../crud/src/dialog/dialog-form.vue'
-import type { QvOption } from '@qv-vue/types/qvue-ui'
+import DialogFormConstructor from './dialog-form.vue'
 import type { AppContext, ComponentPublicInstance } from 'vue'
+import { DialogFormProps } from './dialog-form.type'
 
 const messageInstance = new Map<
 	ComponentPublicInstance<{ doClose: () => void }>, // marking doClose as function
 	{
-		options: any
+		options: DialogFormProps
 		resolve: (res: any) => void
 		reject: (reason?: any) => void
 	}
@@ -25,7 +31,7 @@ const initInstance = (props: any, container: HTMLElement, appContext: AppContext
 	return vnode.component
 }
 
-const showDialog = (options: QvOption, appContext?: AppContext | null) => {
+const showDialog = (options: DialogFormProps, appContext?: AppContext | null) => {
 	const container = genContainer()
 	render(null, container)
 	const instance = initInstance(options, container, appContext)!
@@ -33,9 +39,9 @@ const showDialog = (options: QvOption, appContext?: AppContext | null) => {
 	messageInstance.delete(vm)
 	return vm
 }
-async function DialogForm(options: QvOption, appContext?: AppContext | null): Promise<any>
+async function DialogForm(options: DialogFormProps, appContext?: AppContext | null): Promise<any>
 
-function DialogForm(options: QvOption, appContext?: AppContext | null): Promise<any> {
+function DialogForm(options: DialogFormProps, appContext?: AppContext | null): Promise<any> {
 	if (!isClient) return Promise.reject()
 	return new Promise((resolve, reject) => {
 		const vm = showDialog(options, appContext)
@@ -53,7 +59,7 @@ export interface QvDialogForm {
 	// (message: string, title?: string, type?: string): Promise<MessageBoxData>
 
 	/** Show a message box */
-	(options: QvOption, appContext?: AppContext | null): Promise<any>
+	(options: DialogFormProps, appContext?: AppContext | null): Promise<any>
 
 	/** Close current message box */
 	close(): void

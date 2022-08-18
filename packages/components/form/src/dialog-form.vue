@@ -1,6 +1,17 @@
+<!--
+ * @Author: qinhongyang virtual1680@gmail.com
+ * @Date: 2022-08-18 08:51:31
+ * @LastEditTime: 2022-08-18 10:30:23
+ * @Description: dialog form
+-->
 <template>
 	<el-dialog v-model="visible" destroy-on-close class="qv-dialog" :beforeClose="beforeClose" v-bind="dialog">
-		<qv-form ref="qvFormRef" :option="{ ...option, ...{ menuBtn: false } }" v-model="data" @submit="handleSubmit" @reset-change="close"></qv-form>
+		<qv-form
+			ref="qvFormRef"
+			:option="{ ...Object.assign(option, props.option), ...{ menuBtn: false } }"
+			v-model="data"
+			@submit="handleSubmit"
+			@reset-change="close"></qv-form>
 		<span class="qv-dialog__footer" v-if="validData(option.menuBtn, true)" :class="'qv-dialog__footer--' + menuPosition">
 			<el-button @click="submit" v-if="validData(option.submitBtn, true)" :size="props.option.size" :icon="option.submitIcon" type="primary">{{
 				option.submitText
@@ -14,19 +25,23 @@
 <script lang="ts" setup>
 // import create from 'core/create'
 // import { lang } from '../../../locale/index'
-import { computed, reactive, ref } from 'vue'
-import { deepClone, validData } from '@qv-vue/utils'
+import { computed, ref } from 'vue'
+import { validData } from '@qv-vue/utils'
 import { FormInstance } from '@qv-vue/qv-vue'
 import type { Ref } from 'vue'
 import { dialogFormProps } from './dialog-form.type'
 import { isFunction } from 'lodash'
+import QvForm from './form.vue'
+import { ElButton, ElDialog } from 'element-plus'
 
 defineOptions({ name: 'dialog-form' })
 
 const props = defineProps(dialogFormProps)
+console.log(props)
+
 // callback: null
 const qvFormRef: Ref<FormInstance | undefined> = ref()
-const visible = ref(false)
+const visible = ref(true)
 const option = ref({
 	submitText: '提交',
 	emptyText: '关闭',
@@ -74,6 +89,7 @@ const beforeClose = (done: () => void) => {
 	close()
 }
 const handleSubmit = (data: any, done: any) => {
-	this.callback && this.callback({ data: data, close: this.close, done: done })
+	// this.callback && this.callback({ data: data, close: this.close, done: done })
 }
+defineExpose({ show })
 </script>

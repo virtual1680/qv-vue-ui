@@ -1,3 +1,9 @@
+<!--
+ * @Author: qinhongyang virtual1680@gmail.com
+ * @Date: 2022-08-18 08:51:31
+ * @LastEditTime: 2022-08-18 10:59:30
+ * @Description: 暂无
+-->
 <template>
 	<el-input
 		v-model="text"
@@ -41,6 +47,7 @@
 import { computed } from 'vue'
 import { useBem, useEvent } from '@qv-vue/hooks'
 import { inputProps } from './input'
+import { ElInput } from 'element-plus'
 
 const { b } = useBem('qv-input')
 const emit = defineEmits<{

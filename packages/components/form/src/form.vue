@@ -161,6 +161,8 @@
 import { computed, getCurrentInstance, nextTick, onMounted, provide, ref, unref, useSlots, watch } from 'vue'
 import { calcCascader, calcCount, formInitVal, getPlaceholder, getSlotName, useBem, useInitCrud } from '@qv-vue/hooks'
 import { clearVal, filterParams, findObject, setAsVal, setPx, validData, validatenull } from '@qv-vue/utils'
+import { ElTabPane, ElTabs, ElFormItem, ElCol, ElRow, ElForm } from 'element-plus'
+import { QvGroup } from '@qv-vue/components/group'
 import { DIC_PROPS } from '@qv-vue/constants'
 import { details, sendDic } from '@qv-vue/core'
 import { QvTempForm } from '@qv-vue/components/temp'

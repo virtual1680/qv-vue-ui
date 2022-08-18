@@ -34,10 +34,13 @@ import { computed, nextTick, ref, useSlots, watch } from 'vue'
 import { getComponent, getPlaceholder } from '@qv-vue/hooks'
 import { validatenull } from '@qv-vue/utils'
 import { tempFormProps } from './temp-form'
+import { QvInput } from '@qv-vue/components/input'
 import type { Ref } from 'vue'
 defineOptions({
-	name: 'qv-temp-form'
+	name: 'qv-temp-form',
+	components: { QvInput }
 })
+
 const emit = defineEmits<{
 	(e: 'change', val: any): void
 	(e: 'update:modelValue', val: any): void

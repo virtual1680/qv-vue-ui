@@ -1,3 +1,9 @@
+<!--
+ * @Author: qinhongyang virtual1680@gmail.com
+ * @Date: 2022-08-18 08:51:31
+ * @LastEditTime: 2022-08-18 11:03:11
+ * @Description: 暂无
+-->
 <template>
 	<div v-if="display" :class="[b({ header: !isHeader }), b({ arrow: !arrow })]">
 		<slot name="tabs" />
@@ -24,17 +30,20 @@
 <script lang="ts" setup>
 import { computed, onMounted, ref, useSlots, watch } from 'vue'
 import { useBem } from '@qv-vue/hooks'
+import { ElCollapse, ElCollapseItem, ElIcon } from 'element-plus'
 import { groupProps } from './group'
 import type { Ref } from 'vue'
+import type { CollapseModelValue } from 'element-plus'
 defineOptions({
-	name: 'qv-group'
+	name: 'qv-group',
+	components: { ElIcon }
 })
 const { b } = useBem('qv-group')
-const emit = defineEmits<{ (e: 'change', value: number[]): void }>()
+const emit = defineEmits<{ (e: 'change', value: CollapseModelValue): void }>()
 const props = defineProps(groupProps)
 const slots = useSlots()
-const activeName: Ref<number[]> = ref([])
-const handleChange = (activeNames: number[]) => {
+const activeName: Ref<CollapseModelValue> = ref([])
+const handleChange = (activeNames: CollapseModelValue) => {
 	emit('change', activeNames)
 }
 const text = computed(() => {
