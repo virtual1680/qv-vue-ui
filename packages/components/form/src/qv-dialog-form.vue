@@ -1,7 +1,7 @@
 <!--
  * @Author: qinhongyang virtual1680@gmail.com
  * @Date: 2022-08-18 08:51:31
- * @LastEditTime: 2022-08-18 16:26:28
+ * @LastEditTime: 2022-08-19 14:17:50
  * @Description: dialog form
 -->
 <template>
@@ -27,14 +27,14 @@
 // import { lang } from '../../../locale/index'
 import { computed, ref } from 'vue'
 import { validData } from '@qv-vue/utils'
-import { FormInstance } from '@qv-vue/qv-vue'
-import type { Ref } from 'vue'
-import { dialogFormProps } from './dialog-form.type'
+import { dialogFormProps } from './qv-dialog-form.type'
 import { isFunction } from 'lodash'
-import { QvForm } from '@qv-vue/components/form'
+import QvForm from './form.vue'
 import { ElButton, ElDialog } from 'element-plus'
+import type { FormInstance } from './form'
+import type { Ref } from 'vue'
 
-defineOptions({ name: 'dialog-form', components: { QvForm } })
+defineOptions({ name: 'qv-dialog-form', components: { QvForm } })
 
 const props = defineProps(dialogFormProps)
 console.log(props)

@@ -4,7 +4,7 @@ import type { TablePage } from './menu/table-page'
 import type Crud from './crud.vue'
 
 import type { CSSProperties, PropType } from 'vue'
-import type { QvOption } from '@qv-vue/types/qvue-ui'
+// import type { QvOption } from '@qv-vue/types/qvue-ui'
 
 export type DefaultRow = any
 
@@ -37,7 +37,7 @@ interface CrudProps<T> {
 	disabled?: boolean
 	page: Partial<TablePage>
 	permission?: Permission<T>
-	option: QvOption
+	option: any
 	data: T[]
 }
 export type { CellCls, CellStyle, Permission, CrudProps }

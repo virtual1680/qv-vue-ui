@@ -6,9 +6,9 @@
  */
 import { render, h } from 'vue'
 import { isClient } from '@vueuse/core'
-import DialogFormConstructor from './dialog-form.vue'
+import DialogFormConstructor from './qv-dialog-form.vue'
 import type { AppContext, ComponentPublicInstance } from 'vue'
-import { DialogFormProps } from './dialog-form.type'
+import { DialogFormProps } from './qv-dialog-form.type'
 
 const messageInstance = new Map<
 	ComponentPublicInstance<{ doClose: () => void }>, // marking doClose as function

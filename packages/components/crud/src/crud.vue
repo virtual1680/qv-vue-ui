@@ -1,3 +1,4 @@
+<!-- @ts-nocheck -->
 <template>
 	<div :class="b({ card: !tableOption?.card })">
 		<component :is="tableOption.titleSize || 'h2'" v-if="tableOption.title" :style="tableOption.titleStyle">{{ tableOption.title }}</component>
@@ -170,7 +171,6 @@ import type { TreeNode } from 'element-plus/lib/components/table/src/table/defau
 import type { TableColumnCtx } from 'element-plus/lib/components/table/src/table-column/defaults'
 import type { Ref } from 'vue'
 import type { FindData } from './crud'
-// import type { QvOption } from '@qv-vue/types/qvue-ui'
 
 defineOptions({
 	name: 'qv-crud'

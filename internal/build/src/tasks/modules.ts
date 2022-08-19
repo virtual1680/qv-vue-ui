@@ -1,3 +1,9 @@
+/*
+ * @Author: qinhongyang virtual1680@gmail.com
+ * @Date: 2022-08-18 08:51:31
+ * @LastEditTime: 2022-08-19 14:29:55
+ * @Description: 暂无
+ */
 import { rollup } from 'rollup'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
@@ -43,7 +49,7 @@ export const buildModules = async () => {
 				}
 			})
 		],
-		external: await generateExternal({ full: false }),
+		external: await generateExternal({ full: true }),
 		treeshake: false
 	})
 	await writeBundles(

@@ -1,3 +1,9 @@
+/*
+ * @Author: qinhongyang virtual1680@gmail.com
+ * @Date: 2022-08-18 08:51:31
+ * @LastEditTime: 2022-08-19 14:06:53
+ * @Description: 暂无
+ */
 // For this project development
 import '@vue/runtime-core'
 
@@ -27,16 +33,9 @@ declare module '@vue/runtime-core' {
 		QvForm: typeof import('qv-vue')['QvForm']
 	}
 
-	// interface ComponentCustomProperties {
-	//   $message: typeof import('qv-vue')['ElMessage']
-	//   $notify: typeof import('qv-vue')['ElNotification']
-	//   $msgbox: typeof import('qv-vue')['ElMessageBox']
-	//   $messageBox: typeof import('qv-vue')['ElMessageBox']
-	//   $alert: typeof import('qv-vue')['ElMessageBox']['alert']
-	//   $confirm: typeof import('qv-vue')['ElMessageBox']['confirm']
-	//   $prompt: typeof import('qv-vue')['ElMessageBox']['prompt']
-	//   $loading: typeof import('qv-vue')['ElLoadingService']
-	// }
+	interface ComponentCustomProperties {
+		$dialogForm: typeof import('qv-vue')['QvDialogForm']
+	}
 }
 
 export {}

@@ -1,7 +1,7 @@
 /*
  * @Author: qinhongyang virtual1680@gmail.com
  * @Date: 2022-08-18 08:51:31
- * @LastEditTime: 2022-08-18 09:48:38
+ * @LastEditTime: 2022-08-19 10:09:28
  * @Description: 暂无
  */
 import { QvRate } from '@qv-vue/components/rate'
@@ -27,7 +27,7 @@ import { QvTabs } from '@qv-vue/components/tabs'
 import { QvImg } from '@qv-vue/components/img'
 import { QvCrud } from '@qv-vue/components/crud'
 import { QvForm } from '@qv-vue/components/form'
-import { QvDialogForm } from '@qv-vue/components/form/index-dialog-form'
+// import { QvDialogForm } from '@qv-vue/components/form/index-dialog-form'
 import type { Plugin } from 'vue'
 
 export default [
@@ -53,6 +53,6 @@ export default [
 	QvTabs,
 	QvCascader,
 	QvImg,
-	QvForm,
-	QvDialogForm
+	QvForm
+	// QvDialogForm
 ] as Plugin[]

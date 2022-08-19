@@ -1,7 +1,7 @@
 <!--
  * @Author: qinhongyang virtual1680@gmail.com
  * @Date: 2022-08-18 08:51:31
- * @LastEditTime: 2022-08-18 15:27:58
+ * @LastEditTime: 2022-08-19 14:51:55
  * @Description: 暂无
 -->
 <template>
@@ -37,8 +37,8 @@ import { computed, onMounted, ref } from 'vue'
 import { useBem, useEvent } from '@qv-vue/hooks'
 import { inputIconProps } from './input-icon'
 import { ElInput, ElDialog } from 'element-plus'
-import { QvTempIcon } from '@qv-vue/components/temp'
-import { QvTabs } from '@qv-vue/components/tabs'
+// import QvTempIcon from '@qv-vue/components/temp/src/temp-icon.vue'
+// import { QvTabs } from '@qv-vue/components/tabs'
 import type { IconItem } from '@qv-vue/types/qvue-ui'
 import type { Ref } from 'vue'
 import type { InputInstance } from 'element-plus'

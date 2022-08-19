@@ -1,23 +1,25 @@
 {
-  "compilerOptions": {
-    "outDir": "dist",
-    "target": "es2018",
-    "module": "esnext",
-    "baseUrl": ".",
-    "sourceMap": false,
-    "moduleResolution": "node",
-    "allowJs": false,
-    "strict": true,
-    "noUnusedLocals": true,
-    "resolveJsonModule": true,
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "removeComments": false,
-    "suppressImplicitAnyIndexErrors": true,
-    "rootDir": ".",
-    "types": [],
-    "paths": {
-      "@qv-vue/*": ["packages/*"]
-    }
-  }
+	"compilerOptions": {
+		"outDir": "dist",
+		"target": "es2018",
+		"module": "esnext",
+		"baseUrl": ".",
+		"sourceMap": false,
+		"moduleResolution": "node",
+		"allowJs": false,
+		"strict": true,
+		"noUnusedLocals": true,
+		"resolveJsonModule": true,
+		"allowSyntheticDefaultImports": true,
+		"esModuleInterop": true,
+		"removeComments": false,
+		"suppressImplicitAnyIndexErrors": true,
+		"disableSizeLimit": true,
+		"declaration": true,
+		"rootDir": ".",
+		"types": [],
+		"paths": {
+			"@qv-vue/*": ["packages/*"]
+		}
+	}
 }

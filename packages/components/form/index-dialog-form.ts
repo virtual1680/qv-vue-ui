@@ -1,10 +1,10 @@
 /*
  * @Author: qinhongyang virtual1680@gmail.com
  * @Date: 2022-08-18 09:34:09
- * @LastEditTime: 2022-08-18 09:36:05
+ * @LastEditTime: 2022-08-19 14:04:49
  * @Description: DialogForm
  */
-import DialogForm from './src/dialog-form'
+import DialogForm from './src/qv-dialog-form'
 
 import type { App } from 'vue'
 import type { SFCWithInstall } from '@qv-vue/utils'
@@ -19,4 +19,4 @@ _DialogForm.install = (app: App) => {
 export default _DialogForm
 export const QvDialogForm = _DialogForm
 
-export * from './src/dialog-form.type'
+export * from './src/qv-dialog-form.type'
