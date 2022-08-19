@@ -161,11 +161,11 @@
 import { computed, getCurrentInstance, nextTick, onMounted, provide, ref, unref, useSlots, watch } from 'vue'
 import { calcCascader, calcCount, formInitVal, getPlaceholder, getSlotName, useBem, useInitCrud } from '@qv-vue/hooks'
 import { clearVal, filterParams, findObject, setAsVal, setPx, validData, validatenull } from '@qv-vue/utils'
-import { ElTabPane, ElTabs, ElFormItem, ElCol, ElRow, ElForm, ElTooltip, ElIcon } from 'element-plus'
-import { InfoFilled } from '@element-plus/icons-vue'
+// import { ElTabPane, ElTabs, ElFormItem, ElCol, ElRow, ElForm, ElTooltip, ElIcon } from 'element-plus'
+// import { InfoFilled } from '@element-plus/icons-vue'
 import { DIC_PROPS } from '@qv-vue/constants'
 import { details, sendDic } from '@qv-vue/core'
-import { QvTempForm } from '@qv-vue/components/temp'
+import QvTempForm from '@qv-vue/components/temp/src/temp-form.vue'
 import { QvGroup } from '@qv-vue/components/group'
 import FormMenu from './menu.vue'
 import { formProps } from './form'
@@ -175,8 +175,8 @@ import type { TempFormInstance } from '@qv-vue/components/temp'
 import type { QvColumn, QvGroupI } from '@qv-vue/types/qvue-ui'
 
 defineOptions({
-	name: 'qv-form',
-	components: { ElTooltip, ElIcon, InfoFilled }
+	name: 'qv-form'
+	// components: { ElTooltip, ElIcon, InfoFilled }
 })
 const { b } = useBem('qv-form')
 const emit = defineEmits<{
