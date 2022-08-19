@@ -1,7 +1,7 @@
 <!--
  * @Author: qinhongyang virtual1680@gmail.com
  * @Date: 2022-08-18 08:51:31
- * @LastEditTime: 2022-08-18 15:39:43
+ * @LastEditTime: 2022-08-19 15:29:37
  * @Description: 暂无
 -->
 <template>
@@ -20,7 +20,7 @@
 import { computed, ref, watch } from 'vue'
 import { useBem } from '@qv-vue/hooks'
 import { tabsProps } from './tabs'
-import { ElTabs, ElTabPane } from 'element-plus'
+// import { ElTabs, ElTabPane } from 'element-plus'
 
 defineOptions({
 	name: 'qv-tabs'

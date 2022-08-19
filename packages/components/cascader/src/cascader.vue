@@ -1,7 +1,7 @@
 <!--
  * @Author: qinhongyang virtual1680@gmail.com
  * @Date: 2022-08-18 08:51:31
- * @LastEditTime: 2022-08-18 15:18:01
+ * @LastEditTime: 2022-08-19 15:24:57
  * @Description: 暂无
 -->
 <template>
@@ -32,7 +32,7 @@
 import { computed, useSlots } from 'vue'
 import { useBem, useEvent } from '@qv-vue/hooks'
 import { cascaderProps } from './cascader'
-import { ElCascader } from 'element-plus'
+// import { ElCascader } from 'element-plus'
 defineOptions({
 	name: 'qv-cascader'
 })

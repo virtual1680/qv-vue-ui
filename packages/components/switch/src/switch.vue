@@ -1,7 +1,7 @@
 <!--
  * @Author: qinhongyang virtual1680@gmail.com
  * @Date: 2022-08-18 08:51:31
- * @LastEditTime: 2022-08-18 15:32:34
+ * @LastEditTime: 2022-08-19 15:29:30
  * @Description: 暂无
 -->
 <template>
@@ -25,7 +25,7 @@
 import { computed } from 'vue'
 import { useEvent } from '@qv-vue/hooks'
 import { switchProps } from './switch'
-import { ElSwitch } from 'element-plus'
+// import { ElSwitch } from 'element-plus'
 defineOptions({
 	name: 'qv-switch'
 })

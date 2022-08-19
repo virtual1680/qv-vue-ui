@@ -1,7 +1,7 @@
 <!--
  * @Author: qinhongyang virtual1680@gmail.com
  * @Date: 2022-08-18 08:51:31
- * @LastEditTime: 2022-08-18 15:16:51
+ * @LastEditTime: 2022-08-19 15:24:46
  * @Description: 暂无
 -->
 <template>
@@ -27,7 +27,7 @@
 import { computed } from 'vue'
 import { useBem } from '@qv-vue/hooks'
 import { carouselProps } from './carousel'
-import { ElCarousel, ElCarouselItem } from 'element-plus'
+// import { ElCarousel, ElCarouselItem } from 'element-plus'
 defineOptions({
 	name: 'qv-carousel'
 })

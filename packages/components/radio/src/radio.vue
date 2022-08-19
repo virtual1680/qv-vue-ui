@@ -1,7 +1,7 @@
 <!--
  * @Author: qinhongyang virtual1680@gmail.com
  * @Date: 2022-08-18 08:51:31
- * @LastEditTime: 2022-08-18 17:09:21
+ * @LastEditTime: 2022-08-19 15:28:37
  * @Description: 暂无
 -->
 <template>
@@ -23,11 +23,11 @@
 <script lang="ts" setup>
 import { useBem, useEvent } from '@qv-vue/hooks'
 import { radioProps } from './radio'
-import { ElRadioGroup, ElRadio } from 'element-plus'
+// import { ElRadioGroup, ElRadio } from 'element-plus'
 
 defineOptions({
-	name: 'qv-radio',
-	components: { ElRadio }
+	name: 'qv-radio'
+	// components: { ElRadio }
 })
 const { b } = useBem('radio')
 

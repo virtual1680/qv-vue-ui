@@ -56,7 +56,7 @@ export const generateTypesDefinitions = async () => {
 			await mkdir(path.dirname(filepath), {
 				recursive: true
 			})
-			consola.log('-=-=-=-=-', filepath)
+			// consola.log('-=-=-=-=-', filepath)
 			await writeFile(filepath, pathRewriter('esm')(outputFile.getText()), 'utf8')
 
 			consola.success(chalk.green(`Definition for file: ${chalk.bold(relativePath)} generated`))

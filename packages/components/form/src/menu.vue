@@ -1,7 +1,7 @@
 <!--
  * @Author: qinhongyang virtual1680@gmail.com
  * @Date: 2022-08-18 08:51:31
- * @LastEditTime: 2022-08-18 15:57:10
+ * @LastEditTime: 2022-08-19 15:26:33
  * @Description: 暂无
 -->
 <template>
@@ -47,7 +47,7 @@ import { computed, inject } from 'vue'
 import { validData } from '@qv-vue/utils'
 import { t } from '@qv-vue/locale'
 import { useBem } from '@qv-vue/hooks'
-import { ElButton, ElCol } from 'element-plus'
+// import { ElButton, ElCol } from 'element-plus'
 defineOptions({
 	name: 'form-menu'
 })

@@ -1,7 +1,7 @@
 <!--
  * @Author: qinhongyang virtual1680@gmail.com
  * @Date: 2022-08-18 08:51:31
- * @LastEditTime: 2022-08-18 15:30:36
+ * @LastEditTime: 2022-08-19 15:28:48
  * @Description: 暂无
 -->
 <!-- eslint-disable vue/html-self-closing -->
@@ -12,7 +12,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 import { rateProps } from './rate'
-import { ElRate } from 'element-plus'
+// import { ElRate } from 'element-plus'
 
 defineOptions({
 	name: 'qv-rate'

@@ -30,13 +30,13 @@
 <script lang="ts" setup>
 import { computed, onMounted, ref, useSlots, watch } from 'vue'
 import { useBem } from '@qv-vue/hooks'
-import { ElCollapse, ElCollapseItem, ElIcon } from 'element-plus'
+// import { ElCollapse, ElCollapseItem, ElIcon } from 'element-plus'
 import { groupProps } from './group'
 import type { Ref } from 'vue'
 import type { CollapseModelValue } from 'element-plus'
 defineOptions({
-	name: 'qv-group',
-	components: { ElIcon }
+	name: 'qv-group'
+	// components: { ElIcon }
 })
 const { b } = useBem('qv-group')
 const emit = defineEmits<{ (e: 'change', value: CollapseModelValue): void }>()

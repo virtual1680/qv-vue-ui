@@ -1,7 +1,7 @@
 <!--
  * @Author: qinhongyang virtual1680@gmail.com
  * @Date: 2022-08-18 08:51:31
- * @LastEditTime: 2022-08-19 14:17:50
+ * @LastEditTime: 2022-08-19 17:14:58
  * @Description: dialog form
 -->
 <template>
@@ -29,7 +29,7 @@ import { computed, ref } from 'vue'
 import { validData } from '@qv-vue/utils'
 import { dialogFormProps } from './qv-dialog-form.type'
 import { isFunction } from 'lodash'
-import QvForm from './form.vue'
+import { QvForm } from '@qv-vue/components/form/'
 import { ElButton, ElDialog } from 'element-plus'
 import type { FormInstance } from './form'
 import type { Ref } from 'vue'

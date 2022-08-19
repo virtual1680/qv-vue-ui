@@ -1,7 +1,7 @@
 <!--
  * @Author: qinhongyang virtual1680@gmail.com
  * @Date: 2022-08-18 08:51:31
- * @LastEditTime: 2022-08-18 17:06:49
+ * @LastEditTime: 2022-08-19 15:30:05
  * @Description: 暂无
 -->
 <template>
@@ -34,7 +34,7 @@ import { computed } from 'vue'
 import { useBem, useEvent } from '@qv-vue/hooks'
 import { validatenull } from '@qv-vue/utils'
 import { timeProps } from './time'
-import { ElTimePicker } from 'element-plus'
+// import { ElTimePicker } from 'element-plus'
 defineOptions({
 	name: 'qv-time'
 })

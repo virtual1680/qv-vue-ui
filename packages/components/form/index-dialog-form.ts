@@ -1,7 +1,7 @@
 /*
  * @Author: qinhongyang virtual1680@gmail.com
  * @Date: 2022-08-18 09:34:09
- * @LastEditTime: 2022-08-19 14:04:49
+ * @LastEditTime: 2022-08-19 15:52:50
  * @Description: DialogForm
  */
 import DialogForm from './src/qv-dialog-form'

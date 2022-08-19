@@ -39,7 +39,7 @@ import { computed, ref } from 'vue'
 import { useBem } from '@qv-vue/hooks'
 import { validData } from '@qv-vue/utils'
 import { cardProps } from './card'
-import { ElRow, ElCol, ElIcon } from 'element-plus'
+// import { ElRow, ElCol, ElIcon } from 'element-plus'
 defineOptions({
 	name: 'qv-card'
 })

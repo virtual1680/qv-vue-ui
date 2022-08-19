@@ -1,7 +1,7 @@
 <!--
  * @Author: qinhongyang virtual1680@gmail.com
  * @Date: 2022-08-18 08:51:31
- * @LastEditTime: 2022-08-18 15:24:32
+ * @LastEditTime: 2022-08-19 15:27:56
  * @Description: 暂无
 -->
 <template>
@@ -33,7 +33,7 @@
 import { ref } from 'vue'
 import { useBem, useEvent } from '@qv-vue/hooks'
 import { inputColorProps } from './input-color'
-import { ElInput, ElColorPicker } from 'element-plus'
+// import { ElInput, ElColorPicker } from 'element-plus'
 defineOptions({
 	name: 'qv-input-color'
 })

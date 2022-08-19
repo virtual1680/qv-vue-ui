@@ -1,7 +1,7 @@
 <!--
  * @Author: qinhongyang virtual1680@gmail.com
  * @Date: 2022-08-18 08:51:31
- * @LastEditTime: 2022-08-18 17:12:59
+ * @LastEditTime: 2022-08-19 15:27:48
  * @Description: 暂无
 -->
 <template>
@@ -47,7 +47,7 @@
 import { computed } from 'vue'
 import { useBem, useEvent } from '@qv-vue/hooks'
 import { inputProps } from './input'
-import { ElInput, ElButton } from 'element-plus'
+// import { ElInput, ElButton } from 'element-plus'
 
 const { b } = useBem('qv-input')
 const emit = defineEmits<{
@@ -58,8 +58,8 @@ const emit = defineEmits<{
 	(e: 'focus', value: any): void
 }>()
 defineOptions({
-	name: 'qv-input',
-	components: { ElButton }
+	name: 'qv-input'
+	// components: { ElButton }
 })
 const props = defineProps(inputProps)
 const { text, handleFocus, handleBlur, handleClick, clearableVal } = useEvent(props, emit)

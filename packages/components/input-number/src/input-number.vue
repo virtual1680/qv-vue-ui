@@ -1,7 +1,7 @@
 <!--
  * @Author: qinhongyang virtual1680@gmail.com
  * @Date: 2022-08-18 08:51:31
- * @LastEditTime: 2022-08-18 15:29:20
+ * @LastEditTime: 2022-08-19 15:28:30
  * @Description: 暂无
 -->
 <template>
@@ -27,7 +27,7 @@
 <script lang="ts" setup>
 import { useBem, useEvent } from '@qv-vue/hooks'
 import { inputNumberProps } from './input-number'
-import { ElInputNumber } from 'element-plus'
+// import { ElInputNumber } from 'element-plus'
 defineOptions({
 	name: 'qv-input-number'
 })

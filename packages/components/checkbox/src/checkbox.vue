@@ -1,7 +1,7 @@
 <!--
  * @Author: qinhongyang virtual1680@gmail.com
  * @Date: 2022-08-18 08:51:31
- * @LastEditTime: 2022-08-18 17:10:44
+ * @LastEditTime: 2022-08-19 15:25:11
  * @Description: 暂无
 -->
 <template>
@@ -41,11 +41,11 @@
 import { ref, watch } from 'vue'
 import { useBem, useEvent } from '@qv-vue/hooks'
 import { checkboxProps } from './checkbox'
-import { ElCheckbox, ElCheckboxGroup } from 'element-plus'
+// import { ElCheckbox, ElCheckboxGroup } from 'element-plus'
 import type { CheckboxValueType } from 'element-plus'
 defineOptions({
-	name: 'qv-checkbox',
-	components: { ElCheckbox }
+	name: 'qv-checkbox'
+	// components: { ElCheckbox }
 })
 const emit = defineEmits<{
 	(e: 'update:modelValue', value: any): void

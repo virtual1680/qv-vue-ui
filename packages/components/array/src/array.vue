@@ -29,7 +29,7 @@ import { computed, ref } from 'vue'
 import { useBem } from '@qv-vue/hooks'
 import { validatenull } from '@qv-vue/utils'
 import { arrayProps } from './array'
-import { ElButton, ElTooltip, ElImage, ElLink } from 'element-plus'
+// import { ElButton, ElTooltip, ElImage, ElLink } from 'element-plus'
 import type { Ref } from 'vue'
 defineOptions({
 	name: 'qv-array'

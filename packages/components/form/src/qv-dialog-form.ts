@@ -1,12 +1,13 @@
 /*
  * @Author: qinhongyang virtual1680@gmail.com
  * @Date: 2022-08-18 08:51:31
- * @LastEditTime: 2022-08-18 10:14:56
+ * @LastEditTime: 2022-08-19 17:26:08
  * @Description: 暂无
  */
 import { render, h } from 'vue'
 import { isClient } from '@vueuse/core'
 import DialogFormConstructor from './qv-dialog-form.vue'
+import { withInstall } from '@qv-vue/utils'
 import type { AppContext, ComponentPublicInstance } from 'vue'
 import { DialogFormProps } from './qv-dialog-form.type'
 
@@ -24,9 +25,11 @@ const genContainer = () => {
 }
 
 const initInstance = (props: any, container: HTMLElement, appContext: AppContext | null = null) => {
-	const vnode = h(DialogFormConstructor, props)
+	const hh = withInstall(DialogFormConstructor)
+	const vnode = h(hh, props)
 	vnode.appContext = appContext
 	render(vnode, container)
+	console.log(document.body, container, vnode)
 	document.body.appendChild(container.firstElementChild!)
 	return vnode.component
 }
@@ -43,8 +46,8 @@ async function DialogForm(options: DialogFormProps, appContext?: AppContext | nu
 
 function DialogForm(options: DialogFormProps, appContext?: AppContext | null): Promise<any> {
 	if (!isClient) return Promise.reject()
-	return new Promise((resolve, reject) => {
-		const vm = showDialog(options, appContext)
+	return new Promise(async (resolve, reject) => {
+		const vm = await showDialog(options, appContext)
 		// collect this vm in order to handle upcoming events.
 		messageInstance.set(vm, {
 			options,
