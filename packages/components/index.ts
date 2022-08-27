@@ -1,3 +1,9 @@
+/*
+ * @Author: virtual1680 virtual1680@gmail.com
+ * @Date: 2022-07-19 20:24:24
+ * @LastEditTime: 2022-08-20 09:34:28
+ * @Description: 暂无
+ */
 export * from './card'
 export * from './rate'
 export * from './temp'
@@ -25,6 +31,6 @@ export * from './tabs'
 // export * from './infinite-scroll'
 // export * from './loading'
 // export * from './message'
-// export * from './message-box'
+export * from './form/index-dialog-form'
 // export * from './notification'
 // export * from './popover'

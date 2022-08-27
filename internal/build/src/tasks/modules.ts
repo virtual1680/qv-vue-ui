@@ -1,7 +1,7 @@
 /*
  * @Author: qinhongyang virtual1680@gmail.com
  * @Date: 2022-08-18 08:51:31
- * @LastEditTime: 2022-08-19 14:29:55
+ * @LastEditTime: 2022-08-20 13:25:06
  * @Description: 暂无
  */
 import { rollup } from 'rollup'
@@ -49,7 +49,7 @@ export const buildModules = async () => {
 				}
 			})
 		],
-		external: await generateExternal({ full: true }),
+		external: await generateExternal({ full: false }),
 		treeshake: false
 	})
 	await writeBundles(

@@ -144,7 +144,7 @@ function getFileUrl(home: string, uri = '') {
 }
 const props = defineProps(uploadProps)
 const { text, labelKey, valueKey, urlKey, resKey, nameKey, handleClick, isArray, isString, stringMode, handleChange } = useEvent(props, emit)
-console.log(props)
+// console.log(props)
 
 const menu = ref(false)
 const reload = ref(Math.random())

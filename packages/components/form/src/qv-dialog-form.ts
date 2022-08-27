@@ -1,7 +1,7 @@
 /*
  * @Author: qinhongyang virtual1680@gmail.com
  * @Date: 2022-08-18 08:51:31
- * @LastEditTime: 2022-08-19 17:26:08
+ * @LastEditTime: 2022-08-20 11:06:51
  * @Description: 暂无
  */
 import { render, h } from 'vue'
@@ -42,31 +42,35 @@ const showDialog = (options: DialogFormProps, appContext?: AppContext | null) =>
 	messageInstance.delete(vm)
 	return vm
 }
-async function DialogForm(options: DialogFormProps, appContext?: AppContext | null): Promise<any>
 
-function DialogForm(options: DialogFormProps, appContext?: AppContext | null): Promise<any> {
-	if (!isClient) return Promise.reject()
-	return new Promise(async (resolve, reject) => {
-		const vm = await showDialog(options, appContext)
-		// collect this vm in order to handle upcoming events.
-		messageInstance.set(vm, {
-			options,
-			resolve,
-			reject
+class DialogForm {
+	_context: AppContext | undefined | null = null
+	//开启弹窗
+	service(options: DialogFormProps, appContext?: AppContext | null) {
+		this._context = appContext
+		if (!isClient) return Promise.reject()
+		return new Promise(async (resolve, reject) => {
+			const vm = await showDialog(options, appContext)
+			// collect this vm in order to handle upcoming events.
+			messageInstance.set(vm, {
+				options,
+				resolve,
+				reject
+			})
 		})
-	})
+	}
+	close() {
+		console.log('hide----')
+	}
 }
-export interface QvDialogForm {
-	_context: AppContext | null
-	/** Show a message box */
-	// (message: string, title?: string, type?: string): Promise<MessageBoxData>
 
-	/** Show a message box */
-	(options: DialogFormProps, appContext?: AppContext | null): Promise<any>
+// export interface QvDialogForm {
+// 	_context: AppContext | null
+// 	/** Show a message box */
+// 	// (message: string, title?: string, type?: string): Promise<MessageBoxData>
+// 	/** Show a message box */
+// 	service(options: DialogFormProps, appContext?: AppContext | null): Promise<any>
+// 	/** Close current message box */
+// }
 
-	/** Close current message box */
-	close(): void
-}
-;(DialogForm as QvDialogForm)._context = null
-
-export default DialogForm as QvDialogForm
+export default new DialogForm()

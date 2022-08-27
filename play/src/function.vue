@@ -1,20 +1,23 @@
 <!--
  * @Author: qinhongyang virtual1680@gmail.com
  * @Date: 2022-08-18 09:15:55
- * @LastEditTime: 2022-08-18 17:07:37
+ * @LastEditTime: 2022-08-20 12:22:51
  * @Description: 函数式表单用法
 -->
 <template>
 	<div class="play-container">
 		<el-button @click="open">打开弹窗</el-button>
+		<qv-dialog-form :option="option" :data="data" ref="qvDialogFormRef"></qv-dialog-form>
 	</div>
 </template>
 
 <script setup lang="ts">
 // code here
-import { getCurrentInstance, ref, nextTick } from 'vue'
-// import DialogForm from '../../packages/components/form/src/dialog-form'
+import { ref, Ref } from 'vue'
 import { ElMessage } from 'element-plus'
+import { QvDialogFormInstance } from '@qv-vue/qv-vue'
+const qvDialogFormRef: Ref<QvDialogFormInstance | undefined> = ref()
+const data = ref({ username: '我是用户名' })
 const DIC = {
 	VAILD: [
 		{ label: '真', value: 'true' },
@@ -26,7 +29,7 @@ const DIC = {
 	]
 }
 let option = ref({
-	size: 'default',
+	// size: 'default',
 	addTitle: '我是标题',
 	submitText: '完成',
 	column: [
@@ -40,26 +43,9 @@ let option = ref({
 			prefixIcon: 'Search',
 			maxlength: 3,
 			minlength: 2,
-			rules: [{ required: true, message: '请输入用户名', trigger: 'blur' }],
-			click: ({ value, column }) => {
-				console.log(value, column)
-				ElMessage.success('click')
-			},
-			change: ({ value, column }) => {
-				ElMessage.success('change事件查看控制台')
-				console.log('值改变', value, column)
-			},
-
-			focus: ({ value, column }) => {
-				ElMessage.success('focus事件查看控制台')
-				console.log('获取焦点', value, column)
-			},
-			blur: ({ value, column }) => {
-				ElMessage.success('blur事件查看控制台')
-				console.log('失去焦点', value, column)
-			}
+			rules: [{ required: true, message: '请输入用户名', trigger: 'blur' }]
 		},
-		{ label: '姓名', prop: 'name', disabled: true, span: 8, value: '哈哈好' },
+		{ label: '姓名', prop: 'name', disabled: true, span: 8 },
 		{ label: '密码', prop: 'password', type: 'password', span: 8 },
 		{ label: '类型', prop: 'type', type: 'select', dicData: DIC.VAILD, span: 8 },
 		{
@@ -130,8 +116,7 @@ let option = ref({
 		{
 			label: '地址',
 			span: 24,
-			prop: 'address',
-			value: '909090'
+			prop: 'address'
 		},
 		{
 			label: '建议',
@@ -210,9 +195,16 @@ let option = ref({
 		}
 	]
 })
-const $proxy = getCurrentInstance()?.proxy
+// const $proxy = getCurrentInstance()?.proxy
 const open = () => {
-	$proxy?.$dialogForm({ option: option.value })
+	qvDialogFormRef.value?.show((data: any, close: () => void, done: () => void) => {
+		//关闭加载
+		done()
+		// 关闭弹窗
+		close()
+		// 表单数据
+		console.log(data)
+	})
 }
 </script>
 
