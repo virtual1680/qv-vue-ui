@@ -1,7 +1,7 @@
 <!--
  * @Author: qinhongyang virtual1680@gmail.com
  * @Date: 2022-08-18 09:15:55
- * @LastEditTime: 2022-08-20 12:22:51
+ * @LastEditTime: 2022-09-19 15:51:01
  * @Description: 函数式表单用法
 -->
 <template>
@@ -15,7 +15,7 @@
 // code here
 import { ref, Ref } from 'vue'
 import { ElMessage } from 'element-plus'
-import { QvDialogFormInstance } from '@qv-vue/qv-vue'
+import type { QvDialogFormInstance } from '../../packages/components/form/src/qv-dialog-form.type'
 const qvDialogFormRef: Ref<QvDialogFormInstance | undefined> = ref()
 const data = ref({ username: '我是用户名' })
 const DIC = {

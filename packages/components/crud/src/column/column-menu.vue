@@ -12,8 +12,8 @@
 		:header-align="crud.tableOption.value.menuHeaderAlign || config.menuHeaderAlign"
 		:width="crud.isMobile ? crud.tableOption.value.menuXsWidth || config.menuXsWidth : crud.tableOption.value.menuWidth || config.menuWidth">
 		<template #="{ row, $index }">
-			<el-dropdown v-if="isMenu" :size="crud.isMediumSize">
-				<el-button text :size="crud.isMediumSize">
+			<el-dropdown v-if="isMenu" :size="crud.isMediumSize.value">
+				<el-button text :size="crud.isMediumSize.value">
 					{{ crud.tableOption.value.menuBtnTitle || t('crud.menuBtn') }}
 					<el-icon class="el-icon--right&quot;">
 						<ArrowDown />
@@ -49,7 +49,13 @@
 							@click="crud.rowDel(row, $index)">
 							{{ crud.menuIcon('delBtn') }}
 						</el-dropdown-item>
-						<slot name="menuBtn" :row="row" :type="menuText('primary')" :disabled="crud.btnDisabled" :size="crud.isMediumSize" :index="$index" />
+						<slot
+							name="menuBtn"
+							:row="row"
+							:type="menuText('primary')"
+							:disabled="crud.btnDisabled"
+							:size="crud.isMediumSize.value"
+							:index="$index" />
 					</el-dropdown-menu>
 				</template>
 			</el-dropdown>
@@ -61,7 +67,7 @@
 						:type="menuText('primary')"
 						:link="isTextMenu"
 						:icon="crud.getBtnIcon('editBtn')"
-						:size="crud.isMediumSize"
+						:size="crud.isMediumSize.value"
 						:disabled="crud.btnDisabledList[$index]"
 						@click.stop="crud.rowCell(row, $index)">
 						<template v-if="!isIconMenu">
@@ -75,7 +81,7 @@
 						:type="menuText('primary')"
 						:link="isTextMenu"
 						:icon="crud.getBtnIcon('saveBtn')"
-						:size="crud.isMediumSize"
+						:size="crud.isMediumSize.value"
 						:disabled="crud.btnDisabledList[$index]"
 						@click.stop="crud.rowCell(row, $index)">
 						<template v-if="!isIconMenu">
@@ -87,7 +93,7 @@
 						:type="menuText('danger')"
 						:link="isTextMenu"
 						:icon="crud.getBtnIcon('cancelBtn')"
-						:size="crud.isMediumSize"
+						:size="crud.isMediumSize.value"
 						:disabled="crud.btnDisabledList[$index]"
 						@click.stop="crud.rowCancel(row, $index)">
 						<template v-if="!isIconMenu">
@@ -101,7 +107,7 @@
 					:type="menuText('success')"
 					:link="isTextMenu"
 					:icon="crud.getBtnIcon('viewBtn')"
-					:size="crud.isMediumSize"
+					:size="crud.isMediumSize.value"
 					:disabled="crud.btnDisabled"
 					@click.stop="crud.rowView(row, $index)">
 					<template v-if="!isIconMenu">
@@ -114,7 +120,7 @@
 					:type="menuText('primary')"
 					:link="isTextMenu"
 					:icon="crud.getBtnIcon('editBtn')"
-					:size="crud.isMediumSize"
+					:size="crud.isMediumSize.value"
 					:disabled="crud.btnDisabled"
 					@click.stop="crud.rowEdit(row, $index)">
 					<template v-if="!isIconMenu">
@@ -127,7 +133,7 @@
 					:type="menuText('primary')"
 					:link="isTextMenu"
 					:icon="crud.getBtnIcon('copyBtn')"
-					:size="crud.isMediumSize"
+					:size="crud.isMediumSize.value"
 					:disabled="crud.btnDisabled"
 					@click.stop="crud.rowCopy(row)">
 					<template v-if="!isIconMenu">
@@ -140,7 +146,7 @@
 					:type="menuText('danger')"
 					:link="isTextMenu"
 					:icon="crud.getBtnIcon('delBtn')"
-					:size="crud.isMediumSize"
+					:size="crud.isMediumSize.value"
 					:disabled="crud.btnDisabled"
 					@click.stop="crud.rowDel(row, $index)">
 					<template v-if="!isIconMenu">
@@ -148,7 +154,7 @@
 					</template>
 				</el-button>
 			</template>
-			<slot name="menu" :row="row" :type="menuText('primary')" :disabled="crud.btnDisabled" :size="crud.isMediumSize" :index="$index" />
+			<slot name="menu" :row="row" :type="menuText('primary')" :disabled="crud.btnDisabled" :size="crud.isMediumSize.value" :index="$index" />
 		</template>
 	</el-table-column>
 </template>

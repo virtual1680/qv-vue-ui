@@ -6,7 +6,7 @@
 				v-permission="crud.getPermission('addBtn')"
 				type="primary"
 				:icon="crud.getBtnIcon('addBtn')"
-				:size="crud.isMediumSize"
+				:size="crud.isMediumSize.value"
 				@click="crud.rowAdd">
 				<template v-if="!crud.isIconMenu">
 					{{ crud.menuIcon('addBtn') }}
@@ -17,13 +17,13 @@
 				v-permission="crud.getPermission('addRowBtn')"
 				type="primary"
 				:icon="crud.getBtnIcon('addBtn')"
-				:size="crud.isMediumSize"
+				:size="crud.isMediumSize.value"
 				@click="crud.rowCellAdd">
 				<template v-if="!crud.isIconMenu">
 					{{ crud.menuIcon('addBtn') }}
 				</template>
 			</el-button>
-			<slot name="menu-left" :size="crud.isMediumSize" />
+			<slot name="menu-left" :size="crud.isMediumSize.value" />
 		</div>
 		<div :class="b('right')">
 			<qv-date
@@ -31,42 +31,42 @@
 				type="datetimerange"
 				style="display: inline-block; margin-right: 20px"
 				:column="state.pickerOptions"
-				:size="crud.isMediumSize"
+				:size="crud.isMediumSize.value"
 				@change="dateChange" />
-			<slot name="menu-right" :size="crud.isMediumSize" />
+			<slot name="menu-right" :size="crud.isMediumSize.value" />
 			<el-button
 				v-if="validData(crud.tableOption.value.excelBtn, config.excelBtn)"
 				v-permission="crud.getPermission('excelBtn')"
 				:icon="crud.getBtnIcon('excelBtn')"
 				circle
-				:size="crud.isMediumSize"
+				:size="crud.isMediumSize.value"
 				@click="rowExcel" />
 			<el-button
 				v-if="validData(crud.tableOption.value.refreshBtn, config.refreshBtn)"
 				v-permission="crud.getPermission('refreshBtn')"
 				:icon="crud.getBtnIcon('refreshBtn')"
 				circle
-				:size="crud.isMediumSize"
+				:size="crud.isMediumSize.value"
 				@click="crud.refreshChange" />
 			<el-button
 				v-if="validData(crud.tableOption.value.columnBtn, config.columnBtn)"
 				v-permission="crud.getPermission('columnBtn')"
 				:icon="crud.getBtnIcon('columnBtn')"
 				circle
-				:size="crud.isMediumSize"
+				:size="crud.isMediumSize.value"
 				@click="crud.dialogColumnRef.value.columnBox = true" />
 			<el-button
 				v-if="(crud.headerSearchRef.value || {}).searchFlag && validData(crud.tableOption.value.searchShowBtn, true)"
 				:icon="crud.getBtnIcon('searchBtn')"
 				circle
-				:size="crud.isMediumSize"
+				:size="crud.isMediumSize.value"
 				@click="crud.headerSearchRef.value.handleSearchShow()" />
 			<el-button
 				v-if="validData(crud.tableOption.value.filterBtn, config.filterBtn)"
 				v-permission="crud.getPermission('filterBtn')"
 				:icon="crud.getBtnIcon('filterBtn')"
 				circle
-				:size="crud.isMediumSize"
+				:size="crud.isMediumSize.value"
 				@click="crud.dialogFilterRef.box = true" />
 		</div>
 	</div>

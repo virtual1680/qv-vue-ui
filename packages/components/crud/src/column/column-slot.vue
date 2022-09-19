@@ -38,7 +38,7 @@
 							v-bind="{
 								row: row,
 								dic: crud.DIC[column.prop],
-								size: crud.isMediumSize,
+								size: crud.isMediumSize.value,
 								index: $index,
 								disabled: crud.btnDisabledList[$index],
 								label: handleShowLabel(row, column, crud.DIC.value[column.prop]),
@@ -49,7 +49,7 @@
 							v-else
 							v-model="row[column.prop]"
 							:column="column"
-							:size="crud.isMediumSize"
+							:size="crud.isMediumSize.value"
 							:table-data="{
 								index: $index,
 								row: row,
@@ -74,7 +74,7 @@
 				:row="row"
 				:index="$index"
 				:dic="crud.DIC.value[column.prop]"
-				:size="crud.isMediumSize"
+				:size="crud.isMediumSize.value"
 				:label="handleShowLabel(row, column, crud.DIC.value[column.prop])"
 				:name="column.prop" />
 			<template v-else>

@@ -40,6 +40,7 @@ setTimeout(() => {
 		lazy: true,
 		selection: true,
 		rowKey: 'id',
+		size: 'small',
 		column: [
 			{
 				label: 'ID',

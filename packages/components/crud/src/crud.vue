@@ -810,7 +810,7 @@ provide('crud', {
 	objectOption,
 	formIndexList,
 	btnDisabled: btnDisabled.value,
-	isMediumSize: isMediumSize.value,
+	isMediumSize,
 	rowCopy,
 	rowEdit,
 	rowView,
