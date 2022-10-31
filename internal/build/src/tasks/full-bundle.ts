@@ -33,7 +33,7 @@ async function buildFullEntry(minify: boolean) {
 		commonjs(),
 		esbuild({
 			exclude: [],
-			sourceMap: minify,
+			sourceMap: false,
 			target,
 			loaders: {
 				'.vue': 'ts'
@@ -46,7 +46,7 @@ async function buildFullEntry(minify: boolean) {
 		})
 	]
 	if (minify) {
-		plugins.push(minifyPlugin({ sourceMap: true }))
+		plugins.push(minifyPlugin({ sourceMap: false }))
 	}
 
 	const bundle = await rollup({
@@ -64,13 +64,13 @@ async function buildFullEntry(minify: boolean) {
 			globals: {
 				vue: 'Vue'
 			},
-			sourcemap: minify,
+			sourcemap: false,
 			banner
 		},
 		{
 			format: 'esm',
 			file: path.resolve(epOutput, 'dist', formatBundleFilename('index.full', minify, 'mjs')),
-			sourcemap: minify,
+			sourcemap: false,
 			banner
 		}
 	])
@@ -90,7 +90,7 @@ async function buildFullLocale(minify: boolean) {
 				plugins: [
 					esbuild({
 						minify,
-						sourceMap: minify,
+						sourceMap: false,
 						target
 					})
 				]
@@ -101,13 +101,13 @@ async function buildFullLocale(minify: boolean) {
 					file: path.resolve(epOutput, 'dist/locale', formatBundleFilename(filename, minify, 'js')),
 					exports: 'default',
 					name: `${PKG_CAMELCASE_LOCAL_NAME}${name}`,
-					sourcemap: minify,
+					sourcemap: false,
 					banner
 				},
 				{
 					format: 'esm',
 					file: path.resolve(epOutput, 'dist/locale', formatBundleFilename(filename, minify, 'mjs')),
-					sourcemap: minify,
+					sourcemap: false,
 					banner
 				}
 			])

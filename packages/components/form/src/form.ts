@@ -1,3 +1,9 @@
+/*
+ * @Author: virtual1680 virtual1680@gmail.com
+ * @Date: 2022-07-17 22:18:54
+ * @LastEditTime: 2022-10-29 13:46:52
+ * @Description: 暂无
+ */
 import type { QvOption } from '@qv-vue/types/qvue-ui'
 import type { PropType } from 'vue'
 import type Form from './form.vue'

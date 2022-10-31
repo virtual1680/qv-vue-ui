@@ -1,7 +1,7 @@
 /*
  * @Author: qinhongyang virtual1680@gmail.com
  * @Date: 2022-08-18 08:51:31
- * @LastEditTime: 2022-09-19 11:16:44
+ * @LastEditTime: 2022-10-29 14:06:30
  * @Description: 暂无
  */
 import { rollup } from 'rollup'
@@ -42,7 +42,7 @@ export const buildModules = async () => {
 			}),
 			commonjs(),
 			esbuild({
-				sourceMap: true,
+				sourceMap: false,
 				target,
 				loaders: {
 					'.vue': 'ts'
@@ -61,7 +61,7 @@ export const buildModules = async () => {
 				exports: module === 'cjs' ? 'named' : undefined,
 				preserveModules: true,
 				preserveModulesRoot: pkgRoot,
-				sourcemap: true,
+				sourcemap: false,
 				entryFileNames: `[name].${config.ext}`
 			}
 		})

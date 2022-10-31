@@ -14,15 +14,15 @@
 		"url": "https://github.com/virtual1680/qv-vue-ui/issues"
 	},
 	"license": "MIT",
-	"main": "lib/index.js",
-	"module": "es/index.mjs",
+	"main": "lib/qv-vue/index.js",
+	"module": "es/qv-vue/index.mjs",
 	"exports": {
 		".": {
-			"require": "./lib/index.js",
-			"import": "./es/index.mjs"
+			"require": "./lib/qv-vue/index.js",
+			"import": "./es/qv-vue/index.mjs"
 		},
-		"./es": "./es/index.mjs",
-		"./lib": "./lib/index.js",
+		"./es": "./es/qv-vue/index.mjs",
+		"./lib": "./lib/qv-vue/index.js",
 		"./es/*.mjs": "./es/*.mjs",
 		"./es/*": "./es/*.mjs",
 		"./lib/*.js": "./lib/*.js",

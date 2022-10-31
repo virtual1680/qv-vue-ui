@@ -107,7 +107,7 @@
 											<qv-temp-form
 												v-else
 												:ref="
-													el => {
+													(el:any) => {
 														bindRef(el, column.prop)
 													}
 												"
@@ -127,7 +127,8 @@
 												<template v-if="getSlotName(column, 'T', slots)" #default="scope">
 													<slot :name="getSlotName(column, 'T')" v-bind="scope" />
 												</template>
-												<template v-for="item in columnSlot" #[item]="scope">
+												<!-- #[item] -->
+												<template v-for="item in columnSlot" #`${item}`="scope">
 													<slot v-bind="scope" :name="item" />
 												</template>
 											</qv-temp-form>
